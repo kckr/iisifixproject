@@ -1,0 +1,15 @@
+.iisifixco-contact-info
+  h3 Valitut korjaamo:
+  .selected_garages
+    - garages.each do |garage|
+      .garages_each
+        .garage_logo
+          = image_tag garage.logo.small_thumb.url, class: 'img-rounded'
+        .garage_info
+          h4
+            = garage.name
+          small
+            em
+              = garage_distance_from_(params, request, garage)
+
+  a.btn.btn-default href="#{garages_path}" Haku lisää korjamot

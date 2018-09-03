@@ -1,0 +1,138 @@
+# This file has the following format of keys and values
+#fi:
+#  controller:
+#    action:
+#      key:
+#
+#  See this for more info: http://guides.rubyonrails.org/i18n.html#pluralization
+#  "Lazy" lookup can also be used in controllers:
+#
+#    en:
+#      books:
+#        create:
+#          success: Book created!
+#
+#    This is useful for setting flash messages for instance:
+#
+#        class BooksController < ApplicationController
+#          def create
+#            # ...
+#            redirect_to books_url, notice: t('.success')
+#          end
+#        end
+#
+# #
+
+fi:
+  application:
+    restrict_garage_owner: 'Yrität käyttää resurssi johon ei ole oikeuksia'
+    authenticate_garage_owner: 'Yrität käyttää resurssi johon ei ole oikeuksia'
+    authenticate_vehicle_owner: 'Yrität käyttää resurssi johon ei ole oikeuksia'
+    unconfirmed_user_only: 'Valitettavasti et saa mennä kyseiselle sivulle.'
+
+    after_sign_in_path_for:
+      notice: 'Kirjautunut sisään. Täytä profiilisi ensimmäinen.'
+
+  comments:
+    create:
+      notice: 'Kommentti viety onnistuneesti.'
+      error: 'Jotkut tapahtui virhe lähettämistä kommentti'
+
+  pages:
+    create_contact:
+      notice: 'Viesti lähetetty!'
+      alert: 'Virhe lähetettäessä viestiä!'
+
+  quote_requests:
+    create:
+      notice: 'Pyyntösi on jätetty ja se käsitellään lähiaikoina.'
+      error: 'Jotkut virhe esti voimme edetä asiassa. Tarkista lomake ja lähetä uudelleen.'
+
+    signup_vehicle_owner:
+      notice: 'Uusi tili on perustettu, ja vahvistus on lähetetty. '
+
+    send_sms_to_garage_for_new_qr:
+      message: "Hyvä %{garage_name},\n\n%{vo_full_name} on lähettänyt tarjouspyyntö juuri nyt. Tarkista ja vastata pyyntöön.\n\nKatso seuraavaa linkkiä vastata pyyntöön.\n%{url}"
+
+    get_data_from_reg_api:
+      notice: '%{preamble} Ajoneuvotiedot haki käyttämällä Reg-numero. '
+
+  devise_override:
+    sessions:
+      set_type:
+        error: 'Virheellinen "Käyttäjä" tyyppi valittu, valitse kelvollinen.'
+
+      sign_in_rules:
+        error: 'Sinä näyttävät mennyt väärään välilehti. Yritä kirjautua tästä välilehden.'
+
+
+  # --------------------------------------------------------
+  garage_owners:
+    confirmations:
+      update:
+        notice: 'Tilin tiedot päivitettiin. Kirjaudu sisään uudella salasanalla jatkaa.'
+
+    garage_owners:
+      set_garage:
+        error: 'Sinulla on oltava autotalli liittyvät kirjautumiseen'
+
+    garage_profiles:
+      update:
+        notice: 'Garage profiilin päivitys onnistui.'
+        error: 'Jostain syystä emme voineet päivittää profiilisi.'
+
+    jobs:
+      start:
+        notice: 'Työn aloitus on onnistunut.'
+
+      complete:
+        notice: 'Job onnistuneesti merkitty valmiiksi. Ilmoitus on lähetetty asiakkaalle vahvistusta.'
+
+      send_sms_of_completion_of_job:
+        message: "Hyvä %{vo_first_name},\n\n%{garage_name} on merkinnyt työtä 'Valmis'. Tarkista ja vahvista työ.\n\nKatso seuraavaa linkkiä vastata pyyntöön.\n%{url}"
+
+    quote_requests:
+      respond:
+        notice: 'Lainaus tiedot onnistui asiakkaalle.'
+
+      ignore:
+        notice: 'Tarjouspyyntö onnistuneesti huomiotta.'
+
+      send_sms_of_response_to_vo:
+        message: "Hyvä %{vo_first_name},\n\n%{garage_name} on lähettänyt noteeraus pyyntö juuri nyt. Tarkista ja vastata.\n\nKatso seuraavaa linkkiä vastata pyyntöön.\n%{url}"
+
+  # ----------------------------------------------------------
+  vehicle_owners:
+    confirmed_user_only!: 'Valitettavasti et saa mennä kyseiselle sivulle.'
+
+    confirmations:
+      update:
+        notice: 'Tilin tiedot päivitettiin. Kirjaudu sisään uudella salasanalla jatkaa.'
+
+      send_sms_to_garage_for_new_qr:
+        message: "Hyvä %{garage_name},\n\n%{vo_full_name} on lähettänyt tarjouspyyntö juuri nyt. Tarkista ja vastata pyyntöön.\n\nKatso seuraavaa linkkiä vastata pyyntöön.\n%{url}"
+
+    jobs:
+      cancel:
+        notice: 'Työ peruutettu.'
+
+    quote_requests:
+      cancel:
+        notice: 'Tarjouspyyntö onnistuneesti peruutettu'
+
+      accept:
+        notice: 'Tarjouspyyntö onnistuneesti hyväksytty'
+
+      reject:
+        notice: 'Tarjouspyyntö hylkääminen onnistui'
+
+      send_sms_of_acceptance_to_garage:
+        message: "Hyvä %{garage_name}\n\n%{vo_full_name} on hyväksynyt noteeraus juuri nyt. Tarkista ja vastata pyyntöön.\n\nKatso seuraavaa linkkiä vastata pyyntöön.\n%{url}"
+
+    ratings:
+      update:
+        notice: 'Job onnistui merkitty vahvistettu.'
+
+    users:
+      update:
+        notice: 'Tilin tiedot päivitetty.'

@@ -1,0 +1,16 @@
+.container
+  #sign-in-dialog.sign-in-form.style-1
+    .small-dialog-header
+      h3
+        | Register
+    ul.tabs-nav
+      li[class="#{activity(resource, :VehicleOwner)}"]
+        a[href="#vehicle_owner"]
+          | Vehicle Owner
+      li[class="#{activity(resource, :GarageOwner)}"]
+        a[href="#garage_owner"]
+          | Workshop Owner
+    .tabs-container.alt
+      /! Login
+      = render 'vehicle_owner_tab'
+      = render 'garage_owner_tab'

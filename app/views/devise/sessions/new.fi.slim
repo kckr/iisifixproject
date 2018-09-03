@@ -1,0 +1,38 @@
+header#iisifixco-header.iisifixco-cover.iisifixco-cover-sm role="banner" style="background-image:url('#{image_url('img_bg_2.jpg')}');"
+  .overlay
+  .container
+    .row
+      .col-md-6.col-md-offset-3
+        .display-t
+          .display-tc.animate-box data-animate-effect="fadeIn"
+            h1.text-center Kirjaudu sisään
+
+.iisifixco-section.registration-login
+  .container
+    .row
+      .col-md-12.animate-box
+        ul.nav.nav-tabs[role="tablist"]
+          - if params[:admin] == true
+            li[role="presentation" class="active"]
+              a[href="#admin" aria-controls="home" role="tab" data-toggle="tab"]
+                | Olen Admin
+          - else
+            li[role="presentation" class="#{activity(resource_from_(params[:q]), :VehicleOwner)}"]
+              a[href="#vehicle_owner" aria-controls="home" role="tab" data-toggle="tab"]
+                | Olen ajoneuvon omistaja
+            li[role="presentation" class="#{activity(resource_from_(params[:q] || resource_params[:email]), :GarageOwner)}"]
+              a[href="#garage_owner" aria-controls="profile" role="tab" data-toggle="tab"]
+                | Olen korjaamon omistaja
+
+        .bordered-all-but-no-top.tab-content.min400height
+          .col-md-12
+            .tab-content.padding30top.padding20bottom
+              - if params[:admin] == true
+                = render 'admin_tab'
+              - else
+                = render 'vehicle_owner_tab'
+                = render 'garage_owner_tab'
+          .clearfix
+    .row
+      .col-md-8.margin20top.margin10left
+        = render 'devise/shared/links'

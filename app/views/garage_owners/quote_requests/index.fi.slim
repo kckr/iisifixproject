@@ -1,0 +1,14 @@
+h3
+  | #{@active_quote_requests.count} Odottavia korjauspyyntöjä
+= render 'quote_requests', quote_requests: @active_quote_requests
+
+- if @archived_quote_requests.present?
+  .panel.panel-default.each-quote-request
+    .panel-heading
+      a.accordion-toggle.collapsed data-toggle="collapse" href="#archive"
+        h3 arkisto
+    .panel-collapse.collapse.out id="archive"
+      .panel-body
+        = render 'quote_requests', quote_requests: @archived_quote_requests
+
+= render 'response_popup'

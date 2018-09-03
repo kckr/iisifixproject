@@ -1,0 +1,25 @@
+doctype html
+html
+  head
+    = render 'shared/meta_tags_for_unauthenticated_pages'
+    = stylesheet_link_tag 'static', 'data-turbolinks-track' => 'reload', media: 'all'
+
+    /! Modernizr JS
+    = javascript_include_tag 'static/modernizr-2.6.2.min', 'data-turbolinks-track' => 'reload'
+
+    / Fixme this is not working right now; make it working
+    /! FOR IE9 below
+    /![if lt IE 9]
+      = javascript_include_tag 'static/respond.min'
+  body(class="#{self.try(:scope_name)} #{controller_name} #{action_name}")
+    .iisifixco-loader
+    #page
+      = render 'layouts/static/header'
+      = render 'flash_message'
+      = yield
+      = render 'layouts/static/newsletter'
+      = render 'layouts/static/footer'
+    .gototop.js-top
+      a.js-gotop href="#"
+        i.icon-arrow-up
+    = javascript_include_tag 'static', 'data-turbolinks-track' => 'reload'

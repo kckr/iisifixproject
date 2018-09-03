@@ -1,0 +1,10 @@
+#garage_owner.tab-content[class="#{activity(resource_from_(params[:q] || resource_params[:email]), :GarageOwner)}" style=("display: none;")]
+  .row
+    .col-md-6
+      = render 'signin_form', type: :GarageOwner
+    .col-md-6
+      .row
+        .col-md-12
+          h4.headline.margin-bottom-20 Why #{Config::AppName} for your workshop?
+          .why-iisifix
+            = render 'shared/why_iisifix_for_garage_owner'

@@ -1,0 +1,50 @@
+header#iisifixco-header.iisifixco-cover.iisifixco-cover-sm role="banner" style="background-image:url('#{image_url('img_bg_2.jpg')}');"
+  .overlay
+  .container.margin30top
+    .row
+      .col-md-8.col-md-offset-2.text-center
+        .display-t
+          .display-tc.animate-box data-animate-effect="fadeIn"
+            h1 Contact Us
+            h2
+              | We're here to answer any #{Config::AppName} related questions that you may have.
+              br
+              | Please use the contact form below to send us a message and we'll get back to you as soon as possible!
+.iisifixco-section
+  .container
+    .row
+      .col-md-6.animate-box
+        h3 Send us a message.
+        - if flash[:notice]
+          p.text-success
+            = flash[:notice]
+        - elsif flash[:alert]
+          p.text-danger
+            = flash[:alert]
+        = form_for @contact, url: {controller: 'pages', action: 'create_contact'} do |f|
+          .row.form-group
+            .col-md-6
+              = f.text_field :first_name, class: 'form-control', placeholder: 'Your firstname *', required: true
+            .col-md-6
+              = f.text_field :last_name, class: 'form-control', placeholder: 'Your lastname *', required: true
+          .row.form-group
+            .col-md-12
+              = f.email_field :email, class: 'form-control', placeholder: 'Your email address *', required: true
+          .row.form-group
+            .col-md-12
+              = f.text_field :subject, class: 'form-control', placeholder: 'Subject'
+          .row.form-group
+            .col-md-12
+              = f.text_area :body, class: 'form-control', placeholder: 'Message *', cols: '30', rows: '10', required: true
+          .form-group
+            = f.submit 'Send Message', class: 'btn btn-primary'
+      .col-md-5.col-md-push-1.animate-box
+        .iisifixco-contact-info
+          h3 Contact Information
+          ul
+            li.address
+              = Config::FullAddress
+            li.phone
+              a href="tel://#{Config::SupportPhone}"  = Config::SupportPhone
+            li.email
+              a href="mailto:#{Config::SupportEmail}"  = Config::SupportEmail

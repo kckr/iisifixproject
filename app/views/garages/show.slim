@@ -1,0 +1,118 @@
+#dashboard class=("no_user" unless current_user.present?)
+  - if current_user.present?
+    = render "layouts/application/#{current_user.role.underscore}_sidebar"
+  /!
+    | Content
+    | \==================================================
+  .dashboard-content
+    .row
+      .col-md-12
+        .user-profile-titlebar
+          .user-profile-avatar
+            = image_tag @garage.logo_url
+          .user-profile-name
+            h2
+              = @garage.name
+            small
+              em
+                i.fa.fa-map-marker.fa-lg &nbsp;
+                = garage_distance_from_(params, request, @garage)
+            .garage_rating.margin5top
+              - Config::TotalStarCount.times do |index|
+                i.fa.fa-star.padding5left class="#{star_color_class_for(@garage.avg_rating, index)}"
+    .row.sticky-wrapper
+      .col-lg-8.col-md-8
+        p.lead.margin-top-20
+          = @garage.about
+        - if @garage.services.present?
+          .garage_services_offered
+            h3
+              | Services Offered
+            .well
+              .row
+                ul.no-bullet.margin0all
+                  - @garage.services.decorate.select(&:name).each do |service|
+                    li.col-md-6 title="#{service.hover_title}"
+                      i.fa.fa-check-square-o.lime-green.margin10right
+                      = service.name
+        - if @garage.supported_vehicle_vendors.present?
+          .vehicles_supported
+            h3
+              | Vehicle Manufactures we mostly support
+            .well
+              .row
+                ul.no-bullet.margin0all
+                  - @garage.supported_vehicle_vendors.each do |vendor|
+                    li.col-md-6
+                      i.fa.fa-check-square-o.lime-green.margin10right
+                      strong = vendor.name
+                      small
+                        |  #{vendor.country}
+        = render 'ratings', ratings: @garage.ratings, garage: @garage
+
+      .col-lg-4.col-md-4.margin-top-0
+        a.verified-badge.quote-request href="#{new_quote_request_path("[quote_request][garages][#{@garage.id}]" => 'on')}"
+          i.sl.sl-icon-action-redo
+          | Request Quote
+        .boxed-widget.margin-top-30.margin-bottom-50
+          h3 Contact
+          ul.listing-details-sidebar
+            li
+              i.sl.sl-icon-phone
+              |  +358
+              | #{@garage.phone_number}
+            li
+              i.fa.fa-envelope-o
+              a href="mailto: #{@garage.email}" #{@garage.email}
+          ul.listing-details-sidebar.social-profiles
+            - if @garage.facebook_link.present?
+              li
+                a.facebook-profile target="_blank" href="#{@garage.facebook_link}"
+                  i.fa.fa-facebook-square
+                  | Facebook
+            - if @garage.twitter_link.present?
+              li
+                a.twitter-profile target="_blank" href="#{@garage.twitter_link}"
+                  i.fa.fa-twitter
+                  | Twitter
+            - if @garage.pinterest_link.present?
+              li
+                a.gplus-profile target="_blank" href="#{@garage.pinterest_link}"
+                  i.fa.fa-pinterest
+                  | Pinterest
+            - if @garage.linkedin_link.present?
+              li
+                a.facebook-profile target="_blank" href="#{@garage.linkedin_link}"
+                  i.fa.fa-linkedin
+                  | Linkedin
+          - unless @garage.website_link.blank?
+            a.button.margin-top-20 href="#{@garage.website_link}" target="_blank"
+              i.sl.sl-icon-link
+              | Visit Our Website
+        - if @garage.warranty_info.present?
+          .boxed-widget.margin-top-30.margin-bottom-50
+            h3 Warranty We Offer:
+            p
+              = @garage.warranty_info
+            a.button href="#{new_quote_request_path("[quote_request][garages][#{@garage.id}]" => 'on')}"
+              | Request Quote Now!
+  /! Content / End
+/ header#iisifixco-header.iisifixco-cover.iisifixco-cover-sm.garage_profile_header role="banner" style="background-image:url('#{@garage.cover_url}');"
+  .overlay
+
+
+#garage_public_profile.iisifixco-section
+  - if @garage.selected_payment_options.count > 0
+    .garage_payment
+      .container
+        .row
+          .col-md-2
+            h4
+              | Payment Options
+          .col-md-10
+            ul.list-inline.margin0all.pull-left
+              - @garage.selected_payment_options.each do |option|
+                li.text-center
+                  i.fa-lg.block class="#{option.icon_class}"
+                  p
+                    = option.name

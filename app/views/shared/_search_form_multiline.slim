@@ -1,0 +1,93 @@
+.row.with-forms
+  /! Main Search Input
+  .col-fs-6
+    = search_form_for query_object, class: 'garage-searcher' do |f|
+      .input-with-icon.location
+        = f.search_field Garage::SearchPredicate,
+            id: 'searchText',
+            placeholder: 'Enter City and/or Postcode'
+        a#map-marker href="#" data-toggle="tooltip" data-placement="bottom" title="Get My Location. I want #{Config::AppName} to be more precise."
+          i.fa.fa-dot-circle-o
+	    .panel-dropdown
+	      a href="#"  Sort by
+	      .panel-dropdown-content.checkboxes.categories
+	        .row
+	          .col-md-6
+	            input#sortRating.all name="garage_sort_by" type="checkbox" value="rating" checked=(params[:garage_sort_by]=="rating") /
+	            label for="sortRating"  Rating
+	            input#sortDistance.all name="garage_sort_by" type="checkbox" value="distance" checked=(params[:garage_sort_by]=="distance") /
+	            label for="sortDistance"  Distance
+	            input#sortDate.all name="garage_sort_by" type="checkbox" value="date" checked=(params[:garage_sort_by]=="date") /
+	            label for="sortDate"  Joined
+	        /! Buttons
+	        .panel-buttons
+	          button.panel-cancel Cancel
+	          = f.submit class: 'panel-apply', data: { disable_with: 'Applying...' }, value: 'Apply'
+	    .panel-dropdown.wide
+	      a href="#"  Services
+	      .panel-dropdown-content.checkboxes
+	        /! Checkboxes
+	        .row
+		        - services.each do |service|
+			        .col-md-6
+				        input id="service_#{service.id}" name="search_service_ids[]" type="checkbox" value="#{service.id}" checked=(params[:search_service_ids].to_a.include?(service.id.to_s)) /
+				        label for="service_#{service.id}"
+				        	= service.name
+	        /! Buttons
+	        .panel-buttons
+	          button.panel-cancel Cancel
+	          button.panel-apply Apply
+	    .panel-dropdown
+	      a href="#"  Distance Radius
+	      .panel-dropdown-content.garage-searcher
+	      	input#rangeSlider.span2.distance-radius data-title=("Radius around selected destination") max="#{Config::SliderMax}" min="#{Config::SliderMin}" step="#{Config::SliderStepSize}" type="range" value="#{range_slider_value(params)}" /
+	      	= hidden_field_tag :max_radius, max_radius_from_(params)
+	      	= hidden_field_tag :min_radius, min_radius_from_(params)
+
+	      	= hidden_field_tag :lat, params[:lat]   || Config::DefaultLat
+	      	= hidden_field_tag :long, params[:long] || Config::DefaultLong
+
+	      	.panel-buttons
+	      	  button.panel-cancel Cancel
+	      	  = f.submit "Apply", class: 'panel-apply', data: { disable_with: 'Searching...' }
+
+// Commented for backup
+
+/ = search_form_for query_object, class: 'garage-searcher' do |f|
+/   .input-group
+/     = f.search_field Garage::SearchPredicate,
+/         id: 'searchText',
+/         class: 'form-control',
+/         placeholder: 'Enter City and/or Postcode'
+/     span.input-group-btn
+/       button.btn.btn-default#map-marker type='button' data-toggle="tooltip" data-placement="top" title="Get My Location. I want #{Config::AppName} to be more precise."
+/         span.glyphicon.glyphicon-map-marker aria-hidden='true'
+/   p.small-text
+/     small
+/       | Please click the location icon (
+/       i.glyphicon.glyphicon-map-marker
+/       | ) on the right for location precision accuracy
+
+
+/   / Slider
+/   .range-slider
+/     b #{Config::SliderMin} Km
+
+/     input#rangeSlider.span2 [
+/       data-slider-min="#{Config::SliderMin}"
+/       data-slider-max="#{Config::SliderMax}"
+/       data-slider-step="#{Config::SliderStepSize}"
+/       data-slider-value="#{range_slider_value(params)}"
+/       type="hidden"
+/       value=""] /
+
+/     b #{Config::SliderMax} Km
+
+
+/   = hidden_field_tag :max_radius, max_radius_from_(params)
+/   = hidden_field_tag :min_radius, min_radius_from_(params)
+
+/   = hidden_field_tag :lat, params[:lat]   || Config::DefaultLat
+/   = hidden_field_tag :long, params[:long] || Config::DefaultLong
+
+/   = f.submit class: 'btn btn-default btn-block', data: { disable_with: 'Searching...' }

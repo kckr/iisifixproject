@@ -1,0 +1,197 @@
+header#iisifixco-header.iisifixco-cover role="banner" style="background-image: url('#{image_url('img_bg_1.jpg')}');"
+  .overlay
+  .container
+    .row
+      .col-md-10.col-md-offset-1.text-center
+        .display-t
+          .display-tc.animate-box data-animate-effect="fadeIn"
+            h1.home_title Helppo Autohuolto
+            h2
+              | Löydä luotettavat huoltamot läheltäsi, saa arvio huollon hinnasta ja kestosta sekä säästä aikaa ja rahaa!
+            .banner-vid-icon.text-center
+              a.popup-vimeo href="https://www.youtube.com/watch?v=0ZG5ZqrgeO4"
+                i.icon-video2
+  .search_single_row
+    .container
+      = render 'shared/search_form_singleline', query_object: Garage.ransack
+.container
+  .row
+    #iisifixco-section
+      .col-nineth
+        h2.text-uppercase.text-center
+          | Miten se toimii?
+        .row.margin40top.margin0right
+          .col-third
+            .col-md-12
+              span.icon
+                i.icon-search
+              .desc
+                h3 Etsi Korjaamo
+                p
+                  | Etsi paikallisia verstaspuoteja nimen, osoitteen, postinumeron tai kaupungin perusteella.
+          .col-third
+            .col-md-12
+              span.icon
+                i.icon-quote
+              .desc
+                h3 Valitse/Kuvaile tarpeesi
+                p
+                  | Valitse luettelo palveluista. Voit myös selittää ongelman tiedot.
+                  |  Lataa Katsastuksen raportti ja pyydä korjauskulut.
+          .col-third
+            .col-md-12
+              span.icon
+                i.icon-cog
+              .desc
+                h3 Vertaa ja Korjaa
+                p Voit valita useita huoltamoita, parhaiten tarpeitasi vastaavat palvelut, ja jatkaa korjauksia.
+      .col-forth.iisifixco-video.iisifixco-bg style=("background-image: url('#{image_url('image_1.jpg')}');")
+        h3.text-center.white
+          | Lisää tietoa
+        = link_to how_it_works_page_path do
+          i.icon-info
+        .overlay
+.iisifixco-bg-section
+  .container
+    .row
+      #iisifixco-features-2
+        .col-feature-9
+          .row
+            .col-md-12.iisifixco-heading.animate-box.text-center
+              h2.text-uppercase
+                | Näin sinä hyödyt #{Config::AppName}istä , Autokorjaamoyrittäjä
+              p
+                | #{Config::AppName}istä on paljon hyötyä yrityksille, jotka korjaavat ja huoltavat autoja.
+                |  Meidän tarkoituksemme on auttaa yritysasiakkaita luomaan entistä vahvempi läsnäolo markkinoilla sekä saamaan lisää
+                |  asiakkaita. Saatuasi korjaamosi listallemme pääset nauttimaan erilaisista
+                |  #{Config::AppName}in eduista!
+          .row
+            .col-md-7.col-sm-7.col-md-pull-2.col-sm-pull-2.animate-box data-animate-effect="fadeInRight"
+              .feature-image
+                = image_tag('work_1.png', alt: 'work')
+            .col-md-5.col-sm-5
+              .feature-left.animate-box data-animate-effect="fadeInLeft"
+                span.icon
+                  i.icon-check
+                .feature-copy
+                  h3 Hyvä online -näkyvyys
+                  p IISIFIX tarjoaa hyvän online -näkyvyyden tarjoamillesi palveluille ilman, että sinun tarvitsee luoda omia internet-sivuja. Me IISIFIXillä takaamme, että korjaamot hyötyvät mainostuksesta kauttamme, ilman ylimääräistä sähläystä.
+              .feature-left.animate-box data-animate-effect="fadeInLeft"
+                span.icon
+                  i.icon-check
+                .feature-copy
+                  h3 Liikevaihdon kasvu
+                  p Kasvata yrityksesi asiakaskuntaa IISIFIXin avulla. Käyttämällä IISIFIXiä kaupankäyntisi kanavana, yrityksesi saa enemmän tarjouspyyntöjä.
+              .feature-left.animate-box data-animate-effect="fadeInLeft"
+                span.icon
+                  i.icon-check
+                .feature-copy
+                  h3 Rakenna vahva asiakaskunta
+                  p IISIFIX auttaa yritystäsi löytämään laajemman yleisön. Kilpailukykyisten ja erinomaisten korjauskulujen sekä luotettavan ja ammattitaitoisen palvelun avulla saat luotua arvokkaita asiakassuhteita.
+              = link_to 'Liity Mukaan',
+                  new_user_registration_path(user: {form_type: Base64.encode64('GarageOwner')}),
+                  class: 'btn btn-primary animate-box',
+                  data: { 'animate-effect' => 'fadeInLeft'}
+        // TODO: Uncomment and implement once we get some data, currently 0 in all wouldn't look good! ;)
+          .col-feature-3
+            #iisifixco-counter.iisifixco-bg.iisifixco-counter
+              .row
+                .display-t
+                  .display-tc
+                    .col-md-12.animate-box
+                      .feature-center
+                        span.counter.js-counter data-from="0" data-refresh-interval="50" data-speed="5000" data-to="2200"  1
+                        span.counter-label Quotes Sent
+                    .col-md-12.animate-box
+                      .feature-center
+                        span.counter.js-counter data-from="0" data-refresh-interval="50" data-speed="5000" data-to="97"  1
+                        span.counter-label Happy Customers
+                    .col-md-12.animate-box
+                      .feature-center
+                        span.counter.js-counter data-from="0" data-refresh-interval="50" data-speed="5000" data-to="402"  1
+                        span.counter-label Jobs Done
+                    .col-md-12.animate-box
+                      .feature-center
+                        span.counter.js-counter data-from="0" data-refresh-interval="50" data-speed="5000" data-to="4523"  1
+                        span.counter-label Vehicles Fixed
+#iisifixco-portfolio
+  .container
+    .row.animate-box
+      .col-md-8.col-md-offset-2.text-center.iisifixco-heading
+        h2.text-uppercase
+          | Näin sinä hyödyt #{Config::AppName}istä, auton omistaja.
+        p
+          | #{Config::AppName}in Ensisijaisena tavoitteena on tehdä automaattisesta korjaus- huoltotyöstä helppoa ja vaivatonta. Käyttämällä #{Config::AppName}iä asiakkaat voivat raportoida ajoneuvojensa viat ja saada korjaustarjouksia useilta paikallisilta huoltamoilta. Kaikki yhden portaalin kautta. #{Config::AppName} helpottaa ajoneuvon omistajan ja korjaamon välistä viestintää.
+    .row
+      .project
+        .col-md-8.col-md-push-5.animate-box data-animate-effect="fadeInLeft"
+          = image_tag('work_2.png', alt: 'work', class: 'img-responsive')
+        .col-md-4.col-md-pull-8.animate-box data-animate-effect="fadeInRight"
+          .mt
+            p
+              | Aloita #{Config::AppName} ja nauti mukavimmasta autonkorjauskokemuksesta ikinä!
+              ul.list-nav
+                li
+                  i.icon-check
+                  .feature-copy
+                    h3 Helppo vian selvitys.
+                    p
+                     | IISIFIX:in avulla sinun ei tarvitse olla yhteydessä eri korjaamoihin vian selvittämiseksi. Meidän helpolla vian selvitys-toiminto voit ilmoittaa ajoneuvosi ongelmat moneen korjaamoon samanaikaisesti, vain yhdellä klikkauksella.
+                li
+                 i.icon-check
+                 .feature-copy
+                   h3 Useita tarjouksia
+                   p
+                    | Listaa tiedot ajoneuvosi vioista IISIFIX:iin ja nauti mahdollisuudesta valita useiden eri korjaamoiden tarjouksista. Valitse tarjous, joka parhaiten vastaa omaa aikatauluasi, budjettiasi ja luotettavuusvaatimuksiasi.
+                li
+                 i.icon-check
+                 .feature-copy
+                   h3 Istu alas, rentoudu ja korjauta
+                   p
+                    | Koe sujuva ja helppo korjausprosessi IISIFIX:in avulla. Kun ongelmat on selvitetty, me huolehdimme lopusta. Järjestelmämme avulla voit seurata ajoneuvosi tilannetta sekä olla yhteydessä korjaamoon.
+
+            = link_to 'Luo tiili.', new_user_registration_path,
+                class: 'btn btn-primary animate-box',
+                data: { 'animate-effect' =>'fadeInRight'}
+#iisifixco-testimonial
+  .container
+    .row.animate-box
+      .col-md-8.col-md-offset-2.text-center.iisifixco-heading
+        h2 20 korjaamoa/ huoltamoa on jo #{Config::AppName}issä
+    .row.animate-box.text-center.garage-logos
+      .col-sm-2
+        a href="#"
+          = image_tag('garage-logo.png', alt: 'Garage Logo', class: 'img-responsive')
+      .col-sm-2
+        a href="#"
+          = image_tag('garage-logo.png', alt: 'Garage Logo', class: 'img-responsive')
+      .col-sm-2
+        a href="#"
+          = image_tag('garage-logo.png', alt: 'Garage Logo', class: 'img-responsive')
+      .col-sm-2
+        a href="#"
+          = image_tag('garage-logo.png', alt: 'Garage Logo', class: 'img-responsive')
+      .col-sm-2
+        a href="#"
+          = image_tag('garage-logo.png', alt: 'Garage Logo', class: 'img-responsive')
+      .col-sm-2
+        a href="#"
+          = image_tag('garage-logo.png', alt: 'Garage Logo', class: 'img-responsive')
+    .row
+      .col-md-4.animate-box
+        ul.garage-list
+          li
+            a href="#" Naya Nepal Workshop
+          li
+            a href="#" Finpali Repair Shop
+          li
+            a href="#" Swachchhanda Workshop
+          li
+            a href="#" Shrestha Workshop Co-operative
+          li
+            a href="#" Hasuthdo Repair Shop
+    .row
+      .col-sm-12.text-center
+        = link_to '+ Lisää korjaamo',
+            new_user_registration_path(user: {form_type: Base64.encode64('GarageOwner')}),
+            class: 'btn btn-primary animate-box'

@@ -1,0 +1,23 @@
+#vehicle_owner.tab-pane[role="tabpanel" class="#{activity(resource, :VehicleOwner)}"]
+  / Autofill only for vehicle_owner type registration
+  = form_for((resource.vehicle_owner? ? resource : resource.class.new), as: resource_name, html: { id: 'vehicle_owner_signup' },
+      url: registration_path(resource_name)) do |f|
+    / Setting boilerplate data
+    - random_string = SecureRandom.urlsafe_base64
+    = f.hidden_field :password, value: random_string
+    = f.hidden_field :password_confirmation, value: random_string
+
+    / to determine which form  have been submitted
+    = f.hidden_field :type, value: Base64.encode64('VehicleOwner')
+
+    .row
+      .col-md-6.margin20top
+        = render 'signup_common_form', f: f
+      .col-md-6.margin20top
+        .row.hidden-xs
+          .col-md-12
+            h3 Miksi #{Config::AppName} sinulle?
+            .why-iisifix
+              = render 'shared/why_iisifix_for_vehicle_owner'
+
+        = render 'shared/social_signin_buttons'

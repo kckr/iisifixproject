@@ -1,0 +1,15 @@
+p
+  | Tervetuloa #{@email}!
+
+p
+  | Voit vahvistaa tilisi sähköpostin alla olevasta linkistä:
+
+p = link_to 'Vahvista tilini', confirmation_url(@resource, confirmation_token: @token)
+p
+  | Lisäksi olemme asettaneet satunnainen turvattu salasanan, joka on "#{@resource.metadata['temp_password']}".
+  | Tämä on väliaikainen salasana, joka ei ole voimassa, kun setup tilin. Muista, että sinun täytyy vahvistaa tämä sähköpostiosoite ennen 
+  | kuin voit käyttää tätä salasanasi.
+p
+  | Kiitos
+p
+  | #{Config::AppName} Joukkue

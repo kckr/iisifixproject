@@ -1,0 +1,33 @@
+#tab1.tab-pane.active
+  .form-group
+    h3.margin10top.text-center
+      | Ajonuevon tiedot
+    .input-group
+      span#basic-addon2.input-group-addon
+        | FIN
+      = f.text_field :vehicle_registration_number,
+          class: 'form-control',
+          placeholder: 'laittaa auton rekisterinumero täällä ...',
+          'aria-describedby' => 'basic-addon2'
+
+  .form-group.text-center
+    .checkbox
+      input#dontRememberCarNumber name="dontRememberCarNumber" type="checkbox" /
+      label for="dontRememberCarNumber"
+        | Et tiedä rekisterinumeroa?
+
+  #carDetailForm.hidden
+    .row
+      .col-md-6.form-group
+        = f.label :vehicle_made_year, 'Teki vuonna'
+        = f.select :vehicle_made_year, options_for_select(Config::StartingCarMakeYear..DateTime.now.year), {prompt: 'Valitse vuosi'}, {class: 'form-control'}
+      .col-md-6.form-group
+        = f.label :vehicle_vendor_id, 'Auto merkki'
+        = f.select :vehicle_vendor_id, options_for_select(vehicle_vendors.map{|x| [x.name, x.id]}), {prompt: 'Valitse Merkki'}, {class: 'form-control'}
+    .row
+      .col-md-6.form-group
+        = f.label :vehicle_model
+        = f.text_field :vehicle_model, class: 'form-control', placeholder: 'Esim. AUDI 100'
+      .col-md-6.form-group
+        = f.label :mileage
+        = f.text_field :mileage, class: 'form-control', placeholder: 'Esim. 2000 KM'

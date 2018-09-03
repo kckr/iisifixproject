@@ -1,0 +1,31 @@
+tr
+  td
+    = quote_request.id
+  td
+    = link_to quote_request.garage_name, vehicle_owner_quote_request_path(quote_request, vehicle_owner_id: current_user.id)
+
+  td
+    .label class="#{quote_request.status_label}"
+      = quote_request.status.titleize
+  td
+    = number_to_currency quote_request.quoted_amount
+  td
+    = quote_request.warranty_offer
+  td
+    = quote_request.proposed_start_date
+  td
+    = quote_request.proposed_end_date
+  td
+    - if quote_request.cancellable?
+      a.cancelQuoteRequest [href="#" data-target-url="#{cancel_vehicle_owner_quote_request_path(vehicle_owner_id: current_user.id, id: quote_request.id)}"]
+        | Cancel
+      | &nbsp;|&nbsp;
+    - if quote_request.acceptable?
+      a.acceptQuoteRequest [href="#" data-target-url="#{accept_vehicle_owner_quote_request_path(vehicle_owner_id: current_user.id, id: quote_request.id)}"]
+        | Accept
+      | &nbsp;|&nbsp;
+    - if quote_request.rejectable?
+      a.rejectQuoteRequest[ href="#" data-target-url="#{reject_vehicle_owner_quote_request_path(vehicle_owner_id: current_user.id, id: quote_request.id)}"]
+        | Reject
+      | &nbsp;|&nbsp;
+    = link_to 'View Detail', vehicle_owner_quote_request_path(quote_request, vehicle_owner_id: current_user.id)

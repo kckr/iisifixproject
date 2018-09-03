@@ -1,0 +1,36 @@
+#dashboard
+  = render "layouts/application/#{current_user.role.underscore}_sidebar"
+  /!
+    | Content
+    | \==================================================
+  .dashboard-content
+    /! Titlebar
+
+    #titlebar
+      .row
+        .col-md-12
+          - if @active_jobs.present?
+            h2
+              | "#{@jobs_doing_count}" Jobs in progress
+          - else
+            h2 No active jobs currently
+    .row
+      /! Recent Activity
+      .col-md-12
+        .dashboard-list-box
+          = render 'jobs', jobs: @active_jobs
+          - if @archived_jobs.present?
+            .panel.panel-default.each-quote-request
+              .panel-heading
+                a.accordion-toggle.collapsed data-toggle="collapse" href="#archive"
+                  h3 Archive
+              .panel-collapse.collapse.out id="archive"
+                .panel-body
+                  = render 'jobs', jobs: @archived_jobs
+      /! Copyrights
+      .col-md-12
+        .copyrights © 2017 IISIFIX.
+  /! Content / End
+
+.popup-container
+  = render 'vehicle_owners/jobs/confirm_job_done_popup'

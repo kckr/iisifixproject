@@ -1,0 +1,13 @@
+.title We have just received a new garage from the users.
+p
+  | Name: #{@new_garage.name}
+  br
+  | Email: #{ mail_to @new_garage.email}
+.message
+  hr
+  Strong Message: &nbsp;
+  = @new_garage.description
+  hr
+.footer
+  = @new_garage.created_at.strftime("Sent on %m/%d/%Y")
+  = @new_garage.created_at.strftime(" at %I:%M%p")

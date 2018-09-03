@@ -1,0 +1,35 @@
+#dashboard
+  = render "layouts/application/#{current_user.role.underscore}_sidebar"
+  /!
+    | Content
+    | \==================================================
+  .dashboard-content
+    /! Titlebar
+    #titlebar
+      .row
+        .col-md-12
+          h2 Edit Your Profile
+    .row
+      .col-md-12
+        .style-2
+          ul.tabs-nav
+            li.active
+              a data-toggle="tab" href="#publicProfile"  Public Profile
+            li
+              a data-toggle="tab" href="#garageServices"  Services
+            li
+              a data-toggle="tab" href="#garageWarranty"  Warranty
+            li
+              a data-toggle="tab" href="#garagePayment"  Payment Options
+          /! Tabs Content
+          .tabs-container
+            = render 'profile_edit_tab', garage: @garage
+            = render 'services_tab', garage: @garage,
+            categories: @categories,
+            vendors: @vendors
+            = render 'payment_options_tab', garage: @garage, payment_options: PaymentOption.all
+            = render 'warranty_tab', garage: @garage, payment_options: PaymentOption.all
+      /! Copyrights
+      .col-md-12
+        .copyrights © 2017 IISIFIX.
+  /! Content / End

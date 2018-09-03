@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="148px" height="147px" viewBox="0 0 148 147" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>Artboard</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="3.Service">
+            <circle id="Oval-2" fill="#224978" fill-rule="nonzero" cx="73.5" cy="73.5" r="73.5"></circle>
+            <g id="car" transform="translate(20.000000, 31.000000)" fill="#FFFFFF">
+                <polygon id="Path-2" points="41.8306452 34 48 0 3 0 10.6209677 34"></polygon>
+                <polygon id="Path-3" points="0 41 6.90909091 23 8 27.1142857 3.27272727 39.4571429"></polygon>
+            </g>
+        </g>
+        <path d="M66,68.0416667 L22.402439,67.0416667 C15.4674797,67.0138889 12,68.8333333 12,72.5 C12,76.1666667 11.8333333,84.3333333 11.5,97 L19.7195122,100.041667 L19.7195122,113.041667 C22.8495935,117.041667 26.203252,119.041667 29.7804878,119.041667 C33.3577236,119.041667 36.2642276,117.041667 38.5,113.041667 L38.5,100.041667 L66,100.041667 L66,68.0416667 Z" id="Path-8" fill="#FFFFFF"></path>
+        <circle id="Oval" fill="#224978" cx="27.5" cy="83.5" r="7.5"></circle>
+        <rect id="Rectangle-2" stroke="#FFFFFF" stroke-width="2" x="72" y="28" width="57" height="84" rx="6"></rect>
+        <polygon id="Path-19" fill="#FFFFFF" fill-rule="nonzero" points="79 45.0169492 84.0909091 50 95 39.3220339 93.7532468 38 84.0909091 47.559322 80.2467532 43.7966102"></polygon>
+        <rect id="Rectangle" fill="#FFFFFF" x="98" y="38" width="25" height="11"></rect>
+        <polygon id="Path-19" fill="#FFFFFF" fill-rule="nonzero" points="79 65.0169492 84.0909091 70 95 59.3220339 93.7532468 58 84.0909091 67.559322 80.2467532 63.7966102"></polygon>
+        <rect id="Rectangle" fill="#FFFFFF" x="98" y="58" width="25" height="11"></rect>
+        <polygon id="Path-19" fill="#FFFFFF" fill-rule="nonzero" points="79 87.0169492 84.0909091 92 95 81.3220339 93.7532468 80 84.0909091 89.559322 80.2467532 85.7966102"></polygon>
+        <rect id="Rectangle" fill="#FFFFFF" x="98" y="80" width="25" height="11"></rect>
+        <path d="M25.5,88 C23.5,84.5 24,82.75 27,82.75 C30,82.75 31.6666667,81 32,77.5" id="Path-7" fill="#FFFFFF"></path>
+    </g>
+</svg>

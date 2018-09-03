@@ -1,0 +1,20 @@
+header#iisifixco-header.iisifixco-cover.iisifixco-cover-sm role="banner" style="background-image:url('#{image_url('img_bg_2.jpg')}');"
+  .overlay
+  .container
+    .row
+      .col-md-6.col-md-offset-3
+        .display-t
+          .display-tc.animate-box data-animate-effect="fadeIn"
+            h1.text-center Sorry to say,
+            h1.text-center but something is wrong
+
+.iisifixco-section
+  .container
+    .well
+      - if Rails.env.production?
+        h2 No worries, we have been notified about this error and we are on it.
+
+      - else
+        h2.light-red = error.class || 'No worries, we have been notified about this error and we are on it.'
+        pre.dark-red = error.message.gsub("\n", '<br>').html_safe
+      = link_to 'Goto Home', root_path, class: 'btn btn-primary'

@@ -1,0 +1,32 @@
+#listing-reviews.listing-section
+  h2.margin-top-10 What people say about us
+  .clearfix
+  section.comments.listing-reviews
+    ul
+      - ratings.each do |rating|
+        li
+          - reviewer = rating.reviewer || VehicleOwner.new
+          .avatar
+            = image_tag reviewer.avatar.small_thumb.url
+          .comment-content
+            .arrow-comment
+            .comment-by
+              = reviewer.full_name&.titleize
+              span.date
+                = rating.job_title
+                - unless rating.company_name.blank?
+                  |  at&nbsp;
+                  = rating.company_name
+              .testi_rating
+                - Config::TotalStarCount.times do |index|
+                  i.fa.fa-star.padding5left class="#{(index < rating.star_count ? 'gold' : 'dark-grey')}"
+            p
+              = rating.testimonial
+    div.margin-top-20
+      a href="#{new_quote_request_path("[quote_request][garages][#{garage.id}]" => 'on')}"
+        .well.request_quote_big.text-center
+          h4
+            | Your words could be next!
+            small
+              | Request for quote today!
+  .clearfix

@@ -1,0 +1,46 @@
+development: &default
+  smtp_address:   'smtp.sendgrid.net'
+  smtp_port:      '587'
+  smtp_username:  'iisifix'
+  smtp_password:  'helppofix8848'
+
+  GITLAB_API_PRIVATE_TOKEN: 'cUNgs14gsKbtan4_xFyC'
+  gitlab_issifix_project_id: '1564904'
+  FB_APP_ID: '1652878281595762'
+  FB_APP_SECRET: '173e13c97ffe9f5f74fba09180790233'
+  GOOGLE_CLIENT_ID: '796633432437-l9u9488v5e8e3r9ic2mdjnpf6dh7h8ks.apps.googleusercontent.com'
+  GOOGLE_CLIENT_SECRET: 'wbzJkicx7p4rmhG9tssQ7ZXk'
+  NexmoAPISecret: '954a4401e7a492b3'
+  NexmoAPIKey: '2c1f137a'
+  CountryCode: '977'
+  aws_access_key_id: 'AKIAI7VTYMQHSFMDTJLA'
+  aws_secret_access_key: 'm3JtE90o9ThaZDQHDmMeMKXS8BtrvcSXOgbGiI'
+  rekisterinumeroapi_username: 'iisifix'
+  rekisterinumeroapi_password: 'helppofix'
+  GOOGLE_MAP_API: 'AIzaSyC6RQNNZgKUyC746D3pVVlhxy88_zOtT1E'
+
+  IISIFIX_DATABASE_PASSWORD: ""
+  IISIFIX_DATABASE_USER: "john"
+  IISIFIX_DATABASE_NAME: "iisifix_development"
+
+test:
+  <<: *default
+
+production:
+  <<: *default
+  PROTOCOL: 'https'
+  HOST: 'iisifix.fi'
+  CountryCode: '358'
+  SECRET_KEY_BASE: 'c863165a35d2156bf46c2da6f230b27c03f8c71336d0210063249d211600c69262ee767a3b7b020d278a96bfbd7216600d7cf68e7e144ffde7de0310b20cf5b9'
+  FB_APP_ID: '173194159790007'
+  #  FB_APP_ID: 1312709052075176
+  FB_APP_SECRET: 'b43f76a9fdb909fc2b2a748c6318754b'
+  #  FB_APP_SECRET: d7cec8eb0ccde3b4801c3b8cbfeab039
+  GOOGLE_CLIENT_ID: '637850368682-v8sdnf8irsmn80lphvq75rh7k87duchu.apps.googleusercontent.com'
+  GOOGLE_CLIENT_SECRET: 'rOQmRkbK82o59fLGCHlxXrli'
+
+  IISIFIX_DATABASE_PASSWORD: "iisifixnilgiri8090"
+  IISIFIX_DATABASE_USER: "iisifix"
+  IISIFIX_DATABASE_NAME: "iisifix_production"
+
+  GOOGLE_MAP_API: 'AIzaSyBSqzfzCKEm5HYnbHkmIEiqfpOEiSzxbVs'

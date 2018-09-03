@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="167px" height="167px" viewBox="0 0 167 167" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>Search</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Welcome" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Search">
+            <g transform="translate(10.000000, 5.000000)">
+                <circle id="Oval-2" fill="#224978" cx="73.5" cy="73.5" r="73.5"></circle>
+                <path d="M82.5,42.5588235 L84.5,60.4411765" id="Line" stroke="#FFFFFF" stroke-width="2" stroke-linecap="square"></path>
+                <polygon id="Path-12" stroke="#FFFFFF" stroke-width="2" points="42.3969589 42.3386245 63 31 54.9589946 97.1898763 15 110"></polygon>
+                <circle id="Oval-5" stroke="#F5A623" stroke-width="8" cx="80" cy="84" r="24"></circle>
+                <polyline id="Path-13" stroke="#FFFFFF" stroke-width="2" points="64 30 82.5859325 40.6060342 103.796302 30 130 96 103.796302 96"></polyline>
+                <circle id="Oval" fill="#FFFFFF" cx="80" cy="84" r="20"></circle>
+                <text id="Turku" font-family="Raleway-Regular, Raleway" font-size="12" font-weight="normal" letter-spacing="-0.0872727334" fill="#020202">
+                    <tspan x="64" y="88">Turku</tspan>
+                </text>
+            </g>
+            <path d="M94.5,114 L102,111.5 L116,144.5 C113.478542,145.66875 111.645209,146.502083 110.5,147 C109.354791,147.497917 107.188125,148.164583 104,149 L94.5,114 Z" id="Path-18" fill="#F5A623"></path>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,116 @@
+link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" rel="stylesheet" /
+body.home
+  .container-fluid.display-table
+    .row.display-table-row
+      #navigation.col-md-2.col-sm-1.hidden-xs.display-table-cell.v-align.box
+        .logo
+          a hef="home.html"
+            img.hidden-xs.hidden-sm alt="merkery_logo" src="http://jskrishna.com/work/merkury/images/logo.png" /
+            img.visible-xs.visible-sm.circle-logo alt="merkery_logo" src="http://jskrishna.com/work/merkury/images/circle-logo.png" /
+        .navi
+          ul
+            li.active
+              a href="#"
+                i.fa.fa-home aria-hidden="true"
+                span.hidden-xs.hidden-sm Home
+            li
+              a href="#"
+                i.fa.fa-tasks aria-hidden="true"
+                span.hidden-xs.hidden-sm Workflow
+            li
+              a href="#"
+                i.fa.fa-bar-chart aria-hidden="true"
+                span.hidden-xs.hidden-sm Statistics
+            li
+              a href="#"
+                i.fa.fa-user aria-hidden="true"
+                span.hidden-xs.hidden-sm Calender
+            li
+              a href="#"
+                i.fa.fa-calendar aria-hidden="true"
+                span.hidden-xs.hidden-sm Users
+            li
+              a href="#"
+                i.fa.fa-cog aria-hidden="true"
+                span.hidden-xs.hidden-sm Setting
+      .col-md-10.col-sm-11.display-table-cell.v-align
+        /! <button type="button" class="slide-toggle">Slide Toggle</button
+        .row
+          header
+            .col-md-7
+              nav.navbar-default.pull-left
+                .navbar-header
+                  button.navbar-toggle.collapsed aria-expanded="false" data-target="#side-menu" data-toggle="offcanvas" type="button"
+                    span.sr-only Toggle navigation
+                    span.icon-bar
+                    span.icon-bar
+                    span.icon-bar
+              .search.hidden-xs.hidden-sm
+                input#search placeholder="Search" type="text" /
+            .col-md-5
+              .header-rightside
+                ul.list-inline.header-top.pull-right
+                  li.hidden-xs
+                    a.add-project data-target="#add_project" data-toggle="modal" href="#"  Add Project
+                  li
+                    a href="#"
+                      i.fa.fa-envelope aria-hidden="true"
+                  li
+                    a.icon-info href="#"
+                      i.fa.fa-bell aria-hidden="true"
+                      span.label.label-primary 3
+                  li.dropdown
+                    a.dropdown-toggle data-toggle="dropdown" href="#"
+                      img alt="user" src="http://jskrishna.com/work/merkury/images/user-pic.jpg" /
+                      b.caret
+                    ul.dropdown-menu
+                      li
+                        .navbar-content
+                          span JS Krishna
+                          p.text-muted.small
+                            | me@jskrishna.com
+                          .divider
+                          a.view.btn-sm.active href="#"  View Profile
+        .user-dashboard
+          h1 Hello, JS
+          .row
+            .col-md-5.col-sm-5.col-xs-12.gutter
+              .sales
+                h2 Your Sale
+                .btn-group
+                  button.btn.btn-secondary.btn-lg.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" type="button"
+                    span Period:
+                    | Last Year
+                  .dropdown-menu
+                    a href="#"  2012
+                    a href="#"  2014
+                    a href="#"  2015
+                    a href="#"  2016
+            .col-md-7.col-sm-7.col-xs-12.gutter
+              .sales.report
+                h2 Report
+                .btn-group
+                  button.btn.btn-secondary.btn-lg.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" type="button"
+                    span Period:
+                    | Last Year
+                  .dropdown-menu
+                    a href="#"  2012
+                    a href="#"  2014
+                    a href="#"  2015
+                    a href="#"  2016
+  /! Modal
+  #add_project.modal.fade role="dialog"
+    .modal-dialog
+      /! Modal content
+      .modal-content
+        .modal-header.login-header
+          button.close data-dismiss="modal" type="button"  ×
+          h4.modal-title Add Project
+        .modal-body
+          input name="name" placeholder=("Project Title") type="text" /
+          input name="mail" placeholder=("Post of Post") type="text" /
+          input name="passsword" placeholder="Author" type="text" /
+          textarea placeholder="Desicrption"
+        .modal-footer
+          button.cancel data-dismiss="modal" type="button"  Close
+          button.add-project data-dismiss="modal" type="button"  Save

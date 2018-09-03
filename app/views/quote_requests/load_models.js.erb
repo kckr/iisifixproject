@@ -1,0 +1,8 @@
+<% if @models.count > 0 %>
+  var model_options='<%= j select_tag('quote_request[vehicle_model]', options_for_select(@models.map(&:model).sort), class: 'form-control', id: 'quote_request_vehicle_model') %>';
+  $(document).find('#quote_request_vehicle_model').replaceWith(model_options);
+
+<% else %>
+  var options = '<input class="form-control" placeholder="Eg. AUDI 100" type="text" name="quote_request[vehicle_model]" id="quote_request_vehicle_model" autocomplete="off">';
+  $(document).find('#quote_request_vehicle_model').replaceWith(options);
+<% end %>

@@ -1,0 +1,64 @@
+#titlebar.gradient.margin-bottom-0
+  .container
+    .row
+      .col-md-12
+        h2 Request New Quote
+        span Provide the details below to request the quote
+
+.container.margin-top-20
+  .row
+    .col-md-8
+      /! Toggles Container
+      .style-2.services
+        = form_for @quote_request do |f|
+          /! Toggle 1
+          .toggle-wrap
+            span.trigger.active
+              a href="#"
+                i.im.im-icon-Car-2
+                | Car information
+                i.sl.sl-icon-plus
+            .toggle-container.activated
+              = render 'step1', f: f, vehicle_vendors: VehicleVendor.order(name: :asc)
+          /! Toggle 2
+          .toggle-wrap
+            span.trigger
+              a href="#"
+                i.im.im-icon-Wrench
+                | Services Required
+                i.sl.sl-icon-plus
+            .toggle-container
+              = render 'step2', f: f, categories: Category.all
+          /! Toggle 3
+          .toggle-wrap
+            span.trigger
+              a href="#"
+                i.im.im-icon-Envelope
+                | More Information
+                i.sl.sl-icon-plus
+            .toggle-container
+              .form-group
+                = f.label :additional_info
+                = f.text_area :additional_info, placeholder: 'Please mention additional information about your problem here...', class: 'form-control', rows: 5
+                = f.error_message_for :additional_info
+
+              .form-group
+                - unless current_user.present?
+                  = label_tag 'user[email]', 'Your Email Address*'
+                  = email_field_tag 'user[email]', '' ,
+                      placeholder: 'Please enter your email address...',
+                      class: 'form-control', value: params[:user] && params[:user][:email]
+                  = f.error_message_for :user_email
+              .form-group
+                .checkbox
+                  = f.check_box :agree_katsastus_t_c
+                  = f.label :agree_katsastus_t_c do
+                    | I agree the&nbsp;
+                    a.open-popup-link href="#{asset_path('TermsofUseIIsifixForVehicleOwner.pdf')}"
+                      strong terms and conditions
+                    | &nbsp;before proceeding to use IISIFIX services*
+                  = f.error_message_for :agree_katsastus_t_c
+          = f.submit 'Request Quote from selected garages', class: 'button margin-top-30 margin-bottom-0', id: 'submit-quote-request'
+      /! Toggles Container / End
+    .col-md-4
+      = render 'garage_info', garages: @garages

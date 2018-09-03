@@ -1,0 +1,39 @@
+header.bg-light.header.header-md.navbar.box-shadow
+  .navbar-header.aside-md.dk
+    a.btn.btn-link.visible-xs data-target="#nav,html" data-toggle="class:nav-off-screen,open"
+      i.fa.fa-bars
+    .visible-xs
+      = link_to home_page_path, class: 'navbar-brand' do
+        = image_tag('iisifix-logo-primary.png', alt: 'iisifix logo')
+  .locale
+    = render 'layouts/application/locale_menu'
+  .navbar-left
+    .garage_logo
+      = image_tag @garage.logo.small_thumb.url, class: 'img-rounded'
+    .garage_info
+      h4
+        = @garage.name
+      small
+        em
+          i.fa.fa-map-marker.fa-lg &nbsp;
+          = @garage.full_street_address
+  / TODO after POST MVP
+  /ul.nav.navbar-nav.m-n.hidden-xs.navbar-right.nav-user.user
+  /  li.hidden-xs
+  /    a.dropdown-toggle data-toggle="dropdown" href="#"
+  /      i.i.i-earth
+  /      span.badge.badge-sm.up.bg-danger.count 2
+  /    = render 'shared/notification_dropdown'
+  .navbar-right.garage_header_buttons.margin10right
+    #social-buttons
+      - if @garage.twitter_link.present?
+        a.btn.btn-sm.btn-icon.btn-default target="_blank" href="#{@garage.twitter_link}"
+          i.fa.fa-twitter
+      - if @garage.facebook_link.present?
+        a.btn.btn-sm.btn-icon.btn-default target="_blank" href="#{@garage.facebook_link}"
+          i.fa.fa-facebook
+      - if @garage.google_plus_link.present?
+        a.btn.btn-sm.btn-icon.btn-default target="_blank" href="#{@garage.google_plus_link}"
+          i.fa.fa-google-plus
+      a.btn.btn-sm.btn-default href="#{garage_path(current_user.garage)}"
+        | View Public Profile

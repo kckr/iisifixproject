@@ -1,0 +1,21 @@
+.table-responsive
+  table.table.table-bordered.table-striped.b-t.b-light
+    thead
+      tr
+        th
+          | QID
+        th
+          | Omistaja
+        th
+          | Auto / Malli
+        th
+          | Raportti
+        th
+          | Tila
+        th
+          | Pyydetty päivämäärä
+        th
+          | Toiminnot
+    tbody
+      - quote_requests.each do |quote_request|
+        = render 'quote_request', quote_request: quote_request

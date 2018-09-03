@@ -1,0 +1,12 @@
+html
+  head>
+    meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+  body
+    header
+    section
+      = yield
+    footer
+      p Thanks
+      P #{Config::AppName} Team
+      hr
+      p © Copyright #{}. #{DateTime.now.year}. All rights reserved.

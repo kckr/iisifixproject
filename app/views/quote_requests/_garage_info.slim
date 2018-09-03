@@ -1,0 +1,11 @@
+h2.margin-top-0 Selected garages
+.boxed-widget.margin-top-20
+  - garages.each do |garage|
+    .hosted-by-title
+      h4
+        span
+          = garage_distance_from_(params, request, garage)
+        = garage.name
+      .hosted-by-avatar
+        = image_tag garage.logo.small_thumb.url
+  a.button href="#{garages_path}" Search More Workshops

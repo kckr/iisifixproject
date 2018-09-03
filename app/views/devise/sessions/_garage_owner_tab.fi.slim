@@ -1,0 +1,10 @@
+#garage_owner.tab-pane[role="tabpanel" class="#{activity(resource_from_(params[:q] || resource_params[:email]), :GarageOwner)}"]
+  .row
+    .col-md-6
+      = render 'signin_form', type: :GarageOwner
+    .col-md-6
+      .row
+        .col-md-12
+          h3 Miksi #{Config::AppName} työpajaanne?
+          .why-iisifix
+            = render 'shared/why_iisifix_for_garage_owner'

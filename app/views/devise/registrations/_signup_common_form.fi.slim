@@ -1,0 +1,11 @@
+.row
+  .col-md-10.form-group
+    = f.label :email, 'Sähköposti*'
+    = f.email_field :email, required: true, class: 'form-control',
+            placeholder: 'user@example.com', autofocus: true
+    = f.error_message_for :email
+    .help-block Sähköpostiasi ei tulla jakamaan kenellekään.
+
+.row.action-items.margin40top
+  .col-md-10
+    = f.submit 'Luo tili. Saat luomisen jälkeen viestin sähköpostiisi.', class: 'btn btn-primary btn-block'

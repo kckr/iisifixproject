@@ -1,0 +1,8 @@
+ul.locale-menu
+  li
+    = link_to url_for(locale: :en), class: 'active'do
+      = image_tag 'icon-english.png', width: 20, title: 'English'
+
+  li
+    = link_to url_for(locale: :fi) do
+      = image_tag 'icon-finnish.png', width: 20, title: 'Finnish'

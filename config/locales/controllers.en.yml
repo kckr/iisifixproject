@@ -1,0 +1,113 @@
+en:
+  application:
+    restrict_garage_owner: 'You are trying to access resource for which you are not authorized'
+    authenticate_garage_owner: 'You are trying to access resource for which you are not authorized'
+    authenticate_vehicle_owner: 'You are trying to access resource for which you are not authorized'
+    unconfirmed_user_only: 'Sorry, you are not allowed to go to that page.'
+
+    after_sign_in_path_for:
+      notice: 'Successfully signed in. Please complete your profile first.'
+
+  comments:
+    create:
+      notice: 'Comment successfully posted.'
+      error: 'Some error occurred while posting the comment'
+
+  pages:
+    create_contact:
+      notice: 'Message sent!'
+      alert: 'Error while sending message!'
+
+  quote_requests:
+    create:
+      notice: 'Your request has been filed and will be processed shortly.'
+      error: 'Some error prevented us to proceed further. Please check the form and submit again.'
+
+    signup_vehicle_owner:
+      notice: 'Your new account has been setup and confirmation email has been sent. '
+
+    send_sms_to_garage_for_new_qr:
+      message: "Dear %{garage_name},\n\n%{vo_full_name} has sent a quote request just now. Please review and respond to the request.\n\nSee the following link to respond the request.\n%{url}"
+
+    get_data_from_reg_api:
+      notice: '%{preamble} Vehicle Details fetched using Reg-Number. '
+
+  devise_override:
+    sessions:
+      set_type:
+        error: 'Invalid "User" type selected, please select a valid one.'
+
+      sign_in_rules:
+        error: 'You seem to have gone to the wrong tab. Please try logging from this tab.'
+
+
+  # --------------------------------------------------------
+  garage_owners:
+    confirmations:
+      update:
+        notice: 'Account details successfully updated. Please sign in with your new password to continue.'
+
+    garage_owners:
+      set_garage:
+        error: 'You must have garage associated to log in'
+
+    garage_profiles:
+      update:
+        notice: 'Garage profile successfully updated.'
+        error: 'For some reason we could not update your profile.'
+
+    jobs:
+      start:
+        notice: 'Job successfully started.'
+
+      complete:
+        notice: 'Job successfully marked as completed. A notification has been sent to the customer for confirmation.'
+
+      send_sms_of_completion_of_job:
+        message: "Dear %{vo_first_name},\n%{garage_name} has marked the job as 'Done'. Please review and confirm the job done.\n\nSee the following link to respond the request.\n%{url}"
+
+    quote_requests:
+      respond:
+        notice: 'Quotation information successfully sent to the customer.'
+
+      ignore:
+        notice: 'Quote Request successfully ignored.'
+
+      send_sms_of_response_to_vo:
+        message: "Dear %{vo_first_name},\n\n%{garage_name} has sent a quotation for your request just now. Please review and respond.\n\nSee the following link to respond the request.\n%{url}"
+
+  # ----------------------------------------------------------
+  vehicle_owners:
+    confirmed_user_only!: 'Sorry, you are not allowed to go to that page.'
+
+    confirmations:
+      update:
+        notice: 'Account details successfully updated. Please sign in with your new password to continue.'
+
+      send_sms_to_garage_for_new_qr:
+        message: "Dear %{garage_name},\n\n%{vo_full_name} has sent a quote request just now. Please review and respond to the request.\n\nSee the following link to respond the request.\n%{url}"
+
+    jobs:
+      cancel:
+        notice: 'Job successfully cancelled.'
+
+    quote_requests:
+      cancel:
+        notice: 'Quote Request successfully cancelled'
+
+      accept:
+        notice: 'Quote Request successfully accepted'
+
+      reject:
+        notice: 'Quote Request successfully rejected'
+
+      send_sms_of_acceptance_to_garage:
+        message: "Dear %{garage_name},\n\n%{vo_full_name} has accepted your quotation just now. Please review and respond to the request.\n\nSee the following link to respond the request.\n%{url}"
+
+    ratings:
+      update:
+        notice: 'Job has been successfully marked as confirmed.'
+
+    users:
+      update:
+        notice: 'Account details successfully updated.'

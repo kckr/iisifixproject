@@ -1,0 +1,85 @@
+h3
+  = @job.vehicle_owner.full_name
+small
+  i.fa.fa-map-marker.fa-lg.text-primary
+  = garage_distance_from_(params, request, @job.garage)
+.panel.b-a.margin20top
+  .row.m-n
+    .col-md-8.b-r
+      .padder-v
+        .row
+          .col-md-7
+            p
+              | Start Date:&nbsp;
+              strong
+                = @job.proposed_start_date
+            p
+              | End Date:&nbsp;
+              strong
+                = @job.proposed_end_date
+            p
+              | Status:&nbsp;
+              strong
+                = @job.status.titleize
+          .col-md-5
+            .well.well-sm.text-center
+              h4
+                = number_to_currency @job.quoted_amount
+              p
+                | Quoted Amount
+        hr.m-n
+        h3
+          | Services Requested
+          - if @job.report_url.present?
+            .pull-right
+              = link_to 'View Kastastus PDF', @job.report_url, class: 'imagePopup btn btn-sm btn-default'
+        .service-list
+          - unless @job.report_url.present?
+            = render 'vehicle_owners/shared/selected_services_collapsible',
+                quote_request: @job.quote_request,
+                categorised_services: @job.services.decorate.group_by{|x| x.category.name}
+        hr.m-n
+        .addtional_information
+          h4
+            | Additional Information
+          p
+            = @job.additional_info
+        hr
+        /= render 'conversation'
+    .col-md-4
+      .padder-v
+        h4
+          | Car Details:
+        .well
+          = render 'shared/vehicle_details', quote_request: @job.quote_request
+        p
+          | Warranty:&nbsp;
+          strong
+            = @job.warranty_offer
+
+        - if @job.rating.present?
+          .well.rating-data
+            p
+              | Rating:
+              - Config::TotalStarCount.times do |index|
+                i.fa.fa-star.padding5left class="#{(index < @job.rating.star_count ? 'gold' : 'dark-grey')}"
+            p
+              strong Customer's Words
+              | : #{@job.rating.testimonial}
+            p
+              strong Customer Works at
+              | : #{@job.rating.company_name || 'N/A'}
+            p
+              strong Customer's Position
+              | : #{@job.rating.job_title || 'N/A'}
+
+        .row
+          .col-sm-6
+            - if @job.startable?
+              a.startJob.btn.btn-success.btn-block [href="#" data-target-url="#{start_garage_owner_job_path(garage_owner_id: current_user.id, id: @job.id)}"]
+                | Start
+            - if @job.completable?
+              a.completeJob.btn.btn-success.btn-block [href="#" data-target-url="#{complete_garage_owner_job_path(garage_owner_id: current_user.id, id: @job.id)}"]
+                | Complete
+          .col-sm-6
+            = link_to 'Request Detail', garage_owner_quote_request_path(@job.quote_request, garage_owner_id: current_user.id), class: 'btn btn-default btn-block'

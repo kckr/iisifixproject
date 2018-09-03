@@ -1,0 +1,25 @@
+.table-responsive
+  table.basic-table
+    thead
+      tr
+        th
+          | JID
+        th
+          | Customer
+        th
+          | Car/Model
+        th
+          | Status
+        th
+          | Fee
+        th
+          | Warranty
+        th
+          | Start Date
+        th
+          | End Date
+        th
+          | Actions
+    tbody
+      - jobs.each do |job|
+        = render 'job', job: job

@@ -1,0 +1,44 @@
+.padder-v
+  h4
+    | Car Details:
+  .well
+    = render 'shared/vehicle_details', quote_request: job.quote_request
+  .well
+    p
+      | Warranty Info:&nbsp;
+      strong
+        = job.warranty_offer
+
+  - if job.rating.present?
+    .well.rating-data
+      p
+        strong Rating
+        | :
+        - Config::TotalStarCount.times do |index|
+          i.fa.fa-star.padding5left class="#{(index < job.rating.star_count ? 'gold' : 'dark-grey')}"
+      p
+        strong Your Words
+        | : #{job.rating.testimonial}
+      p
+        strong Company
+        | : #{job.rating.company_name || 'N/A'}
+      p
+        strong Position
+        | : #{job.rating.job_title || 'N/A'}
+
+  .row
+    - if job.cancellable?
+      .col-md-6.margin10top
+        a.cancelJob.btn.btn-danger.btn-block [ href="#"
+        data-target-url="#{cancel_vehicle_owner_job_path(vehicle_owner_id: current_user.id, id: job.id)}"]
+          | Cancel
+
+    - if job.confirmable?
+      .col-md-6.margin10top
+        a.confirmJob.btn.btn-success.btn-block*confirm_job_attributes_for_(job, current_user) href="#"
+          | Confirm
+
+    .col-md-6.margin10top
+      = link_to 'Request Detail',
+          vehicle_owner_quote_request_path(job.quote_request, vehicle_owner_id: current_user.id),
+          class: 'btn btn-default btn-block'

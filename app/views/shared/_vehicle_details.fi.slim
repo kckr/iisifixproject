@@ -1,0 +1,27 @@
+p
+  | Kuvaus: #{quote_request.description || 'N/A'}
+p
+  | Tehdä: #{quote_request.vehicle_vendor.name || 'N/A'}
+p
+  | Malli: #{quote_request.vehicle_model.blank? ? 'N/A' : quote_request.vehicle_model}
+p
+  | Valmistusvuosi: #{quote_request.vehicle_made_year.blank? ? 'N/A' : quote_request.vehicle_made_year}
+p
+  | rekisteröinti vuosi: #{quote_request.registration_year || 'N/A'}
+p
+  | moottorin koko: N/A
+p
+  | Polttoaine: N/A
+p
+  | lähetys: N/A
+p
+  | mittarilukema: #{quote_request.mileage.blank? ? 'N/A' : quote_request.mileage}
+p
+  | On vetokoukku? : #{quote_request.tow_bar || 'N/A'}
+p
+  | vakuuttaja: #{quote_request.insurer || 'N/A'}
+p
+  | Rekisterinumero: #{quote_request.vehicle_registration_number || 'N/A'}
+p.m-n
+  | Ajoneuvo ID Number: #{quote_request.vin || 'N/A'}
+  

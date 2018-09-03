@@ -1,0 +1,12 @@
+#garage_owner.tab-content[class="#{activity(resource, :GarageOwner)}" style=("display: none;")]
+  / Autofill only for garage_owner type registration
+  = form_for((resource.garage_owner? ? resource : resource.class.new), as: resource_name, html: {id: 'garage_owner_signup', class: 'register'},
+          url: registration_path(resource_name)) do |f|
+
+    / Some boilerplate data
+    - random_string = SecureRandom.urlsafe_base64
+    = f.hidden_field :password, value: random_string
+    = f.hidden_field :password_confirmation, value: random_string
+    = f.hidden_field :type, value: Base64.encode64('GarageOwner')
+
+    = render 'signup_common_form', f: f

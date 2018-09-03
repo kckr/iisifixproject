@@ -1,0 +1,23 @@
+/*
+ * Manifest for static layout
+ *  This file is only supposed to have front-end i.e. static pages like home
+ *    about, and authentication/registration pages like devise related views
+ */
+@import 'common_styles_to_all_layouts';
+
+@import 'common_to_all/all_variables';
+
+@import 'common/magnific-popup';
+
+@import 'static/animate';
+@import 'static/icomoon';
+@import 'static/bootstrap-slider.min';
+@import 'static/style';
+@import 'static/unordered/*';
+@import 'static/custom';
+@import 'static/request_quote';
+@import 'static/garage_profile';
+@import 'static/search_single_row';
+@import 'static/responsive';
+@import 'static/map_preview';
+

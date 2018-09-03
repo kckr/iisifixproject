@@ -1,0 +1,36 @@
+= search_form_for query_object, class: 'garage-searcher' do |f|
+  .input-group
+    = f.search_field Garage::SearchPredicate,
+        id: 'searchText',
+        class: 'form-control',
+        placeholder: 'Kaupunki ja/tai Postinumero'
+    span.input-group-btn
+      button.btn.btn-default#map-marker type='button' data-toggle="tooltip" data-placement="top" title="Get Oma sijainti. Haluan #{Config::AppName} olla tarkempi."
+        span.glyphicon.glyphicon-map-marker aria-hidden='true'
+  p.small-text
+    small
+      | Klikkaa sijainti -kuvaketta (
+      i.glyphicon.glyphicon-map-marker
+      | ) oikeuden sijainti tarkkuutta tarkkuutta
+
+  / Slider
+  .range-slider
+    b #{Config::SliderMin} Km
+
+    input#rangeSlider.span2 [
+      data-slider-min="#{Config::SliderMin}"
+      data-slider-max="#{Config::SliderMax}"
+      data-slider-step="#{Config::SliderStepSize}"
+      data-slider-value="#{range_slider_value(params)}"
+      type="hidden"
+      value=""] /
+
+    b #{Config::SliderMax} Km
+
+
+  = hidden_field_tag :max_radius, max_radius_from_(params)
+  = hidden_field_tag :min_radius, min_radius_from_(params)
+  = hidden_field_tag :lat, params[:lat] || Config::DefaultLat
+  = hidden_field_tag :long, params[:long] || Config::DefaultLong
+
+  = f.submit 'Haku', class: 'btn btn-default btn-block', data: { disable_with: 'Etsiä...' }

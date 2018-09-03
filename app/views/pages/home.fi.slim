@@ -1,0 +1,259 @@
+/! Main container
+.main-search-container
+  video autoplay="" loop="" playsinline="" src="https://testamenttikone.fi/static/video.mp4" type="video/webm"
+  .main-search-inner align="center"
+    .container.main_container
+      .row
+        .col-md-8.col-md-offset-2 align="center"
+          h1 AUTO REPAIR MADE EASY 👍
+          h4 Find garages nearby, get 5 free repair quotes instantly!
+          .main-search-input
+            .main-search-input-item.location
+              input#search placeholder=("Type e.g: Turku") type="text" value="" /
+              a href="#"
+                i.fa.fa-dot-circle-o
+            button.button onclick="window.location.href='listings-half-screen-map-list.html'"  Search
+/! Main container / END
+/! Browse services
+.container
+  .row
+    .col-md-12
+      h3.headline.centered.margin-top-75
+        | BROWSE SERVICES
+/! Browse service list
+.container
+  .row
+    .col-md-12
+      .categories-boxes-container.margin-top-5.margin-bottom-30
+        /! Box
+        a.category-small-box href="listings-list-with-sidebar.html"
+          i.im.im-icon-Hamburger
+          h4 Eat & Drink
+        /! Box
+        a.category-small-box href="listings-list-with-sidebar.html"
+          i.im.im-icon-Sleeping
+          h4 Hotels
+        /! Box
+        a.category-small-box href="listings-list-with-sidebar.html"
+          i.im.im-icon-Shopping-Bag
+          h4 Shops
+        /! Box
+        a.category-small-box href="listings-list-with-sidebar.html"
+          i.im.im-icon-Cocktail
+          h4 Nightlife
+        /! Box
+        a.category-small-box href="listings-list-with-sidebar.html"
+          i.im.im-icon-Electric-Guitar
+          h4 Events
+        /! Box
+        a.category-small-box href="listings-list-with-sidebar.html"
+          i.im.im-icon-Dumbbell
+          h4 Fitness
+        a.category-small-box href="listings-list-with-sidebar.html"
+          i.im.im-icon-Hamburger
+          h4 Eat & Drink
+        /! Box
+        a.category-small-box href="listings-list-with-sidebar.html"
+          i.im.im-icon-Sleeping
+          h4 Hotels
+        /! Box
+        a.category-small-box href="listings-list-with-sidebar.html"
+          i.im.im-icon-Shopping-Bag
+          h4 Shops
+        /! Box
+        a.category-small-box href="listings-list-with-sidebar.html"
+          i.im.im-icon-Cocktail
+          h4 Nightlife
+        /! Box
+        a.category-small-box href="listings-list-with-sidebar.html"
+          i.im.im-icon-Electric-Guitar
+          h4 Events
+        /! Box
+        a.category-small-box href="listings-list-with-sidebar.html"
+          i.im.im-icon-Dumbbell
+          h4 Fitness
+/! Browse services/ End
+/! How it works
+section.fullwidth.margin-top-65.padding-top-75.padding-bottom-70 data-background-color="#f8f8f8"
+  .container
+    .row
+      .col-md-12
+        h3.headline.centered.margin-bottom-45
+          | HOW IT WORKS
+      .col-md-6.how_it_works_icon align="center"
+        = image_tag('search.svg', alt: 'iisifix search', align: 'center')
+      .col-md-6.how_it_works_desc
+        h4.headline.left
+          | Search
+          span.margin-top-25 Explore some of the best tips from around the world from our partners and friends.  Discover some of the most popular listings in Sydney.
+    hr/
+    .row
+      .col-md-6.how_it_works_icon align="center"
+        = image_tag('select.svg', alt: 'iisifix select', align: 'center')
+      .col-md-6.how_it_works_desc
+        h4.headline.left
+          | Select
+          span.margin-top-25 Explore some of the best tips from around the world from our partners and friends.  Discover some of the most popular listings in Sydney.
+    hr/
+    .row
+      .col-md-6.how_it_works_icon align="center"
+        = image_tag('service.svg', alt: 'iisifix service', align: 'center')
+      .col-md-6.how_it_works_desc
+        h4.headline.left
+          | Services
+          span.margin-top-25 Explore some of the best tips from around the world from our partners and friends.  Discover some of the most popular listings in Sydney.
+    hr/
+    .row
+      .col-md-6.how_it_works_icon align="center"
+        = image_tag('quotes.svg', alt: 'iisifix quotes', align: 'center')
+      .col-md-6.how_it_works_desc
+        h4.headline.left
+          | Quotes
+          span.margin-top-25 Explore some of the best tips from around the world from our partners and friends.  Discover some of the most popular listings in Sydney.
+    hr/
+    .row
+      .col-md-6.how_it_works_icon align="center"
+        = image_tag('jobs.svg', alt: 'iisifix jobs', align: 'center')
+      .col-md-6.how_it_works_desc
+        h4.headline.left
+          | Jobs
+          span.margin-top-25 Explore some of the best tips from around the world from our partners and friends.  Discover some of the most popular listings in Sydney.
+    hr/
+    .row
+      .col-md-6.how_it_works_icon align="center"
+        = image_tag('repair.svg', alt: 'iisifix repair', align: 'center')
+      .col-md-6.how_it_works_desc
+        h4.headline.left
+          | Repair
+          span.margin-top-25 Explore some of the best tips from around the world from our partners and friends.  Discover some of the most popular listings in Sydney.
+/! How it works / End
+/! Browse services
+.container
+  .row
+    .col-md-12
+      h3.headline.centered.margin-top-75
+        | WHY IISIFIX
+/! IISIFIX-FIX
+.index-content
+  .container
+    .col-lg-6
+      .card
+        = image_tag('vo.png', alt: 'vehicle owner', class: 'img-responsive')
+        h4.why-iisifix-header.headline Easy Problem Reporting
+        p.why-iisifix-content With IISIFIX, there's no need to contact individual workshops for problem reporting. Our easy problem reporting feature helps you to report your vehicle's problems that can be sent to multiple workshops for review with a click of a button.
+        h4.why-iisifix-header.headline Multiple Quotes
+        p.why-iisifix-content List your vehicular problems in IISIFIX, and enjoy the possibility of reviewing repair quotes sent out by multiple workshops. Review and select the quote that best match your urgency, budget and reliability requirements.
+        h4.why-iisifix-header.headline Sit back, Relax and Repair
+        p.why-iisifix-content Experience a smooth and easy repair process with IISIFIX. Once the problems have been reported, we take care of the rest. All the repair follow-ups can be done through the same system, aiding in repair status tracking and easy communications with workshop.
+    .col-lg-6
+      .card
+        = image_tag('go.png', alt: 'garage owner', class: 'img-responsive')
+        h4.why-iisifix-header.headline STRONG ONLINE PRESENCE
+        p.why-iisifix-content With IISIFIX, you can enjoy a wide online coverage of your business and services, even without a business website of your own. We make sure that our member workshops get the perks of good advertisement and promotional services through IISIFIX without any hassle.
+        h4.why-iisifix-header.headline INCREASE IN REVENUE
+        p.why-iisifix-content Increase your exposure with IISIFIX and get shown to a wider range of customers. This means the opportunity to review more problems and sending out more repair offers, which will eventually lead to an overall increase in business income.
+        h4.why-iisifix-header.headline BUILD A LOYAL CUSTOMER BASE
+        p.why-iisifix-content IISIFIX helps you reach out to a wider audience, which you can turn into most valued and loyalcustomer base with your competitive and outstanding repair quotes as well as reliable andprofessional services.
+  /! IISIFIX VALUE / End
+  /! List of garages
+  section.fullwidth.margin-top-65.padding-top-75.padding-bottom-70 data-background-color="#f8f8f8"
+    .container
+      .row
+        .col-md-12
+          h3.headline.centered.margin-bottom-45
+            | GARAGES ALREADY ON IISIFIX
+    /! Carousel / Start
+    .simple-fw-slick-carousel.dots-nav
+      /! Listing Item
+      .fw-carousel-item
+        a.listing-item-container.compact href="listings-single-page.html"
+        .listing-item
+          .listing-badge.now-open New
+          .listing-item-content
+            .numerical-rating data-rating="3.5"
+            h3 ABC Garages
+            span Maariankatu 2B 39, 20100, Turku
+      /! Listing Item / End
+      /! Listing Item
+      .fw-carousel-item
+        a.listing-item-container.compact href="listings-single-page.html"
+        .listing-item
+          .listing-badge.now-open New
+          .listing-item-content
+            .numerical-rating data-rating="3.5"
+            h3 ABC Garages
+            span Maariankatu 2B 39, 20100, Turku
+      /! Listing Item / End
+      /! Listing Item
+      .fw-carousel-item
+        a.listing-item-container.compact href="listings-single-page.html"
+        .listing-item
+          .listing-badge.now-open New
+          .listing-item-content
+            .numerical-rating data-rating="3.5"
+            h3 ABC Garages
+            span Maariankatu 2B 39, 20100, Turku
+      /! Listing Item / End
+      /! Listing Item
+      .fw-carousel-item
+        a.listing-item-container.compact href="listings-single-page.html"
+        .listing-item
+          .listing-badge.now-open New
+          .listing-item-content
+            .numerical-rating data-rating="3.5"
+            h3 ABC Garages
+            span Maariankatu 2B 39, 20100, Turku
+      /! Listing Item / End
+      /! Listing Item
+      .fw-carousel-item
+        a.listing-item-container.compact href="listings-single-page.html"
+        .listing-item
+          .listing-badge.now-open New
+          .listing-item-content
+            .numerical-rating data-rating="3.5"
+            h3 ABC Garages
+            span Maariankatu 2B 39, 20100, Turku
+      /! Listing Item / End
+      /! Listing Item
+      .fw-carousel-item
+        a.listing-item-container.compact href="listings-single-page.html"
+        .listing-item
+          .listing-badge.now-open New
+          .listing-item-content
+            .numerical-rating data-rating="3.5"
+            h3 ABC Garages
+            span Maariankatu 2B 39, 20100, Turku
+      /! Listing Item / End
+      .fw-carousel-item
+        a.listing-item-container.compact href="listings-single-page.html"
+        .listing-item
+          .listing-badge.now-open New
+          .listing-item-content
+            .numerical-rating data-rating="3.5"
+            h3 ABC Garages
+            span Maariankatu 2B 39, 20100, Turku
+      .fw-carousel-item
+        a.listing-item-container.compact href="listings-single-page.html"
+        .listing-item
+          .listing-badge.now-open New
+          .listing-item-content
+            .numerical-rating data-rating="3.5"
+            h3 ABC Garages
+            span Maariankatu 2B 39, 20100, Turku
+      .fw-carousel-item
+        a.listing-item-container.compact href="listings-single-page.html"
+        .listing-item
+          .listing-badge.now-open New
+          .listing-item-content
+            .numerical-rating data-rating="3.5"
+            h3 ABC Garages
+            span Maariankatu 2B 39, 20100, Turku
+      .fw-carousel-item
+        a.listing-item-container.compact href="listings-single-page.html"
+        .listing-item
+          .listing-badge.now-open New
+          .listing-item-content
+            .numerical-rating data-rating="3.5"
+            h3 ABC Garages
+            span Maariankatu 2B 39, 20100, Turku
+  /! List of garages / End

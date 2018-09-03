@@ -1,0 +1,32 @@
+section.panel.panel-default
+  header.panel-heading Conversation
+  section.chat-list.panel-body
+    - if conversation.comments.count == 0
+      - if conversation.conversable.archived?
+        p No conversation available.
+      - else
+        p You can start conversation ..
+    - conversation.comments.each do |comment|
+      article#chat-id-1.chat-item.left
+        a.pull-left.thumb-sm.avatar
+          = image_tag comment.sender.avatar.small_thumb.url
+        section.chat-body
+          .panel.b-light.text-sm.m-b-none
+            .panel-body
+              span.arrow.left
+              p.m-b-none = sanitize comment.message.gsub("\n", '<br>').html_safe
+          small.text-muted
+            i.fa.fa-ok.text-success
+            = distance_of_time_in_words comment.created_at, Time.now
+
+  - unless conversation.conversable.archived?
+    footer.panel-footer
+      /! chat form
+      article#chat-form.chat-item
+        a.pull-left.thumb-sm.avatar
+          = image_tag current_user.avatar.small_thumb.url, class: '.img-circle'
+        section.chat-body
+          = form_for Comment.new, url: conversation_comments_path(conversation_id: conversation.id), class: 'm-b-none' do |f|
+            = f.text_area :message, class:'form-control', placeholder: 'Respond to the comment here...'
+            .margin10top.pull-right
+              = f.submit 'Add Comment', class: 'btn btn-default'

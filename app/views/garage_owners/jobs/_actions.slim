@@ -1,0 +1,9 @@
+- if job.startable?
+  a.startJob [href="#" data-target-url="#{start_garage_owner_job_path(garage_owner_id: current_user.id, id: job.id)}"]
+    | Start
+  | &nbsp;|&nbsp;
+- if job.completable?
+  a.completeJob [href="#" data-target-url="#{complete_garage_owner_job_path(garage_owner_id: current_user.id, id: job.id)}"]
+    | Complete
+  | &nbsp;|&nbsp;
+= link_to 'View Detail', garage_owner_job_path(job, garage_owner_id: current_user.id)

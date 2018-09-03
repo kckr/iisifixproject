@@ -1,0 +1,30 @@
+header#iisifixco-header.iisifixco-cover.iisifixco-cover-sm role="banner" style="background-image:url('#{image_url('img_bg_2.jpg')}');"
+  .overlay
+  .container
+    .row
+      .col-md-6.col-md-offset-3
+        .display-t
+          .display-tc.animate-box data-animate-effect="fadeIn"
+            h1.text-center Vaihda salasanasi
+
+.iisifixco-section
+  .container
+    = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+      .reset-password-token
+        = f.hidden_field :reset_password_token
+        = f.error_message_for :reset_password_token, prefix: true
+
+      .row.form-group
+        .col-md-6
+          = f.label :password, 'uusi salasana'
+          = f.password_field :password, required: true, autofocus: true, class: 'form-control'
+          p 8-30 kirjainta
+
+      .row.form-group
+        .col-md-6
+          = f.label :password_confirmation, 'Kirjoita uusi salasana'
+          = f.password_field :password_confirmation, required: true, class: 'form-control'
+      .form-group
+        = f.submit 'Vaihda salasana', class: 'btn btn-primary'
+
+    = render 'devise/shared/links'

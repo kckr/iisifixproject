@@ -1,0 +1,32 @@
+label.radio-inline
+  input#registration checked="" name="cars" type="radio" value="2" /
+  | Registration
+label.radio-inline
+  input#manually name="cars" type="radio" value="3" /
+  | Manually
+#Cars2.desc
+  h4 Enter your car registration number
+  .input-group
+    span#basic-addon2.input-group-addon
+      | FIN
+    = f.text_field :vehicle_registration_number,
+        class: 'form-control',
+        placeholder: 'Enter car registration number here...',
+        'aria-describedby' => 'basic-addon2'
+#Cars3.desc  style=("display: none;")
+  h4 Enter car information manually
+  #carDetailForm
+    .row
+      .col-md-6.form-group
+        = f.label :vehicle_made_year
+        = f.select :vehicle_made_year, options_for_select(Config::StartingCarMakeYear..DateTime.now.year), {prompt: 'Select a Year'}, {class: 'form-control'}
+      .col-md-6.form-group
+        = f.label :vehicle_vendor_id
+        = f.select :vehicle_vendor_id, options_for_select(vehicle_vendors.map{|x| [x.name,x.id]}), {prompt: 'Select a Make'}, {class: 'form-control'}
+    .row
+      .col-md-6.form-group
+        = f.label :vehicle_model
+        = f.text_field :vehicle_model, class: 'form-control', placeholder: 'Eg. AUDI 100'
+      .col-md-6.form-group
+        = f.label :mileage
+        = f.text_field :mileage, class: 'form-control', placeholder: 'Eg. 2000 KM'

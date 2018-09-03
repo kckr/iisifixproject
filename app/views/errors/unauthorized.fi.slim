@@ -1,0 +1,20 @@
+header#iisifixco-header.iisifixco-cover.iisifixco-cover-sm role="banner" style="background-image:url('#{image_url('img_bg_2.jpg')}');"
+  .overlay
+  .container
+    .row
+      .col-md-6.col-md-offset-3
+        .display-t
+          .display-tc.animate-box data-animate-effect="fadeIn"
+            h1.text-center Pahoillani,
+            h1.text-center mutta jotain on vialla
+
+.iisifixco-section
+  .container
+    .well
+      - if Rails.env.production?
+        h2 Ei huolta, olemme ilmoittaneet tästä virheestä ja olemme sitä.
+
+      - else
+        h2.light-red = error.class || 'Ei huolta, olemme ilmoittaneet tästä virheestä ja olemme sitä.'
+        pre.dark-red = error.message.gsub("\n", '<br>').html_safe
+      = link_to 'Mene kotisivulle', root_path, class: 'btn btn-primary'

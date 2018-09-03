@@ -1,0 +1,23 @@
+h4
+  | General Services
+small
+  | Description of what general services mean.
+#servicesRequested.panel-group.m-b.margin20top
+  - categories.each do |category|
+    .panel.panel-default
+      .panel-heading
+        a.accordion-toggle.collapsed data-toggle="collapse" href="#category_#{category.name.snake_case}"
+          = category.name
+      .panel-collapse.collapse.out id="category_#{category.name.snake_case}"
+        .panel-body
+          .row
+            - category.services.by(garage).each do |service|
+              .col-sm-6
+                .checkbox.i-checks
+                  label
+                    - if service.id.to_s.in?(garage.services_ids)
+                      input checked="true" type="checkbox" name="garage[services_ids][#{service.id}]"/
+                    - else
+                      input type="checkbox" name="garage[services_ids][#{service.id}]"/
+                    i
+                    = service.name

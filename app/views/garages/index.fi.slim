@@ -1,0 +1,98 @@
+header#iisifixco-header.iisifixco-cover.iisifixco-cover-sm role="banner" style="background-image:url('#{image_url('img_bg_2.jpg')}');"
+  .overlay
+  .container
+    .row
+      .col-md-6.col-md-offset-3
+        .display-t
+          .display-tc.animate-box data-animate-effect="fadeIn"
+            = render 'shared/search_form_multiline', query_object: @q
+
+.iisifixco-section
+  .container-fluid
+    .col-md-8
+      h2
+        | Hakutulokset "#{params[:q] && params[:q][Garage::SearchPredicate]}" :
+        - if params[:max_radius].present? && params[:min_radius].present?
+          |  #{min_radius_from_(params)} KM
+          |  to #{max_radius_from_(params)} KM
+
+      h3
+        | Hakusanoilla löytyi #{@garages.count} korjaamoa
+
+      - if Rails.env.development? || true
+        h3
+          |   Nykyinen sijaintisi on
+          |   "#{LocationService.get_address_from_(params, request)}"
+
+      h3 Järjestä:
+      .btn-group[role="group" aria-label="..."]
+        button.btn.btn-default[type="button"]
+          = sort_link @q, :name, 'Nimi'
+        button.btn.btn-default[type="button"]
+          = sort_link @q, :address, 'Osoite'
+        button.btn.btn-default[type="button"]
+          = sort_link @q, :ratings do
+            i.fa.fa-star.gold
+            |  arviota
+        button.btn.btn-default[type="button"]
+          = sort_link @q, :distance, 'Etäisyys'
+        /button.btn.btn-default[type="button"]
+        /  = sort_link @q, :opening_time
+        /button.btn.btn-default[type="button"]
+        /  = sort_link @q, :closing_time
+
+      .garage-collection.margin20top
+        = form_for QuoteRequest.new, url: new_quote_request_path, method: :get do |f|
+          - @garages.each do |garage|
+            .well.search_garage_each
+              .row
+                .col-md-2
+                  = image_tag garage.logo.thumb.url, class: 'img-responsive'
+                hr.visible-xs.visible-sm
+                .col-md-10
+                  .search_garage_info
+                    h3 = garage.name
+                    - unless current_user&.garage_owner?
+                      .checkbox.search_garage_select_quote
+                        input.select-garage [type="checkbox"
+                          id="quote_request_garages_#{garage.id}"
+                          data-marker-id="#{garage.id}"
+                          name="quote_request[garages][#{garage.id}]"]
+
+                        label for="quote_request_garages_#{garage.id}" Valitse korjaamo
+                    strong.in-km
+                      i.fa.fa-map-marker
+                      = garage_distance_from_(params, request, garage)
+                    span.padding5left
+                      - Config::TotalStarCount.times do |index|
+                        i.fa.fa-star.padding5left class="#{star_color_class_for(garage.avg_rating, index)}"
+                    .time
+                      i.fa.fa-clock-o
+                      |  Avataan klo :
+                      |  #{garage.opening_time || 'N/A'}
+                      |  | &nbsp;
+                      i.fa.fa-clock-o
+                      |  suljetaan klo :
+                      |  #{garage.closing_time || 'N/A'}
+                    p.margin20top = garage.about
+                    .buttons-group-left.pull-left
+                      = link_to 'Näytä profiili', garage_path(garage), class: 'btn btn-primary'
+                      = link_to 'javascript:void(0)', class: 'btn btn-default pin-on-map hidden-xs hidden-sm',
+                          data: { lat: garage.latitude, lng: garage.longitude } do
+                        i.fa.fa-map-marker.blue
+                        |  Pin kartalla
+                    .buttons-group-right.visible-xs.visible-sm
+                      = link_to 'javascript:void(0)', class: 'btn btn-default show-map',
+                          data: { lat: garage.latitude, lng: garage.longitude } do
+                        i.fa.fa-map.blue
+                        |  Näytä kartta&nbsp;
+                        i.fa.fa-angle-down
+              .hidden.map-for-mobile-device
+                iframe.visible-xs.visible-sm width="100%" src="https://www.google.com/maps/embed/v1/place?q=#{garage.latitude},#{garage.longitude}&zoom=14&key=#{ENV['GOOGLE_MAP_API']}"
+          .actions
+            - unless current_user&.garage_owner?
+              = f.submit 'Pyydä tarjous valituista korjaamoista',
+                  id: 'sendQuoteRequestToSelected',
+                  class: 'btn btn-primary btn-lg pull-right'
+    .col-md-4
+      = render 'garages/mini_map', garages: @garages

@@ -1,0 +1,12 @@
+#vehicle_owner.tab-pane[role="tabpanel" class="#{activity(resource_from_(params[:q]), :VehicleOwner)}"]
+  .row
+    .col-md-6
+      = render 'signin_form', type: :VehicleOwner
+    .col-md-6
+      .row
+        .col-md-12
+          h3 Miksi #{Config::AppName} sinulle?
+          .why-iisifix
+            = render 'shared/why_iisifix_for_vehicle_owner'
+      .social
+        = render 'shared/social_signin_buttons'

@@ -1,0 +1,24 @@
+section.dropdown-menu.aside-xl.animated.flipInY
+  section.panel.bg-white
+    .panel-heading.b-light.bg-light
+      strong
+        | You have
+        span.count 2
+        | notifications
+    .list-group.list-group-alt
+      a.media.list-group-item href="#"
+        span.pull-left.thumb-sm
+          = image_tag 'dummy.jpg', class: 'img-circle'
+        span.media-body.block.m-b-none
+          | Use awesome animate.css
+          br/
+          small.text-muted 10 minutes ago
+      a.media.list-group-item href="#"
+        span.media-body.block.m-b-none
+          | 1.0 initial released
+          br/
+          small.text-muted 1 hour ago
+    .panel-footer.text-sm
+      a.pull-right href="#"
+        i.fa.fa-cog
+      a data-toggle=("class:show animated fadeInRight") href="#notes"  See all the notifications

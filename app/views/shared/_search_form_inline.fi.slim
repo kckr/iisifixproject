@@ -1,0 +1,24 @@
+= search_form_for query_object, class: 'garage-searcher navbar-form navbar-left form-inline' do |f|
+
+  .form-group
+    .input-group
+      = f.search_field Garage::SearchPredicate,
+          id: 'searchText',
+          class: 'form-control input-sm',
+          placeholder: 'Kaupunki ja/tai Postinumero'
+      span.input-group-btn
+        button.btn.btn-default.btn-sm#map-marker type='button' data-toggle="tooltip" data-placement="bottom" title="Get Oma sijainti"
+          span.glyphicon.glyphicon-map-marker aria-hidden='true'
+
+  .form-group
+    .range-slider
+      b #{Config::SliderMin} Km
+      input#rangeSlider.span2.slider.form-control [
+        data-slider-min="#{Config::SliderMin}"
+        data-slider-max="#{Config::SliderMax}"
+        data-slider-step="#{Config::SliderStepSize}"
+        data-slider-value="#{Config::SliderDefaultValue}"
+        type="text"
+        value=""] /
+      b #{Config::SliderMax} Km
+  = f.submit 'Haku', class: 'btn btn-default btn-sm'

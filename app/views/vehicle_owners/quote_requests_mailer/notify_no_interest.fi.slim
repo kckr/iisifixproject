@@ -1,0 +1,7 @@
+p
+  | Hei #{@quote_request.vehicle_owner.first_name}!!!
+p
+  | #{@quote_request.garage.name} ei ole omaa pyyntöä kiinnostava, jotta he hylkäsi pyynnön.
+  |  Voit edelleen lähettää pyyntöjä muille autotallit.
+= link_to "Tässä on linkki #{Config::AppName}, jossa voi etsiä muita autotallien, jos haluat.",
+    garages_url

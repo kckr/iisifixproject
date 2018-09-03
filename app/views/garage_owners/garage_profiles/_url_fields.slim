@@ -1,0 +1,44 @@
+.form-group
+  = f.label :website_link
+  .input-group
+    = f.text_field :website_link, class: 'form-control',
+        placeholder: 'Enter URL of your business website eg. http://www.iisifix.fi'
+    span.input-group-addon
+      i.fa.fa-link
+    = f.error_message_for :website_link
+
+.form-group
+  = f.label :facebook_link
+  .input-group
+    = f.text_field :facebook_link, class: 'form-control',
+        placeholder: 'Enter URL of your Facebook page eg. http://www.facebook.com/iisifix'
+    span.input-group-addon
+      i.fa.fa-facebook
+    = f.error_message_for :facebook_link
+
+.form-group
+  = f.label :twitter_link
+  .input-group
+    = f.text_field :twitter_link, class: 'form-control',
+        placeholder: 'Enter URL of your Facebook page eg. http://www.twitter.com/iisifix'
+    span.input-group-addon
+      i.fa.fa-twitter
+    = f.error_message_for :twitter_link
+
+.form-group
+  = f.label :google_map_link
+  .input-group
+    = f.text_field :google_map_link, class: 'form-control',
+        placeholder: 'Location, Eg. Google map URL eg. http://maps.google.com/iisifix?asdasd'
+    span.input-group-addon
+      i.fa.fa-map-marker
+    = f.error_message_for :google_map_link
+
+.form-group
+  = f.label :pinterest_link
+  .input-group
+    = f.text_field :pinterest_link, class: 'form-control',
+        placeholder: 'Enter URL of your Pinterest page eg. http://www.pinterest.com/iisifix'
+    span.input-group-addon
+      i.fa.fa-pinterest
+    = f.error_message_for :pinterest_link

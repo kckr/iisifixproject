@@ -1,0 +1,91 @@
+h3
+  = @quote_request.vehicle_owner.full_name
+small
+  i.fa.fa-map-marker.fa-lg.text-primary &nbsp;
+  = @quote_request.vehicle_owner.full_street_address
+.panel.b-a.margin20top
+  .row.m-n
+    .col-md-8.b-r
+      .padder-v
+        .row
+          .col-md-7
+            p
+              | pyydetty&nbsp;
+              strong
+                = @quote_request.created_at.strftime(Config::RubyDateFormatNumeric)
+            p
+              | Tila:&nbsp;
+              strong
+                = @quote_request.status.titleize
+              - if @quote_request.archived?
+                i.fa.fa-archive.padding5left.blue title="arkistoituja Data" aria-hidden="true"
+              - else
+                i.fa.fa-folder-open.padding5left.lime-green title="aktiivinen Data" aria-hidden="true"
+          .col-md-5
+            .well.well-sm.text-center
+              - if @quote_request.quoted_amount && @quote_request.quoted_amount > 0.0
+                h4 = number_to_currency @quote_request.quoted_amount
+                p arvioitu hinta
+              - else
+                p Arviomäärä puuttuu!
+
+        hr.m-n
+        h3
+          | Pyydetyt palvelut
+          .pull-right
+            - if @quote_request.report.file.present?
+              - if @quote_request.report_type == 'pdf'
+                = link_to 'Lataa Katsastusraportti', @quote_request.report_url, target: '_blank',
+                    class: 'btn btn-sm btn-default'
+              - else @quote_request.report_type.in? Config::ValidImageExtensions
+                = link_to 'Katso Kastastusraportti', @quote_request.report_url,
+                    class: 'imagePopup btn btn-sm btn-default'
+        .services
+          = render 'vehicle_owners/shared/selected_services_collapsible',
+              categorised_services: @quote_request.categorised_services, quote_request: @quote_request
+
+        hr.m-n
+
+        .additional_information
+          h4 lisätietoja
+          p = @quote_request.additional_info
+        hr
+
+        .conversation
+          = render 'vehicle_owners/quote_requests/conversation', conversation: @quote_request.conversation
+
+    .col-md-4
+      .padder-v
+        h4
+          | Ajoneuvotiedot:
+        .well
+          = render 'shared/vehicle_details', quote_request: @quote_request
+        hr
+
+        p
+          | Ehdotettu aloituspäivä:&nbsp;
+          strong
+            = @quote_request&.proposed_start_date&.strftime(Config::RubyDateFormatNumeric) || 'N/A'
+          p
+            | Ehdotettu Päättymispäivä:&nbsp;
+            strong
+              = @quote_request&.proposed_end_date&.strftime(Config::RubyDateFormatNumeric) || 'N/A'
+          p
+            | Takuu:&nbsp;
+            strong
+              = @quote_request.warranty_offer.blank? ? 'N/A' : @quote_request.warranty_offer
+
+        hr
+        .row
+          .col-sm-6
+            - if @quote_request.quotable?
+              / See http://www.rubydoc.info/gems/slim/frames#Splat_attributes__
+              a.respondQuoteRequest.btn.btn-success.btn-block *quote_request_response_data_attrs_for_(@quote_request) href="#"
+                | Lähetä arvio
+
+          .col-sm-6
+            - if @quote_request.ignorable?
+              a.ignoreQuoteRequest.btn.btn-danger.btn-block [href="#" data-target-url="#{ignore_garage_owner_quote_request_path(garage_owner_id: current_user.id, id: @quote_request.id)}"]
+                | Jätä huomiotta
+
+= render 'response_popup'

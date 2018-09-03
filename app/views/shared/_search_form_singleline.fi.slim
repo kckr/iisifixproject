@@ -1,0 +1,18 @@
+.row
+  .col-md-8.col-md-offset-2.padding0all
+    = search_form_for query_object, class: 'garage-searcher form-line' do |f|
+      = hidden_field_tag :lat, params[:lat] || Config::DefaultLat
+      = hidden_field_tag :long, params[:long] || Config::DefaultLong
+
+      .form-group
+        .input-group
+          span.input-group-btn
+            button.btn.btn-default#map-marker type='button' data-toggle="tooltip" data-placement="top" title="Get Oma sijainti. Haluan #{Config::AppName} olla tarkempi."
+              span.glyphicon.glyphicon-map-marker aria-hidden='true'
+
+          = f.search_field Garage::SearchPredicate,
+              id: 'searchText',
+              class: 'form-control',
+              placeholder: 'Kaupunki ja/tai Postinumero'
+          span.input-group-btn
+            = f.submit 'Haku', class: 'btn btn-default', data: { disable_with: 'Etsiä...' }

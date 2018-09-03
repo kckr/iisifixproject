@@ -1,0 +1,14 @@
+#garageWarranty.tab-content
+  = form_for garage, url: garage_owner_garage_profile_path(garage) do |f|
+    .row
+      .col-md-8.b-r
+        h4
+          | Workshop Warranty Pitch:
+        = f.text_area :warranty_info,
+            placeholder: 'Explain in brief how your workshop provide warranty only the services offered',
+            rows: 10, class: 'form-control'
+        = f.submit 'Update Info', class: 'btn btn-default btn-lg margin20top'
+      .col-md-4
+        h4
+          | Why Warranty Pitch?
+        = render 'shared/why_warranty_pitch_for_garage_owner'

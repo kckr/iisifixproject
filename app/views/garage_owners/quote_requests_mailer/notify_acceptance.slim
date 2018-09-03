@@ -1,0 +1,7 @@
+p
+  | Hello #{@quote_request.garage.name}!!!
+p
+  | #{@quote_request.vehicle_owner.full_name} just accepted your quotation and new Job has been created in #{Config::AppName} dashboard.
+
+= link_to "Here is the link to the quote request in #{Config::AppName}.",
+    garage_owner_quote_request_url(id: @quote_request.id, garage_owner_id: @garage_owner_id)

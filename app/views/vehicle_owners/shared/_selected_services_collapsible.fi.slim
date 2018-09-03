@@ -1,0 +1,18 @@
+#servicesRequested.panel-group.m-b.margin20top
+  - categorised_services.each do |category_name, services|
+    .panel.panel-default
+      .panel-heading
+        a.accordion-toggle.collapsed data-toggle="collapse" href="#category_#{category_name.snake_case}"
+          = category_name
+      .panel-collapse.collapse.out id="category_#{category_name.snake_case}"
+        .panel-body
+          .row
+            ul.no-bullet.margin0all
+              - services.each do |service|
+                li.col-md-6
+                  i.fa.fa-check-square-o.lime-green.margin10right
+                  = service.name
+                  - if quote_request.service_details[service.id.to_s].present?
+                    .well.well-sm.margin5top data-toggle="tooltip" title="Ongelman kuvaus yksityiskohtaisesti"
+                      = quote_request.service_details[service.id.to_s]
+

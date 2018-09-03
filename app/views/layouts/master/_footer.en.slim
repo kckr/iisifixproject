@@ -1,0 +1,91 @@
+a.popup-with-zoom-anim.flip-banner.parallax href="#addGaragePop" data-color= "#333366" data-color-opacity= "0.85" data-background="#{image_url('img_bg_2.jpg')}"
+  .flip-banner-content
+    h2.flip-visible Missing your favorite garage?
+    h2.flip-hidden
+      | Recommend a garage
+      i.sl.sl-icon-arrow-right
+
+
+.iisifix_footer
+  .container
+    .row
+      .col-sm-2
+        h4.title IISIFIXI
+        p
+          i.fa.fa-location-arrow
+          | Kuusitie 5 A
+        p
+          i.fa.fa-envelope
+          | support@iisifix.fi
+        p
+          i.fa.fa-phone
+          | 0442106670
+        ul.iisifix_social-icon
+          a.social href="#"
+            i.fa.fa-facebook aria-hidden="true"
+          a.social href="#"
+            i.fa.fa-twitter aria-hidden="true"
+          a.social href="#"
+            i.fa.fa-instagram aria-hidden="true"
+          a.social href="#"
+            i.fa.fa-youtube-play aria-hidden="true"
+          a.social href="#"
+            i.fa.fa-google aria-hidden="true"
+      .col-sm-2
+        h4.title Legal
+        span.acount-icon
+          a href="#"  Terms
+          a href="#"  Privacy
+          a href="#"  GDPR
+          a href="#"  Language
+      .col-sm-3
+        h4.title Services
+        .category
+          a href="#"  Brake
+          a href="#"  Tire
+          a href="#"  Oil
+          a href="#"  Gearshit
+          a href="#"  Steering wheel
+          a href="#"  Light
+          a href="#"  Dashboard
+          a href="#"  Engine
+          a href="#"  Indicators
+          a href="#"  Suspension
+          a href="#"  Chesis
+          a href="#"  Piston
+      .col-sm-5
+        h4.title Subscribe
+        form#mc-embedded-subscribe-form.validate.form-inline action="//iisifix.us14.list-manage.com/subscribe/post?u=c4f0b630994335bc3fd33d47f&amp;id=aaa2bed320" method="post" name="mc-embedded-subscribe-form" target="_blank"
+          .main-search-input.margin-top-20
+            .main-search-input-item.location
+              input#mce-EMAIL.email.form-control name="EMAIL" placeholder=("Email Address") required="true" type="email" value="" /
+            /! real people should not fill this in and expect good things - do not remove this or risk form bot signups
+            div aria-hidden="true" style=("position: absolute; left: -5000px;")
+              input name="b_c4f0b630994335bc3fd33d47f_aaa2bed320" tabindex="-1" type="text" value="" /
+            input#mc-embedded-subscribe.button name="subscribe" type="submit" value="Subscribe" /
+        small.promise
+          em We won't send spam.
+    hr/
+    .row.text-center © 2018. IISIFIXI.
+
+
+#backtotop
+  a href="#"
+
+/! Add Garage Popup
+#addGaragePop.zoom-anim-dialog.mfp-hide.general_dialog
+  .small-dialog-header
+    h3 Add your favourite Garage
+  - @new_garage = NewGarage.new
+  = form_for @new_garage, url: {controller: '/pages', action: 'create_new_garage'}, class: 'garage' do |f|
+    p.form-row.form-row-wide
+      = f.label :name, 'Name:'
+      = f.text_field :name, class: 'form-control', placeholder: 'Name *', required: true
+    p.form-row.form-row-wide
+      = f.label :email, 'Email Address:'
+      = f.email_field :email, class: 'form-control', placeholder: 'Your email address *', required: true
+    p.form-row.form-row-wide
+      = f.label :description, 'Message:'
+      = f.text_area :description, class: 'form-control', placeholder: 'Message *', cols: '30', rows: '10', required: true
+
+    = f.submit 'Send Message', class: 'button border fw margin-top-10'

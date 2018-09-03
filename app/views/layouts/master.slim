@@ -1,0 +1,18 @@
+doctype html
+head
+  title IISIFIX
+  = csrf_meta_tags
+  = stylesheet_link_tag 'master', 'data-turbolinks-track' => 'reload', media: 'all'
+body(class="#{current_user.try(:role).try(:underscore)} #{self.try(:scope_name)} #{controller_name} #{action_name}")
+  #wrapper
+    - if !current_user.present? || (action_name == "home") || (controller_name =="garages" && action_name =="index") || (controller_name =="confirmations" && action_name =="edit") || (controller_name =="quote_requests" && action_name =="new")
+      = render 'layouts/master/header'
+    = render 'flash_message'
+    = yield
+    - if !current_user.present? || (action_name == "home") || (controller_name =="garages" && action_name =="index") || (controller_name =="confirmations" && action_name =="edit") || (controller_name =="quote_requests" && action_name =="new")
+      = render 'layouts/master/newsletter'
+      = render 'layouts/master/footer'
+    /!
+      | Scripts
+      | \==================================================
+    = javascript_include_tag 'master', 'data-turbolinks-track' => 'reload'

@@ -1,0 +1,18 @@
+h4
+  | Make
+small
+  | Include the make services offered
+  br
+  strong = garage.vehicle_vendors.count
+  |  item(s) selected
+.panel-default.m-b.margin20top.make-list
+  - vendors.each do |vendor|
+    .col-xs-6.col-md-4
+      .checkbox.i-checks
+        label
+          - if garage.vehicle_vendors.include?(vendor.id.to_s)
+            input type="checkbox" checked="true" name="garage[vehicle_vendors][#{vendor.id}]"/
+          - else
+            input type="checkbox" name="garage[vehicle_vendors][#{vendor.id}]"/
+          i
+          = vendor.name

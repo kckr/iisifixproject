@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="167px" height="167px" viewBox="0 0 167 167" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>Quotes Copy 4</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Welcome" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Quotes-Copy-4">
+            <circle id="Oval-2" fill="#224978" cx="83.5" cy="83.5" r="73.5"></circle>
+            <rect id="Rectangle" fill="#FFFFFF" x="57" y="43" width="53" height="28"></rect>
+            <rect id="Rectangle-21" stroke="#FFFFFF" stroke-width="3" x="56.5" y="42.5" width="54" height="69" rx="7"></rect>
+            <text id="€400" font-family="Raleway-Bold, Raleway" font-size="16" font-weight="bold" letter-spacing="-0.0391111113" fill="#F5A623">
+                <tspan x="60" y="61">€400</tspan>
+            </text>
+            <g id="Group" transform="translate(117.822385, 95.900354) rotate(37.000000) translate(-117.822385, -95.900354) translate(94.322385, 65.900354)">
+                <rect id="Rectangle" fill="#FFFFFF" x="1.63986081" y="1.63986081" width="43.4563114" height="22.9580513"></rect>
+                <rect id="Rectangle-21" stroke="#FFFFFF" stroke-width="3" x="1.5" y="1.5" width="43.7360331" height="56.0349891" rx="7"></rect>
+                <text id="€430" font-family="Raleway-Bold, Raleway" font-size="16" font-weight="bold" letter-spacing="-0.0391111113" fill="#F5A623">
+                    <tspan x="3.32231141" y="18.0524121">€430</tspan>
+                </text>
+            </g>
+            <g id="Group" transform="translate(50.989895, 95.874312) rotate(316.000000) translate(-50.989895, -95.874312) translate(27.489895, 65.874312)">
+                <rect id="Rectangle" fill="#FFFFFF" x="1.63986081" y="1.63986081" width="43.4563114" height="22.9580513"></rect>
+                <rect id="Rectangle-21" stroke="#FFFFFF" stroke-width="3" x="1.5" y="1.5" width="43.7360331" height="56.0349891" rx="7"></rect>
+                <text id="€450" font-family="Raleway-Bold, Raleway" font-size="16" font-weight="bold" letter-spacing="-0.0391111113" fill="#F5A623">
+                    <tspan x="1.37224629" y="16.2034866">€450</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

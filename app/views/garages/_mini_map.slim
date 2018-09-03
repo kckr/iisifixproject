@@ -1,0 +1,57 @@
+#map.hidden-xs.hidden-sm  data-map-scroll="true" style=" width: 100%"
+
+javascript:
+  // Note: jQuery will be available in this file; because, yet JS files have not been included
+
+    
+
+  function initMap() {
+    var lat= #{LocationService.get_lat_long_from_(params, request).first};
+    var long= #{LocationService.get_lat_long_from_(params, request).last};
+    // Create a map object and specify the DOM element for display.
+     map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: lat, lng: long},
+      zoom: 15,
+      scrollwheel: false,
+      zoomControl: false,
+      mapTypeControl: false,
+      scaleControl: false,
+      panControl: false,
+      navigationControl: false,  
+      streetViewControl: false,
+      styles:  [{"featureType":"poi","elementType":"labels.text.fill","stylers":[{"color":"#747474"},{"lightness":"23"}]},{"featureType":"poi.attraction","elementType":"geometry.fill","stylers":[{"color":"#f38eb0"}]},{"featureType":"poi.government","elementType":"geometry.fill","stylers":[{"color":"#ced7db"}]},{"featureType":"poi.medical","elementType":"geometry.fill","stylers":[{"color":"#ffa5a8"}]},{"featureType":"poi.park","elementType":"geometry.fill","stylers":[{"color":"#c7e5c8"}]},{"featureType":"poi.place_of_worship","elementType":"geometry.fill","stylers":[{"color":"#d6cbc7"}]},{"featureType":"poi.school","elementType":"geometry.fill","stylers":[{"color":"#c4c9e8"}]},{"featureType":"poi.sports_complex","elementType":"geometry.fill","stylers":[{"color":"#b1eaf1"}]},{"featureType":"road","elementType":"geometry","stylers":[{"lightness":"100"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"off"},{"lightness":"100"}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#ffd4a5"}]},{"featureType":"road.arterial","elementType":"geometry.fill","stylers":[{"color":"#ffe9d2"}]},{"featureType":"road.local","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.local","elementType":"geometry.fill","stylers":[{"weight":"3.00"}]},{"featureType":"road.local","elementType":"geometry.stroke","stylers":[{"weight":"0.30"}]},{"featureType":"road.local","elementType":"labels.text","stylers":[{"visibility":"on"}]},{"featureType":"road.local","elementType":"labels.text.fill","stylers":[{"color":"#747474"},{"lightness":"36"}]},{"featureType":"road.local","elementType":"labels.text.stroke","stylers":[{"color":"#e9e5dc"},{"lightness":"30"}]},{"featureType":"transit.line","elementType":"geometry","stylers":[{"visibility":"on"},{"lightness":"100"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#d2e7f7"}]}]
+    });
+
+    markers = {}; // its intentionally made global
+
+    // Create markers for every garage and set position.
+    // See app/helpers/garage_helper.rb
+    #{markers_here_from(garages)}
+
+    var pinColorBlue = "267EF4";
+    var pinColorGreen = "8ec165";
+    var pinImageBlue = new google.maps.MarkerImage("https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColorBlue,
+        new google.maps.Size(21, 34),
+        new google.maps.Point(0, 0),
+        new google.maps.Point(10, 34));
+     pinImageGreen = new google.maps.MarkerImage("https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColorGreen,
+        new google.maps.Size(21, 34),
+        new google.maps.Point(0, 0),
+        new google.maps.Point(10, 34));
+
+     my_marker = new google.maps.Marker({
+      map: map,
+      position: {lat: lat, lng: long},
+      title: 'You are Here!',
+      icon: pinImageBlue
+    });
+
+    // Setting the height of the map just after its rendered
+    google.maps.event.addListenerOnce(map, 'idle', function () {
+      // do something only the first time the map is loaded
+      document.getElementById('map').style.height = window.innerHeight + 'px';
+    });
+  }
+  console.log(window.innerHeight + 'px');
+
+script src="https://maps.googleapis.com/maps/api/js?sensor=false&key=#{ENV['GOOGLE_MAP_API']}&callback=initMap" async defer

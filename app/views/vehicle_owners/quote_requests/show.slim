@@ -1,0 +1,110 @@
+#dashboard
+  = render "layouts/application/#{current_user.role.underscore}_sidebar"
+  /!
+    | Content
+    | \==================================================
+  .dashboard-content
+    /! Titlebar
+    #titlebar
+      .row
+        .col-md-6
+          h2
+            = @quote_request.garage_name
+          small
+            i.fa.fa-map-marker.fa-lg.text-primary
+            = garage_distance_from_(params, request, @quote_request.garage)
+        .col-md-6
+          a.btn.btn-default.btn-lg.pull-right.margin20top href="#{garage_path(@quote_request.garage)}" View Workshop Profile
+    .row
+      .col-md-12
+        .panel.b-a.margin20top
+          .row.m-n
+            .col-md-8.b-r
+              .padder-v
+                .row
+                  .col-md-7
+                    p
+                      | Requested on&nbsp;
+                      strong
+                        = @quote_request.created_at.strftime(Config::RubyDateFormatNumeric)
+                        small
+                          |  (#{time_ago_in_words @quote_request.created_at} ago)
+                    p
+                      | Requested Lot ID:&nbsp;
+                      strong
+                        = @quote_request.lot.id
+                    p
+                      | Status:&nbsp;
+                      strong
+                        = @quote_request.status.titleize
+                      - if @quote_request.archived?
+                        i.fa.fa-archive.padding5left.blue title="Archived Data" aria-hidden="true"
+                      - else
+                        i.fa.fa-folder-open.padding5left.lime-green title="Active Data" aria-hidden="true"
+                  .col-md-5
+                    .well.well-sm.text-center
+                      - if @quote_request.quoted_amount && @quote_request.quoted_amount > 0.0
+                        h4 = number_to_currency @quote_request.quoted_amount
+                        p Quoted Amount
+                      - else
+                        p Yet to Quote Amount!
+
+                hr.m-n
+
+                h3
+                  - if @quote_request.report.file.present?
+                    | Services Requested
+                    .pull-right
+                      - if @quote_request.report_type == 'pdf'
+                        = link_to 'Download Kastastus Report', @quote_request.report_url, target: '_blank',
+                            class: 'btn btn-sm btn-default'
+                      - elsif @quote_request.report_type.in? Config::ValidImageExtensions
+                        = link_to 'View Kastastus Report', @quote_request.report_url,
+                            class: 'imagePopup btn btn-sm btn-default'
+                .services
+                  = render 'vehicle_owners/shared/selected_services_collapsible',
+                      categorised_services: @quote_request.categorised_services, quote_request: @quote_request
+
+                hr.m-n
+
+                .addtional_information
+                  h4
+                    | Additional Information
+                  p = @quote_request.additional_info
+
+                hr
+                = render 'conversation', conversation: @quote_request.conversation
+
+            .col-md-4
+              .padder-v
+                h4
+                  | Vehicle Details:
+                .well
+                  = render 'shared/vehicle_details', quote_request: @quote_request
+                hr
+                p
+                  | Proposed Start Date:&nbsp;
+                  strong
+                    = @quote_request&.proposed_start_date&.strftime(Config::RubyDateFormatNumeric) || 'N/A'
+                p
+                  | Proposed End Date:&nbsp;
+                  strong
+                    = @quote_request&.proposed_end_date&.strftime(Config::RubyDateFormatNumeric) || 'N/A'
+                p
+                  | Warranty:&nbsp;
+                  strong
+                    = @quote_request.warranty_offer.blank? ? 'N/A' : @quote_request.warranty_offer
+                .row
+                  .col-sm-6
+                    - if @quote_request.acceptable?
+                      a.acceptQuoteRequest.btn.btn-success.btn-block [href="#" data-target-url="#{accept_vehicle_owner_quote_request_path(vehicle_owner_id: current_user.id, id: @quote_request.id)}"]
+                        | Accept
+
+                  .col-sm-6
+                    - if @quote_request.rejectable?
+                      a.rejectQuoteRequest.btn.btn-danger.btn-block [href="#" data-target-url="#{reject_vehicle_owner_quote_request_path(vehicle_owner_id: current_user.id, id: @quote_request.id)}"]
+                        | Reject
+      /! Copyrights
+      .col-md-12
+        .copyrights © 2017 IISIFIX.
+  /! Content / End

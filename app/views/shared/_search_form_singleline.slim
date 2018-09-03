@@ -1,0 +1,12 @@
+= search_form_for query_object, class: 'garage-searcher form-line' do |f|
+  = hidden_field_tag :lat, params[:lat] || Config::DefaultLat
+  = hidden_field_tag :long, params[:long] || Config::DefaultLong
+  .main-search-input
+    .main-search-input-item.location
+      = f.search_field Garage::SearchPredicate,
+          id: 'searchText',
+          class: 'form-control',
+          placeholder: 'Type e.g: Turku'
+      a#map-marker href="#" data-toggle="tooltip" data-placement="top" title="Get My Location. I want #{Config::AppName} to be more precise."
+        i.fa.fa-dot-circle-o
+    = f.submit class: 'button', data: { disable_with: 'Searching...' }

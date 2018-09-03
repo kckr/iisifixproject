@@ -1,0 +1,19 @@
+.table-responsive
+  table.basic-table
+    thead
+      tr
+        th
+          | Owner
+        th
+          | Car/Model
+        th
+          | Report
+        th
+          | Status
+        th
+          | Requested Date
+        th
+          | Actions
+    tbody
+      - quote_requests.each do |quote_request|
+        = render 'quote_request', quote_request: quote_request

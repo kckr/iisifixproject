@@ -1,0 +1,19 @@
+p
+  | Welcome #{@email}!
+
+p
+  | You can confirm your account email through the link below:
+
+p = link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token)
+p
+  | In addition, we have set a random secured password for your account which is
+  strong
+    |  "#{@resource.metadata['temp_password']}".
+  |  This is a temporary password which will be invalid once you setup your account.
+  |  Remember that you need to confirm this email address before you can use this password to login.
+p
+  | Thanks
+p
+  | #{Config::AppName} Team
+
+

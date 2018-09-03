@@ -1,0 +1,18 @@
+#vehicle_owner.tab-content[class="#{activity(resource, :VehicleOwner)}" style=("display: inline-block;")]
+  / Autofill only for vehicle_owner type registration
+  = form_for((resource.vehicle_owner? ? resource : resource.class.new), as: resource_name, html: { id: 'vehicle_owner_signup', class: 'register' },
+      url: registration_path(resource_name)) do |f|
+    / Setting boilerplate data
+    - random_string = SecureRandom.urlsafe_base64
+    = f.hidden_field :password, value: random_string
+    = f.hidden_field :password_confirmation, value: random_string
+
+    / to determine which form  have been submitted
+    = f.hidden_field :type, value: Base64.encode64('VehicleOwner')
+
+    = render 'signup_common_form', f: f
+
+    .small-dialog-footer
+      h3
+        | Or, sign up with
+      = render 'shared/social_signin_buttons'

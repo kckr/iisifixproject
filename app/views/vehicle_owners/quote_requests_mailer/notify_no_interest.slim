@@ -1,0 +1,7 @@
+p
+  | Hello #{@quote_request.vehicle_owner.first_name}!!!
+p
+  | #{@quote_request.garage.name} did not find your request interesting so they rejected your request.
+  |  You can still send requests to other garages.
+= link_to "Here is the link to #{Config::AppName} where you can search for other garages if you like.",
+    garages_url

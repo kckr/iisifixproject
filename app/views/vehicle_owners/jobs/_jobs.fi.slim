@@ -1,0 +1,25 @@
+.table-responsive
+  table.table.table-bordered.table-striped.b-t.b-light
+    thead
+      tr
+        th
+          | JID
+        th
+          | työpaja
+        th
+          | Auto / Malli
+        th
+          | Status
+        th
+          | Maksu
+        th
+          | Takuu
+        th
+          | Aloituspäivämäärä
+        th
+          | Päättymispäivä
+        th
+          | Toiminnot
+    tbody
+      - jobs.each do |job|
+        = render 'job', job: job

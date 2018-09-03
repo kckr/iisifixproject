@@ -1,0 +1,88 @@
+h3
+  | Profiilini
+hr
+= simple_form_for current_user, url: vehicle_owner_user_path(current_user) do |f|
+  .row
+    .col-md-6
+      .form-group
+        = f.label :email, 'Sähköposti*'
+        = f.text_field :email, required: true, placeholder: 'john@iisifix.fi', class: 'form-control'
+        = f.error_message_for :email
+    .col-md-6
+      .form-group
+        = f.label :avatar, 'profiilikuva'
+        = f.file_field :avatar, class: 'form-control'
+        = f.error_message_for :avatar
+
+  .row
+    .col-md-6
+      .form-group
+        = f.label :first_name, 'Etunimi*'
+        = f.text_field :first_name, required: true, placeholder: 'John', class: 'form-control'
+        = f.error_message_for :first_name
+    .col-md-6
+      .form-group
+        = f.label :last_name, 'Sukunimi*'
+        = f.text_field :last_name, required: true, placeholder: 'Doe', class: 'form-control'
+        = f.error_message_for :last_name
+
+  .row
+    .col-md-6
+      .form-group
+        = f.label :phone_number, 'Puhelinnumero*'
+        .input-group
+          span.input-group-addon
+            | +358
+          = f.text_field :phone_number, required: true, class: 'form-control'
+        = f.error_message_for :phone_number
+    .col-md-6
+      .form-group
+        = f.label :date_of_birth, 'Syntymäaika'
+        = f.text_field :date_of_birth, placeholder: 'mm/dd/yyyy', class: 'form-control'
+        = f.error_message_for :date_of_birth
+
+  .row
+    .col-md-6
+      .form-group
+        = f.label :password, 'Salasana'
+        = f.password_field :password, class: 'form-control'
+        = f.error_message_for :password
+        p 8-30 kirjainta
+    .col-md-6
+      .form-group
+        = f.label :password_confirmation, 'Salasanan vahvistus'
+        = f.password_field :password_confirmation, class: 'form-control'
+        = f.error_message_for :password_confirmation
+
+  .row
+    .col-md-12
+      .panel.panel-default
+        .panel-heading Asetukset
+        .panel-body
+          = f.fields_for :setting do |ff|
+            .checkbox.i-checks.margin0top
+              = ff.label :notify_via_sms do
+                = ff.check_box :notify_via_sms
+                i
+                | Ilmoita tekstiviestillä
+            .checkbox.i-checks.margin0bottom
+              = ff.label :notify_via_email do
+                = ff.check_box :notify_via_email
+                i
+                | Ilmoita sähköpostitse
+
+  .row
+    .col-md-6
+      .form-group
+        = f.label :company_name, 'Yrityksen nimi'
+        = f.text_field :company_name, class: 'form-control', placeholder: "#{Config::AppName}"
+    .col-md-6
+      .form-group
+        = f.label :company_url, 'Yritys URL'
+        = f.text_field :company_url, placeholder: 'www.example.com', class: 'form-control'
+        = f.error_message_for :company_url
+
+  .row
+    .col-md-12
+      .form-group
+        = f.submit 'Päivitä profiili', class: 'btn btn-primary'

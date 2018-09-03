@@ -1,0 +1,20 @@
+tr
+  td
+    = job.id
+  td
+    = link_to job.vehicle_owner.full_name, garage_owner_job_path(job, garage_owner_id: current_user.id)
+  td
+    = job.vehicle_model
+  td
+    .label class="#{job.decorate.status_label}"
+      = job.status.titleize
+  td
+    = number_to_currency job.quoted_amount
+  td
+    = job.warranty_offer
+  td
+    = job.proposed_start_date
+  td
+    = job.proposed_end_date
+  td
+    = render 'actions', job: job

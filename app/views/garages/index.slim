@@ -1,0 +1,68 @@
+.fs-container
+  .fs-inner-container.content
+    .fs-content
+      /! Search
+      section.search
+        .row
+          .col-md-12
+            /! Row With Forms
+            = render 'shared/search_form_multiline', query_object: @q, services: @services
+      section.listings-container
+        /! Sorting / Layout Switcher
+        .row.fs-switcher
+          /! Showing Results
+          h2.showing-results.col-md-12.margin-bottom-10
+            | #{@garages.count} workshops are ready to offer quotations.
+        /! Listings
+        .row.fs-listings
+          .garage-collection.margin20top
+            = form_for QuoteRequest.new, url: new_quote_request_path, method: :get do |f|
+              - @garages.each do |garage|
+                /! Listing Item
+                .col-lg-12.col-md-12
+                  .listing-item-container.list-layout data-marker-id="#{garage.id}"
+                    = link_to 'javascript:void(0)', class: 'listing-item pin-on-map',
+                        data: {lat: garage.latitude, lng: garage.longitude} do
+                      /! Image
+                      .listing-item-image
+                        = image_tag garage.logo.thumb.url
+                      /! Content
+                      .listing-item-content
+                        .listing-badge.now-open Now Open
+                        .listing-item-inner
+                          h3
+                            = garage.name
+                            span.star-rating data-rating="#{garage.avg_rating}"
+                              span.rating-counter (12 reviews)
+                          span
+                            i.im.im-icon-Timer-2
+                            | #{garage.opening_time || 'N/A'} - #{garage.closing_time || 'N/A'}
+                          br/
+                          span
+                            i.im.im-icon-Location-2
+                            = garage_distance_from_(params, request, garage)
+                          br/
+                          - unless current_user&.garage_owner?
+                            .checkboxes.search_garage_select_quote
+                              input.select-garage [type="checkbox"
+                                id="quote_request_garages_#{garage.id}"
+                                data-marker-id="#{garage.id}"
+                                name="quote_request[garages][#{garage.id}]"]
+
+                              label for="quote_request_garages_#{garage.id}" Request Quote
+                              button.button.border type="button" onclick="javascript:window.location.href='#{url_for(garage)}';"
+                                | View Profile
+
+                        / span.like-icon
+                /! Listing Item / End
+              .actions
+                - unless current_user&.garage_owner?
+                  = f.submit 'Request Quote for Selected Garages',
+                      id: 'sendQuoteRequestToSelected',
+                      class: 'btn btn-primary btn-lg pull-right margin-bottom-20'
+
+        /! Listings Container / End
+  .fs-inner-container.map-fixed
+    /! Map
+    #map-container
+      = render 'garages/mini_map', garages: @garages

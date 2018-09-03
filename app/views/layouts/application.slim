@@ -1,0 +1,22 @@
+doctype html
+html.app lang="en"
+  head
+    title #{Config::AppName}
+    = csrf_meta_tags
+
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => 'reload'
+
+  body(class="#{current_user.try(:role).underscore} #{self.try(:scope_name)} #{controller_name} #{action_name}")
+    section.hbox.stretch
+      = render "layouts/application/#{current_user.role.underscore}_sidebar"
+      section#content
+        section.vbox
+          = render "layouts/application/#{current_user.role.underscore}_header"
+          = render 'flash_message'
+          section.scrollable.padder
+            .dashboard-content
+              = yield
+            .dashboard-footer-container
+              = render 'layouts/static/footer'
+
+    = javascript_include_tag 'application', 'data-turbolinks-track' => 'reload'

@@ -1,0 +1,33 @@
+#dashboard
+  = render "layouts/application/#{current_user.role.underscore}_sidebar"
+  /!
+    | Content
+    | \==================================================
+  .dashboard-content
+    #titlebar
+      .row
+        .col-md-12
+          h2 Search Garages
+          = render 'shared/search_form_singleline', query_object: Garage.ransack
+    .row
+      /! Recent Activity
+      .col-md-12
+        .dashboard-list-box
+          - if @active_quote_request_lots.present?
+            h4
+              | "#{@active_quote_request_lots.requests_needing_action.count}" Requests need action
+            = render 'quote_requests', quote_request_lots: @active_quote_request_lots
+          - else
+            h4 No active Quote Requests found.
+          - if @archived_quote_request_lots.present?
+            .panel.panel-default.each-quote-request
+              .panel-heading
+                a.accordion-toggle.collapsed data-toggle="collapse" href="#archive"
+                  h3 Archive
+              .panel-collapse.collapse.out id="archive"
+                .panel-body
+                  = render 'quote_requests', quote_requests: @archived_quote_request_lots
+      /! Copyrights
+      .col-md-12
+        .copyrights © 2017 IISIFIX.
+  /! Content / End

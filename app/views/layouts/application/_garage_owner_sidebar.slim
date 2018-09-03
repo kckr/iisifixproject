@@ -1,0 +1,67 @@
+a.dashboard-responsive-nav-trigger href="#"
+  i.fa.fa-reorder
+  | Dashboard Navigation
+.dashboard-nav
+  .dashboard-nav-inner style=("max-height: 321px;")
+    .dash-garage-details
+      .garage-logo
+        = image_tag @garage.logo_url, class: 'img-thumbnail', width: '100%'
+      h2
+        = @garage.name
+      p
+        i.sl.sl-icon-location
+        span
+          | From:&nbsp;
+          = @garage.address
+      p
+        i.sl.sl-icon-people
+        span
+          | Joined:&nbsp;
+          = @garage.created_at.year
+      = render 'layouts/application/locale_menu'
+    ul
+      li
+        = link_to home_page_path, class: 'auto' do
+          i.sl.sl-icon-home
+          span.font-bold Front Page
+      li class="#{ active_class(garage_owner_quote_requests_path(current_user), root: true) }"
+        = link_to garage_owner_quote_requests_path(current_user), class: 'auto' do
+          - if current_user.garage.quote_requests.hot_for_go.count > 0
+            b.badge.bg-danger.pull-right title="Items needing your action"
+              = current_user.garage.quote_requests.hot_for_go.count
+          i.fa.fa-gavel.iconq
+          | Bids
+      li class="#{ active_class(garage_owner_jobs_path(current_user)) }"
+        = link_to garage_owner_jobs_path(current_user), class: 'auto' do
+          - if current_user.garage.jobs.hot_for_go.count > 0
+            b.badge.bg-danger.pull-right title="Items needing your action"
+              = current_user.garage.jobs.hot_for_go.count
+          i.sl.sl-icon-briefcase
+          | Jobs
+      li
+        a href="#"
+          i.sl.sl-icon-docs
+          | Invoicing
+      li class="#{ active_class(edit_garage_owner_garage_profile_path(current_user)) }"
+        = link_to edit_garage_owner_garage_profile_path(current_user), class: 'auto' do
+          i.sl.sl-icon-user
+          | Profile
+      li
+        = link_to destroy_user_session_path, method: :delete, class: 'auto' do
+          i.sl.sl-icon-power
+          | Logout
+    .need-help
+      h3
+        | Need help?
+      hr
+      p
+        i.fa.fa-phone
+        | 053 157 33 14
+      p
+        i.fa.fa-email
+        a href="mailto: support@iisifix.fi"
+          | support@iisifix.fi
+      p
+        a href="#"
+          | FAQ
+      hr

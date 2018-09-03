@@ -1,0 +1,12 @@
+- if job.cancellable?
+  a.cancelJob [href="#"
+    data-target-url="#{cancel_vehicle_owner_job_path(vehicle_owner_id: current_user.id, id: job.id)}"]
+    | Cancel
+  | &nbsp;|&nbsp;
+
+- if job.confirmable?
+  a.confirmJob*confirm_job_attributes_for_(job, current_user) href="#"
+    | Confirm
+  | &nbsp;|&nbsp;
+
+= link_to 'View Detail', vehicle_owner_job_path(job, vehicle_owner_id: current_user.id)

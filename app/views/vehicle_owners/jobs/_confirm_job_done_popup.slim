@@ -1,0 +1,57 @@
+.container#jobDoneConfirmationPopup.white-popup-block.mfp-hide
+  .row
+    .col-md-6.col-md-offset-3
+      .well
+        button.mfp-close.margin10right title="%title%" type="button" &#215;
+        h3.dialog-title
+          | Confirm Job Done by&nbsp;
+          span#garageName Garage Name
+
+        hr
+
+        p
+          | By clicking the link below you confirm that the job is done.
+          |  Please contact admin in case of any dispute or misunderstanding.
+          |  You can chat with us anytime by clicking on the chat button on the bottom right of the page.
+        / URL will be set dynamically from JS: see jobs_controller/confirm_job_done_popup.js
+        .checkbox.i-checks
+          label
+            input#iWouldLoveToPostReview checked="true" type="checkbox" name="rating[would_love_to_post_request]"
+            i
+            | I would love to post review
+
+        hr
+
+        = form_for Rating.new, url: '', method: 'patch' do |f|
+          .input-fields#ratingFormInputFields
+            .row
+              .col-md-5.form-group
+                / Rating stars
+                = f.label :star_count, 'Your Rating*'
+                .stars
+                  - 5.times do |index|
+                    i.rateJob.fa.fa-star.gold.padding5left.mouse-pointer id="fa-star-#{index}"
+                = f.hidden_field :star_count
+
+            .row
+              .col-md-6.form-group
+                = f.label :company_name
+                .input-group
+                  = f.text_field :company_name, placeholder: "Eg. #{Config::AppName}", class: 'form-control', value: current_user.company_name
+                  span.input-group-addon
+                    i.fa.fa-building
+              .col-md-6.form-group
+                = f.label :job_title, 'Your position at work'
+                .input-group
+                  = f.text_field :job_title, placeholder: 'Eg. Software Engineer', class: 'form-control', value: current_user.job_title
+                  span.input-group-addon
+                    i.fa.fa-black-tie
+            .row
+              .col-md-12.form-group
+                = f.label :testimonial, 'How did you feel working with us?'
+                = f.text_area :testimonial, class: 'form-control'
+          .row.actions
+            .col-md-7.form-group
+              = f.submit 'Confirm Done!', class: 'btn btn-block btn-primary'
+            .col-md-5
+              = link_to 'Review Job once again', '#', id: 'jobUrl'

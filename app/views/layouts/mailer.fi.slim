@@ -1,0 +1,12 @@
+html
+  head>
+    meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+  body
+    header
+    section
+      = yield
+    footer
+      p Kiitos
+      P #{Config::AppName} Joukkue
+      hr
+      p &copy; #{DateTime.now.year} #{Config::AppName.upcase}. Kaikki oikeudet pidätetään.

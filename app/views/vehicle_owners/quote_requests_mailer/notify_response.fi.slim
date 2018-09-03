@@ -1,0 +1,7 @@
+p
+  | Hei #{@quote_request.vehicle_owner.first_name}!!!
+p
+  | #{@quote_request.garage.name} on vastannut pyyntöösi juuri nyt tarjouksen.
+  |  Tarkista tiedot ja vastaamaan kysymyksiin.
+= link_to "Tässä on linkki tarjouspyyntö in #{Config::AppName}.",
+    vehicle_owner_quote_request_url(id: @quote_request.id, vehicle_owner_id: @vehicle_owner_id )

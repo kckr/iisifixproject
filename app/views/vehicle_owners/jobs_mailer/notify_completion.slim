@@ -1,0 +1,8 @@
+p
+  | Hello #{@job.vehicle_owner.first_name}!!!
+p
+  | #{@job.garage.name} has marked this job as&nbsp;
+  strong Done
+  |  . Please review the job details and respond accordingly.
+= link_to "Here is the link to the job in #{Config::AppName}.",
+    vehicle_owner_job_url(id: @job.id, vehicle_owner_id: @vehicle_owner_id )

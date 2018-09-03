@@ -1,0 +1,16 @@
+.container
+  #sign-in-dialog.sign-in-form.style-1
+    .small-dialog-header
+      h3
+        | Resend unlock instructions
+    = form_for(resource, as: resource_name, url: unlock_path(resource_name), html: {method: :post, class: 'login'}) do |f|
+      .error-notification
+        = f.error_message_for :unlock_token
+      p.form-row.form-row-wide
+        = f.label :email do
+          | Email*
+          i.im.im-icon-Male
+          = f.email_field :email, placeholder: 'user@example.com', required: true, autofocus: true, class: 'input-text'
+        = f.error_message_for :email, prefix: true
+      .form-row
+        = f.submit 'Resend unlock instructions', class: 'button border margin-top-5'

@@ -1,0 +1,40 @@
+header#header-container
+  /! Header
+  #header
+    .container
+      /! Left Side Content
+      .left-side
+        /! Logo
+        #logo
+          = link_to root_path, class: 'navbar-brand' do
+            = image_tag('iisifix.svg', alt: 'iisifix logo', class: 'img-responsive', style: 'max-height: 25px;')
+        /! Mobile Navigation
+        .mmenu-trigger
+          button.hamburger.hamburger--collapse type="button"
+            span.hamburger-box
+              span.hamburger-inner
+        nav#navigation.style-1
+          = render 'layouts/application/locale_menu'
+
+      /! Left Side Content / End
+      /! Right Side Content / End
+      .right-side
+        .header-widget
+          - if current_user.present?
+            = link_to root_path, class: 'sign-in' do
+              span Mene Dashboard
+          - else
+            = link_to new_user_session_path, class: 'sign-in' do
+              span Kirjaudu sisään
+          - if current_user.present?
+            = link_to destroy_user_session_path, method: :delete, class: 'sign-in' do
+              span Kirjaudu ulos
+          - else
+            = link_to new_user_registration_path, class: 'sign-in' do
+              span Rekisteröidy
+          = link_to new_user_registration_path(user: {form_type: Base64.encode64('GarageOwner')}), class: 'button border with-icon' do
+            | lisää autotalli
+            i.sl.sl-icon-plus
+      /! Right Side Content / End
+  /! Header / End
+.clearfix

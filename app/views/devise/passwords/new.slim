@@ -1,0 +1,14 @@
+.container
+  #sign-in-dialog.sign-in-form.style-1
+    .small-dialog-header
+      h3
+        | Forgot your password?
+    = form_for(resource, as: resource_name, url: password_path(resource_name), html: {method: :post, class: 'login'}) do |f|
+      p.form-row.form-row-wide
+        = f.label :email do
+          | Email*
+          i.im.im-icon-Male
+          = f.email_field :email, placeholder: 'user@example.com', required: true, autofocus: true, class: 'input-text'
+        = f.error_message_for :email, prefix: true
+      .form-row
+        = f.submit 'Send me reset password instructions', class: 'button border margin-top-5'

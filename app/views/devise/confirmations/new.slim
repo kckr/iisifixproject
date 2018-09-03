@@ -1,0 +1,18 @@
+.container
+  #sign-in-dialog.sign-in-form.style-1
+    .small-dialog-header
+      h3
+        | Resend confirmation instructions
+    = form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: {method: :post, class: 'login'}) do |f|
+      .cofirmation-error-message
+        = f.error_message_for :confirmation_token, prefix: 'Confirmation token ',
+            wrapper_class: 'panel alert alert-danger', icon_class: 'glyphicon glyphicon-exclamation-sign'
+
+      p.form-row.form-row-wide
+        = f.label :email do
+          | Email*
+          i.im.im-icon-Male
+          = f.email_field :email, placeholder: 'user@example.com', required: true, autofocus: true, class: 'input-text'
+        = f.error_message_for :email, prefix: true
+      .form-row
+        = f.submit 'Resend confirmation instructions', class: 'button border margin-top-5'

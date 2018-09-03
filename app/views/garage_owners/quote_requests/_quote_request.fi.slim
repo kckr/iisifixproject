@@ -1,0 +1,38 @@
+tr
+  td
+    = quote_request.id
+  td
+    = quote_request.vehicle_owner.full_name
+  td
+    = quote_request.vehicle_model
+  td
+    - if quote_request.report.file.present?
+      // TODO: Conditional class depending on the type of document
+      - if quote_request.report_type == 'pdf'
+        = link_to 'Lataa Kastastus Report', quote_request.report_url, target: '_blank'
+      - else
+        = link_to 'Katso Kastastus Report', quote_request.report_url,
+            class: 'imagePopup'
+    - else
+      | N/A
+  td
+    .label class="#{quote_request.status_label}"
+      = quote_request.status.titleize
+  td
+    = quote_request.created_at.strftime(Config::RubyDateFormatNumeric)
+  td
+    span
+      - if quote_request.quotable?
+        a.respondQuoteRequest*quote_request_response_data_attrs_for_(quote_request) href="#"
+          | Lähetä Quote
+        | &nbsp;|&nbsp;
+
+    span
+      - if quote_request.ignorable?
+        a.ignoreQuoteRequest [href="#"
+          data-target-url="#{ignore_garage_owner_quote_request_path(garage_owner_id: current_user.id, id: quote_request.id)}"]
+          | Jättää huomiotta
+        | &nbsp;|&nbsp;
+
+    a href="#{garage_owner_quote_request_path(id: quote_request, garage_owner_id: current_user.id)}"
+      | Näytä Yksityiskohdat

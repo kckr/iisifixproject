@@ -1,0 +1,2 @@
+class NewGarage < ApplicationRecord
+end

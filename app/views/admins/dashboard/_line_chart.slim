@@ -1,0 +1,7 @@
+h3 Trend for Quote Requests and Jobs created daily basis
+= line_chart [{ name: 'Quote Request', data: QuoteRequest.group_by_day(:created_at, last: 45).count },
+    { name: 'Job', data: Job.group_by_day(:created_at, last: 45).count },
+    { name: 'Vehicle Owner', data: VehicleOwner.group_by_day(:created_at, last: 45).count },
+    { name: 'Garage Owner', data: GarageOwner.group_by_day(:created_at, last: 45).count },
+    { name: 'Garage', data: Garage.group_by_day(:created_at, last: 45).count },
+    ]

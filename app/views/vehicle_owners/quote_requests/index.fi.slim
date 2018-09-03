@@ -1,0 +1,15 @@
+- if @active_quote_request_lots.present?
+  h3
+    | "#{@active_quote_request_lots.requests_needing_action.count}" Pyynnöt tarvitaan toimia
+  = render 'quote_requests', quote_request_lots: @active_quote_request_lots
+- else
+  h3 Ei aktiivisia tarjouspyyntöjä löydetty.
+
+- if @archived_quote_request_lots.present?
+  .panel.panel-default.each-quote-request
+    .panel-heading
+      a.accordion-toggle.collapsed data-toggle="collapse" href="#archive"
+        h3 arkisto
+    .panel-collapse.collapse.out id="archive"
+      .panel-body
+        = render 'quote_requests', quote_request_lots: @archived_quote_request_lots

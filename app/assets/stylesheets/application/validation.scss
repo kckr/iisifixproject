@@ -1,0 +1,28 @@
+$bg-danger: #ffe4e2;
+$error-text-color: #f64f4e;
+$error-border: #f6baaa;
+$dark-grey: #111;
+.has-validation-error{
+  .validation-error{
+    background: transparent;
+    color: $error-text-color;
+    border: none;
+  }
+
+  input, select{
+    background-color: $bg-danger;
+    border-color: $error-border;
+    color: $dark-grey;
+    font-weight: 500;
+  }
+
+  &.checkbox{
+    label{
+      &:before{
+        background-color: $bg-danger;
+        border-color: $error-border;
+      }
+    }
+  }
+
+}

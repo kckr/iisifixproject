@@ -1,0 +1,16 @@
+.title We have just received a message from one of our potential clients.
+p
+  | Name: #{@contact.full_name}
+  br
+  | Email: #{ mail_to @contact.email}
+.subject
+  | Subject: &nbsp;
+  strong = @contact.subject
+.message
+  hr
+  Strong Message: &nbsp;
+  = @contact.body
+  hr
+.footer
+  = @contact.created_at.strftime("Sent on %m/%d/%Y")
+  = @contact.created_at.strftime(" at %I:%M%p")

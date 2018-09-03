@@ -1,0 +1,9 @@
+/* This is for locale menu in User Dashboard, not in un-authenticated pages*/
+.locale-menu{
+  li{
+    list-style: none;
+    display: inline-block;
+    float: right;
+    margin-right: 10px;
+  }
+}

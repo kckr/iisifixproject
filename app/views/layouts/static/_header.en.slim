@@ -1,0 +1,34 @@
+nav.iisifixco-nav role="navigation"
+  .container
+    .row.margin20bottom
+      .col-sm-2.col-xs-6
+        #iisifixco-logo
+          = link_to root_path do
+            = image_tag('iisifix-logo.png', alt: 'iisifix logo', class: 'img-responsive')
+      .col-sm-10.col-xs-6.text-right.menu-1
+        = render 'layouts/application/locale_menu'
+        ul
+          li class="#{ active_class(root_path) }"
+            = link_to 'Home', home_page_path
+          li class="#{ active_class(about_page_path) }"
+            = link_to 'About Us', about_page_path
+          li class="#{ active_class(how_it_works_page_path) }"
+            = link_to 'How It Works', how_it_works_page_path
+          li
+            a href="#{ Config::BlogUrl }" Blog
+          li class="#{ active_class(contact_page_path) }"
+            = link_to 'Contact Us', contact_page_path
+          li.btn-cta.btn-transparent
+            - if current_user.present?
+              = link_to root_path do
+                span Goto Dashboard
+            - else
+              = link_to new_user_session_path do
+                span Sign In
+          li.btn-cta
+            - if current_user.present?
+              = link_to destroy_user_session_path, method: :delete do
+                span Log out
+            - else
+              = link_to new_user_registration_path do
+                span Sign Up

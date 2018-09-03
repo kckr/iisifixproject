@@ -1,0 +1,60 @@
+.row
+  .col-md-6
+    h3
+      = @job.garage_name
+    small
+      i.fa.fa-map-marker.fa-lg.text-primary
+      = garage_distance_from_(params, request, @job.garage)
+  .col-md-6
+    = link_to 'Näytä korjaamoprofiili', garage_path(@job.garage), class: 'btn btn-default btn-lg pull-right margin20top'
+.panel.b-a.margin20top
+  .row.m-n
+    .col-md-8.b-r
+      .padder-v
+        .row
+          .col-md-7
+            p
+              | Aloituspäivämäärä:&nbsp;
+              strong
+                = @job.proposed_start_date
+            p
+              | Päättymispäivä:&nbsp;
+              strong
+                = @job.proposed_end_date
+            p
+              | Tila:&nbsp;
+              strong
+                = @job.status.titleize
+          .col-md-5
+            .well.well-sm.text-center
+              h4
+                = t('number.currency.format.unit')
+                = @job.quoted_amount
+              p
+                | arvioitu hinta
+        hr.m-n
+        h3
+          | pyydetyt palvelut
+          - if @job.report_url.present?
+            .pull-right
+              = link_to 'Katso Katsastus PDF', @job.report_url, class: 'imagePopup btn btn-sm btn-default'
+        .services-selected-nail
+          = render 'vehicle_owners/shared/selected_services_collapsible',
+              categorised_services: @job.services.decorate.group_by{ |x| x.category.name },
+              quote_request: @job.quote_request
+
+        hr.m-n
+
+        .addtional_information
+          h4
+            | lisätiedot
+          p
+            = @job.additional_info
+        hr
+        /= render 'conversation'
+
+    .col-md-4
+      = render 'vehicle_owners/jobs/show/right-side-bar', job: @job
+
+.popup-container
+  = render 'vehicle_owners/jobs/confirm_job_done_popup'

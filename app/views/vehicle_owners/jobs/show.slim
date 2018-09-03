@@ -1,0 +1,74 @@
+#dashboard
+  = render "layouts/application/#{current_user.role.underscore}_sidebar"
+  /!
+    | Content
+    | \==================================================
+  .dashboard-content
+    /! Titlebar
+    #titlebar
+      .row
+        .col-md-6
+          h2
+            = @job.garage_name
+          small
+            i.fa.fa-map-marker.fa-lg.text-primary
+            = garage_distance_from_(params, request, @job.garage)
+        .col-md-6
+          = link_to 'View Workshop Profile', garage_path(@job.garage), class: 'btn btn-default btn-lg pull-right margin20top'
+    .row
+      .col-md-12
+        .panel.b-a.margin20top
+          .row.m-n
+            .col-md-8.b-r
+              .padder-v
+                .row
+                  .col-md-7
+                    p
+                      | Start Date:&nbsp;
+                      strong
+                        = @job.proposed_start_date
+                    p
+                      | End Date:&nbsp;
+                      strong
+                        = @job.proposed_end_date
+                    p
+                      | Status:&nbsp;
+                      strong
+                        = @job.status.titleize
+                  .col-md-5
+                    .well.well-sm.text-center
+                      h4
+                        = t('number.currency.format.unit')
+                        = @job.quoted_amount
+                      p
+                        | Quoted Amount
+                hr.m-n
+                h3
+                  | Services Requested
+                  - if @job.report_url.present?
+                    .pull-right
+                      = link_to 'View Kastastus PDF', @job.report_url, class: 'imagePopup btn btn-sm btn-default'
+                .services-selected-nail
+                  = render 'vehicle_owners/shared/selected_services_collapsible',
+                      categorised_services: @job.services.decorate.group_by{ |x| x.category.name },
+                      quote_request: @job.quote_request
+
+                hr.m-n
+
+                .addtional_information
+                  h4
+                    | Additional Information
+                  p
+                    = @job.additional_info
+                hr
+                /= render 'conversation'
+
+            .col-md-4
+              = render 'vehicle_owners/jobs/show/right-side-bar', job: @job
+      /! Copyrights
+      .col-md-12
+        .copyrights © 2017 IISIFIX.
+  /! Content / End
+
+.popup-container
+  = render 'vehicle_owners/jobs/confirm_job_done_popup'

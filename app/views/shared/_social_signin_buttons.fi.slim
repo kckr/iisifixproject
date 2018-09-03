@@ -1,0 +1,12 @@
+.row.margin20top
+  .col-md-12
+    .fb
+      = link_to user_facebook_omniauth_authorize_path, class: 'btn btn-block' do
+        i.fa.fa-facebook.pull-left
+        |  Kirjaudu sisään facebook tunnuksilla
+.row
+  .col-md-12
+    .google
+      = link_to user_google_oauth2_omniauth_authorize_path, class: 'btn btn-block' do
+        i.fa.fa-google-plus.pull-left
+        |  Kirjaudu sisään Google tunnuksilla

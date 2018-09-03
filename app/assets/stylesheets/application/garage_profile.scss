@@ -1,0 +1,17 @@
+#servicesRequested{
+  .checkbox{
+    margin: 0;
+  }
+}
+
+.open-days-selector{
+  .btn-primary.active{
+    background-color: #204d74;
+    border-color: #122b40;
+  }
+}
+.make-list{
+  max-height: 400px;
+  overflow-y: scroll;
+  border: 1px #d2dae1 solid
+}

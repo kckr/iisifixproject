@@ -1,0 +1,15 @@
+- if @active_jobs.present?
+  h3
+    | "#{@jobs_doing_count}" Työpaikat käynnissä
+  = render 'jobs', jobs: @active_jobs
+- else
+  h3 Ei aktiivisia töitä tällä hetkellä
+
+- if @archived_jobs.present?
+  .panel.panel-default.each-quote-request
+    .panel-heading
+      a.accordion-toggle.collapsed data-toggle="collapse" href="#archive"
+        h3 Archive
+    .panel-collapse.collapse.out id="archive"
+      .panel-body
+        = render 'jobs', jobs: @archived_jobs

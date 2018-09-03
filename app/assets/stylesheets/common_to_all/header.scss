@@ -1,0 +1,150 @@
+/*PEN STYLES*/
+$dark: #292938;
+$light: #efefef;
+$white: #efefef;
+$black: #1a1b18;
+$color1: #3C91E6;
+$color2: #DE541E;
+
+@mixin position($pos: relative, $top: null, $right: null, $bottom: null, $left: null) {
+	/*POSITION*/
+	position: $pos;
+	top: $top;
+	right: $right;
+	bottom: $bottom;
+	left: $left;
+}
+
+body {
+	background: $dark * 1.5;
+}
+
+.mainNav {
+	background: $light;
+	color: $black;
+	max-height: 70px;
+	position: relative;
+
+	a {
+		text-decoration: none;
+	}
+
+	.logo {
+		display: inline-block;
+		color: #fff;
+		font-size: 1.7em;
+		height: 40px;
+		line-height: 1.55em;
+		letter-spacing: -2px;
+		text-transform: uppercase;
+		padding: 0 10px;
+		z-index: 0;
+
+		@include position;
+
+		&:hover:before {
+			background: $dark;
+		}
+
+		&:before {
+			content: "";
+			background: $color1;
+			z-index: -1;
+
+			@include position(absolute, 0, 0, 0, 0);
+		}
+
+		a {
+			color: $white;
+		}
+	}
+
+	.menu {
+		background: $light;
+		box-shadow: inset 0 1px 5px rgba(0, 0, 0, 0.1);
+		border-top: 1px solid ($light / 1.1);
+		display: none;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		text-align: center;
+
+		@include position(absolute, 60px, 0, null, 0);
+
+		a {
+			color: $dark;
+			border-bottom: 1px solid ($light / 1.1);
+			font-weight: bold;
+			display: block;
+			padding: 15px;
+
+			&:hover {
+				background: $dark;
+				color: $white;
+			}
+		}
+	}
+
+	.navBars {
+		display: inline-block;
+		font-size: 1.7em;
+		line-height: 1.5em;
+		float: right;
+
+		/*USER SELECTION*/
+		user-select: none;
+		-webkit-user-select: none;
+	}
+}
+
+#xBxHack {
+	visibility: hidden;
+	opacity: 0;
+	position: absolute;
+	top: -99999px;
+
+	&:checked ~ nav .menu {
+		display: block;
+	}
+}
+
+header .container {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+@media screen and (min-width: 600px) {
+	.mainNav {
+		overflow: hidden;
+		.navBars {
+			display: none;
+		}
+
+		.container {
+			padding-top: 0;
+			padding-bottom: 0;
+		}
+
+		.logo {
+			margin: 10px 0;
+		}
+
+		.menu {
+			display: block;
+			box-shadow: none;
+			border: none;
+			float: right;
+
+			@include position(static);
+
+			li {
+				display: inline-block;
+			}
+
+			a {
+				border: none;
+				padding: 20px 10px;
+			}
+		}
+	}
+}

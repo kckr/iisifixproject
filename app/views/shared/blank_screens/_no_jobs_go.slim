@@ -1,0 +1,12 @@
+section#not-found.center.blank-content
+  h2
+    | No Jobs Founds
+  p
+    | We're sorry, but no jobs are present at the moment.
+    br
+    | Please update your profile for better presence.
+  /! Search
+  .row
+    .col-lg-8.col-lg-offset-2
+      = link_to edit_garage_owner_garage_profile_path(current_user), class: 'button large' do
+        | Update My Profile

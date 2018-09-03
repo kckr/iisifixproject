@@ -1,0 +1,29 @@
+header#iisifixco-header.iisifixco-cover.iisifixco-cover-sm role="banner" style="background-image:url('#{image_url('img_bg_2.jpg')}');"
+  .overlay
+  .container
+    .row
+      .col-md-6.col-md-offset-3
+        .display-t
+          .display-tc.animate-box data-animate-effect="fadeIn"
+            h1.text-center Luo uusi tili
+
+.iisifixco-section.registration-login
+  .container
+    .row
+      .col-md-12.animate-box
+        section
+          ul.nav.nav-tabs[role="tablist"]
+            li[role="presentation" class="#{activity(resource, :VehicleOwner)}"]
+              a[href="#vehicle_owner" aria-controls="home" role="tab" data-toggle="tab"]
+                | Olen ajoneuvon omistaja
+            li[role="presentation" class="#{activity(resource, :GarageOwner)}"]
+              a[href="#garage_owner" aria-controls="profile" role="tab" data-toggle="tab"]
+                | Olen korjaamon omistaja
+
+          .tab-content.padding20all.bordered-all-but-no-top.min400height
+            = render 'vehicle_owner_tab'
+            = render 'garage_owner_tab'
+
+    .row
+      .col-md-8.margin20top.margin10left
+        = render 'devise/shared/links'

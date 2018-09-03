@@ -1,0 +1,197 @@
+header#iisifixco-header.iisifixco-cover.iisifixco-cover-sm.garage_profile_header role="banner" style="background-image:url('#{@garage.cover_url}');"
+  .overlay
+#garage_public_profile.iisifixco-section
+  .container
+    .row
+      .col-md-2
+        .garage_logo_big
+          = image_tag @garage.logo_url, class: 'img-thumbnail', width: '100%'
+        a.btn.btn-default.btn-block.margin10top href="#{new_quote_request_path("[quote_request][garages][#{@garage.id}]" => 'on')}"
+          | pyydä tarjous
+
+        / TODO After MVP
+        /.garage_gallery
+          h3
+            | Our Gallery
+          = link_to image_path('person1.jpg'), class: 'imagePopup gallery_each' do
+            = image_tag 'person1.jpg', class: 'img-rounded'
+          = link_to image_path('person2.jpg'), class: 'imagePopup gallery_each' do
+            = image_tag 'person2.jpg', class: 'img-rounded'
+          = link_to image_path('person3.jpg'), class: 'imagePopup gallery_each' do
+            = image_tag 'person3.jpg', class: 'img-rounded'
+
+      .col-md-10
+        .row.garage_head
+          .col-md-8
+            h1
+              = @garage.name
+            small
+              em
+                i.fa.fa-map-marker.fa-lg &nbsp;
+                = garage_distance_from_(params, request, @garage)
+            .row.margin5top
+              .col-md-3.garage_rating
+                - Config::TotalStarCount.times do |index|
+                  i.fa.fa-star.padding5left class="#{star_color_class_for(@garage.avg_rating, index)}"
+          .col-md-4
+            .pull-right
+              / TODO To be included after MVP
+              /a.share_icon href="#"
+              /  i.fa.fa-lg.fa-share-alt
+              - unless @garage.website_link.blank?
+                a.btn.btn-default.btn-lg.margin10left href="#{@garage.website_link}" target="_blank"
+                  | Verkkosivuille
+        .row.garage_general_info
+          .col-md-8.margin10top
+            = @garage.about
+            .row.margin20top
+              .col-md-12
+                hr
+                p
+                  i.fa.fa-envelope
+                  |  #{@garage.email}
+                  br
+                  i.fa.fa-phone
+                  |  #{@garage.phone_number}
+          - if @garage.warranty_info.present?
+            .col-md-4.margin10top
+              .well
+                h4
+                  |Takuu jonka tarjoamme:
+                p
+                  = @garage.warranty_info
+              a.btn.btn-primary.btn-block href="#{new_quote_request_path("[quote_request][garages][#{@garage.id}]" => 'on')}"
+                | Pyydä tarjous
+
+        hr
+
+        - if @garage.services.present?
+          .garage_services_offered
+            h3
+              | Tarjotut palvelut
+            .well
+              .row
+                ul.no-bullet.margin0all
+                  - @garage.services.decorate.select(&:name).each do |service|
+                    li.col-md-6 title="#{service.hover_title}"
+                      i.fa.fa-check-square-o.lime-green.margin10right
+                      = service.name
+
+        - if @garage.supported_vehicle_vendors.present?
+          .vehicles_supported
+            h3
+              | Huoltamamme automerkit
+            .well
+              .row
+                ul.no-bullet.margin0all
+                  - @garage.supported_vehicle_vendors.each do |vendor|
+                    li.col-md-6
+                      i.fa.fa-check-square-o.lime-green.margin10right
+                      strong = vendor.name
+                      small
+                        |  #{vendor.country}
+          hr
+        /TODO: After MVP
+        /.garage_services_offered
+          h3
+            | Palveluiden vakiohinnat
+          .well
+            .row
+              .col-md-6
+                ul.no-bullet.margin0all
+                  li
+                    i.fa.fa-check-square-o.lime-green.margin10right
+                    | Servicing for the wheel
+                    strong.pull-right
+                      | $200
+                  li
+                    i.fa.fa-check-square-o.lime-green.margin10right
+                    | Change Tyres
+                    strong.pull-right
+                      | $200
+                  li
+                    i.fa.fa-check-square-o.lime-green.margin10right
+                    | Chasel Fixes
+                    strong.pull-right
+                      | $200
+                  li
+                    i.fa.fa-check-square-o.lime-green.margin10right
+                    | Brakes Change
+                    strong.pull-right
+                      | $200
+                  li
+                    i.fa.fa-check-square-o.lime-green.margin10right
+                    | Servicing for the vehicle
+                    strong.pull-right
+                      | $200
+                  li
+                    i.fa.fa-check-square-o.lime-green.margin10right
+                    | Change Tyres
+                    strong.pull-right
+                      | $200
+              .col-md-6
+                ul.no-bullet.margin0all
+                  li
+                    i.fa.fa-check-square-o.lime-green.margin10right
+                    | Servicing for the wheel
+                    strong.pull-right
+                      | $200
+                  li
+                    i.fa.fa-check-square-o.lime-green.margin10right
+                    | Change Tyres
+                    strong.pull-right
+                      | $200
+                  li
+                    i.fa.fa-check-square-o.lime-green.margin10right
+                    | Chasel Fixes
+                    strong.pull-right
+                      | $200
+                  li
+                    i.fa.fa-check-square-o.lime-green.margin10right
+                    | Brakes Change
+                    strong.pull-right
+                      | $200
+                  li
+                    i.fa.fa-check-square-o.lime-green.margin10right
+                    | Servicing for the vehicle
+                    strong.pull-right
+                      | $200
+                  li
+                    i.fa.fa-check-square-o.lime-green.margin10right
+                    | Change Tyres
+                    strong.pull-right
+                      | $200
+
+        .garage_testimonial
+          = render 'ratings', ratings: @garage.ratings, garage: @garage
+  - if @garage.selected_payment_options.count > 0
+    .garage_payment
+      .container
+        .row
+          .col-md-2
+            h4
+              | Maksuvaihtoehdot
+          .col-md-10
+            ul.list-inline.margin0all.pull-left
+              - @garage.selected_payment_options.each do |option|
+                li.text-center
+                  i.fa-lg.block class="#{option.icon_class}"
+                  p
+                    = option.name
+            ul.iisifixco-social-icons.pull-right
+              - if @garage.twitter_link.present?
+                li
+                  a target="_blank" href="#{@garage.twitter_link}"
+                    i.icon-twitter
+              - if @garage.facebook_link.present?
+                li
+                  a target="_blank" href="#{@garage.facebook_link}"
+                    i.icon-facebook
+              - if @garage.linkedin_link.present?
+                li
+                  a target="_blank" href="#{@garage.linkedin_link}"
+                    i.icon-linkedin
+              - if @garage.pinterest_link.present?
+                li
+                  a target="_blank" href="#{@garage.pinterest_link}"
+                    i.icon-pinterest

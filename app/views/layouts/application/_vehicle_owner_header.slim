@@ -1,0 +1,18 @@
+header.bg-light.header.header-md.navbar.box-shadow
+  .navbar-header.aside-md.dk
+    a.btn.btn-link.visible-xs data-target="#nav,html" data-toggle="class:nav-off-screen,open"
+      i.fa.fa-bars
+    .visible-xs
+      = link_to home_page_path, class: 'navbar-brand' do
+        = image_tag('iisifix-logo-primary.png', alt: 'iisifix logo')
+  = render 'shared/search_form_inline', query_object: Garage.ransack
+  .locale
+    = render 'layouts/application/locale_menu'
+
+  / TODO after POST MVP
+  /ul.nav.navbar-nav.m-n.hidden-xs.navbar-right.nav-user.user
+  /  li.hidden-xs
+  /    a.dropdown-toggle data-toggle="dropdown" href="#"
+  /      i.i.i-earth
+  /      span.badge.badge-sm.up.bg-danger.count 2
+  /    = render 'shared/notification_dropdown'

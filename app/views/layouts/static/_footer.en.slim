@@ -1,0 +1,53 @@
+footer#iisifixco-footer role="contentinfo"
+  .container
+    .row.row-pb-md
+      .col-md-4.iisifix-footer-about
+        = link_to home_page_path do
+          = image_tag('iisifix-logo-primary.png', alt: 'iisifix logo', width: '150', class: 'margin20bottom')
+        .iisifixco-contact-info
+          ul
+            li.address
+              = Config::FullAddress
+            li.phone
+              a href="tel://#{Config::SupportPhone.gsub(' ', '')}"  = Config::SupportPhone
+            li.email
+              a href="mailto:#{Config::SupportEmail}"  = Config::SupportEmail
+      .col-md-3.col-sm-6.col-md-push-1
+        ul.iisifixco-footer-links
+          li
+            = link_to 'About Us', about_page_path
+          li
+            a href="#{ Config::BlogUrl }"  Our Blog
+          li
+            = link_to 'Contact Us', contact_page_path
+          - if current_user.nil? || current_user.garage_owner?
+            li
+              a.open-popup-link href="#{asset_path('Termsofuse_workshopowners.pdf')}"
+                | Terms & Conditions for Workshops
+          - if current_user.nil? || current_user.vehicle_owner?
+            li
+              a.open-popup-link href="#{asset_path('TermsofUseIIsifixForVehicleOwner.pdf')}"
+                | Terms & Conditions for Customers
+          li
+            = link_to 'Privacy Policy', privacy_policy_page_path
+      .col-md-3.col-sm-6.col-md-push-1
+        ul.iisifixco-social-icons
+          li
+            a href="#{ Config::TwitterUrl }" target='_blank'
+              i.icon-twitter
+          li
+            a href="#{ Config::FacebookUrl }" target='_blank'
+              i.icon-facebook
+          li
+            a href="#{ Config::LinkedinUrl }" target='_blank'
+              i.icon-linkedin
+          li
+            a href="#{ Config::PinterestUrl }" target='_blank'
+              i.icon-pinterest
+          li
+            a href="#{ Config::YoutubeURL }" target='_blank'
+              i.icon-youtube
+    .row.copyright.margin20top
+      .col-md-12.text-center
+        p.margin0bottom
+          small.block &copy; #{DateTime.now.year} #{Config::AppName.upcase}. All Rights Reserved.

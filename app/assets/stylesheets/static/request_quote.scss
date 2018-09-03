@@ -1,0 +1,28 @@
+.garages_each{
+  clear: both;
+  margin-bottom: 20px;
+}
+.garage_logo{
+  float: left;
+  img{
+    max-width: 50px;
+  }
+}
+.garage_info{
+  margin-left: 60px;
+  h4{
+    margin-bottom: 0;
+  }
+}
+
+#requestQuoteForm{
+  .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus{
+    background-color: #224978;
+  }
+  .list-group-item-heading{
+    color: inherit;
+  }
+  .thumbnail, .pager{
+    margin-bottom: 0;
+  }
+}

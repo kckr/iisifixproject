@@ -1,0 +1,137 @@
+#publicProfile.tab-content.active
+  .row
+    .col-md-8.b-r
+      = form_for garage, url: garage_owner_garage_profile_path do |f|
+        .row
+          .col-md-6
+            .form-group
+              = f.label :logo
+              = f.file_field :logo, class: 'form-control'
+              = f.error_message_for :logo
+          .col-md-6
+            .form-group
+              = f.label :cover
+              = f.file_field :cover, class: 'form-control'
+              = f.error_message_for :cover
+        .row
+          .col-md-6
+            .form-group
+              = f.label :name, 'Workshop Name*'
+              = f.text_field :name, class: 'form-control', required: true,
+                  placeholder: "Enter workshop's name here..."
+              = f.error_message_for :name
+          .col-md-6
+            .form-group
+              = f.label :registration_number, 'Business Registration Number*'
+              = f.text_field :registration_number, required: true, class: 'form-control',
+                  placeholder: 'Enter your business id here...'
+              = f.error_message_for :registration_number
+        .row
+          .col-md-6
+            .form-group
+              = f.label :established_at, 'Established Date*'
+              = f.text_field :established_at, required: true, class: 'form-control',
+                  placeholder: Config::DateFormatNumeric
+              = f.error_message_for :established_at
+        .row
+          .col-md-12
+            .form-group
+              = f.label :marketing_tag_line
+              = f.text_field :marketing_tag_line, class: 'form-control',
+                  placeholder: 'Your core values in one sentence...'
+              = f.error_message_for :marketing_tag_line
+        hr
+        .row
+          .col-md-6
+            .form-group
+              = f.label :email, 'Company Email'
+              = f.email_field :email, require: true, class: 'form-control',
+                  placeholder: 'Enter your email address here...'
+              = f.error_message_for :email
+
+          .col-md-6
+            .form-group
+              = f.label :address, 'Street Address*'
+              = f.text_field :address, class: 'form-control',
+                  placeholder: 'Enter your street address here...'
+              = f.error_message_for :address
+        .row
+          .col-md-6
+            .form-group
+              = f.label :city, 'City*'
+              = f.text_field :city, class: 'form-control',
+                  placeholder: 'Enter your city here...'
+              = f.error_message_for :city
+
+          .col-md-6
+            .form-group
+              = f.label :state, 'State*'
+              = f.select :state, options_for_select(finnish_states, selected: garage.state), {}, {required: true, class: 'form-control'}
+              = f.error_message_for :state
+        .row
+          .col-md-6
+            .form-group
+              = f.label :zip
+              = f.text_field :zip, class: 'form-control',
+                  placeholder: 'Enter your zipcode here...'
+              = f.error_message_for :zip
+          .col-md-6
+            .form-group
+              = f.label :phone_number, 'Phone Number*'
+              .input-group
+                span.input-group-addon
+                  | +358
+                = f.text_field :phone_number, required: true, class: 'form-control',
+                  placeholder: 'Enter your phone_number here...'
+              = f.error_message_for :phone_number
+        .row
+          .col-md-6
+            .form-group
+              = f.label :fax_number
+              = f.text_field :fax_number, class: 'form-control',
+                  placeholder: 'Enter your Fax number here...'
+              = f.error_message_for :fax_number
+
+          .col-md-6
+            .form-group
+              = f.label :po_box_number, 'PO Box Number'
+              = f.text_field :po_box_number, class: 'form-control',
+                  placeholder: 'Enter your PO Box number here...'
+              = f.error_message_for :po_box_number
+        hr
+        .row
+          .col-md-12
+            .form-group
+              label for="_garage_open_days_sun" Open Days
+              .clearfix
+                .open-days-selector.btn-group.btn-group-justified data-toggle="buttons" role="group" id="open"
+                  = open_days_checkboxes_for(garage, label_class: 'inline-block')
+          .col-md-6
+            .form-group
+              = f.label :opening_time
+              = f.text_field :opening_time, class: 'form-control',
+                  placeholder: 'Choose opening hour Eg. 05:00 AM'
+              = f.error_message_for :opening_time
+          .col-md-6
+            .form-group
+              = f.label :closing_time
+              = f.text_field :closing_time, class: 'form-control',
+                  placeholder: 'Choose closing hour Eg. 07:00 PM'
+              = f.error_message_for :closing_time
+
+        / --------------------------------------------------------------------------------------
+        hr
+        = render 'url_fields', f: f
+        .form-group
+          = f.label :about, 'About your Company'
+          = f.text_area :about, class: 'form-control', rows: 10,
+              placeholder: "Explain in brief what your workshop stands for within it's core."
+
+        hr
+        .form-group
+          = f.submit 'Update Profile', class: 'btn btn-lg'
+
+    .col-md-4
+      h4
+        | Why #{Config::AppName} for you?
+      = render 'shared/why_iisifix_for_garage_owner'

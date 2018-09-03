@@ -1,0 +1,42 @@
+#garageServices.tab-pane
+  = form_for garage, url: garage_owner_garage_profile_path(garage) do |f|
+    .row
+      .col-md-6
+        = render 'service_selection', garage: garage, f: f, categories: categories
+      .col-md-6
+        = render 'vehicle_vendors', garage: garage, vendors: vendors, f: f
+
+    = f.fields_for :created_services do |ff|
+      / Only show fields for builded records not already persisted
+      - unless ff.object.persisted?
+        .additional_services
+          h4
+            | Lisäpalvelut
+          small
+            | Työpajasi tarjoamat lisäpalvelut
+          .dropfile.margin20top
+            #additionalServiceDetailContainer
+              .row.additionalServiceDetail.m-n.padder-v
+                .col-md-4
+                  = ff.text_field :name, class: 'service-name form-control', placeholder: 'Palvelun nimi'
+                .col-md-4
+                  = ff.text_field :description, class: 'service-description form-control', placeholder: 'Palvelukuvaus'
+                .col-md-4
+                  = ff.select :category_id,
+                      options_from_collection_for_select(categories, :id, :name),{},
+                      {class: 'form-control service-category_id'}
+            .row.m-n.padder-v
+              .col-md-4
+                a.btn.btn-block.btn-default.margin10top#addService href="#"
+                  | + Lisää uusi
+
+    input.btn.btn-default.btn-lg.margin20top type="submit" value="Päivitä nyt!"/
+
+  / --------------------------------------------------------------------------------------
+  /hr
+  /.fixed_price_services
+  /  h4
+  /    | Fixed Price Services
+  /  = render 'fixed_price_services'
+  /hr
+  /input.btn.btn-default.btn-lg type="submit" value="Päivitys kiinteät hinnat"/

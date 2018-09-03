@@ -1,0 +1,43 @@
+
+header#header-container
+  /! Header
+  #header
+    .container
+      /! Left Side Content
+      .left-side
+        /! Logo
+        #logo
+          = link_to root_path do
+            = image_tag('iisifixi.svg', alt: 'iisifix logo', class: 'img-responsive', style: 'max-height: 25px;')
+        /! Mobile Navigation
+        .mmenu-trigger
+          button.hamburger.hamburger--collapse type="button"
+            span.hamburger-box
+              span.hamburger-inner
+      /! Left Side Content / End
+      /! Right Side Content / End
+      .right-side
+        .header-lang
+          = link_to url_for(locale: :en), class: 'active'do
+            = image_tag 'icon-english.png', width: 20, title: 'English'
+          = link_to url_for(locale: :fi) do
+            = image_tag 'icon-finnish.png', width: 20, title: 'Finnish'
+        a.popup-with-zoom-anim.button.border.with-icon href="#addGaragePop"
+          | Add garage
+          i.sl.sl-icon-plus
+        nav#navigation.style-1
+          ul#responsive
+            - if current_user.present?
+              li
+                = link_to root_path do
+                  span Dashboard
+            - else
+              li
+                = link_to new_user_session_path, class: '' do
+                  span Log In
+              li
+                = link_to new_user_registration_path, class: '' do
+                  span Register
+      /! Right Side Content / End
+  /! Header / End
+.clearfix

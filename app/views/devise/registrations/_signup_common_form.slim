@@ -1,0 +1,11 @@
+p.form-row.form-row-wide
+	= f.label :email do
+		| Email*
+		i.im.im-icon-Male
+		= f.email_field :email, required: true, class: 'form-control',
+		        placeholder: 'user@example.com', autofocus: true
+	= f.error_message_for :email
+	- if devise_mapping.confirmable? && controller_name != 'confirmations'
+	  span.lost_password
+	    = link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name)
+= f.submit 'Sign up, and get email', class: 'button border fw margin-top-10'

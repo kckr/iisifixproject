@@ -1,0 +1,14 @@
+#garageWarranty.tab-pane
+  = form_for garage, url: garage_owner_garage_profile_path(garage) do |f|
+    .row
+      .col-md-8.b-r
+        h4
+          | Takuu:
+        = f.text_area :warranty_info,
+            placeholder: 'Selitä lyhyesti, miten työpajan antaa takuun ​​tarjoamilleen palveluilleen',
+            rows: 10, class: 'form-control'
+        = f.submit 'Päivitystiedot', class: 'btn btn-default btn-lg margin20top'
+      .col-md-4
+        h4
+          | Miksi IISIFIX sinulle?
+        = render 'shared/why_iisifix_for_garage_owner.fi'

@@ -1,0 +1,44 @@
+#dashboard
+  = render "layouts/application/#{current_user.role.underscore}_sidebar"
+  /!
+    | Content
+    | \==================================================
+  .dashboard-content
+    /! Dashboard Overview
+    = render 'shared/garage_owner_dashboard_overview', garage: @garage
+    .row
+      .col-md-12
+        .style-1
+          ul.tabs-nav.dashboard-tab
+            li.active
+              a href="#activeQuoteRequests"
+                | Active&nbsp;
+                span.label.label-warning
+                  = @active_quote_requests.count
+            li
+              a href="#pastQuoteRequests"  History
+            .pull-right
+              input.daterange type="text" /
+              .sort-by
+                .sort-by-select
+                  select.chosen-select-no-single data-placeholder=("Default order")
+                    option Any Status
+                    option Pending
+                    option Doing
+                    option Done
+          .tabs-container
+            #activeQuoteRequests.tab-content
+              - if @active_quote_requests.present?
+                = render 'quote_requests', quote_requests: @active_quote_requests
+              - else
+                = render 'shared/blank_screens/no_quote_requests_go'
+            #pastQuoteRequests.tab-content
+              - if @archived_quote_requests.present?
+                = render 'quote_requests', quote_requests: @archived_quote_requests
+              - else
+                = render 'shared/blank_screens/no_quote_requests_go'
+      /! Copyrights
+      .col-md-12
+        .copyrights © 2017 IISIFIX.
+  /! Content / End
+= render 'response_popup'

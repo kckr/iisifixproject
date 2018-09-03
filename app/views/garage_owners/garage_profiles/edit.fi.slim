@@ -1,0 +1,21 @@
+section.panel.panel-default.margin20top
+  header.panel-heading.bg-light
+    ul.nav.nav-tabs
+      li.active
+        a data-toggle="tab" href="#publicProfile"  julkinen profiili
+      li
+        a data-toggle="tab" href="#garageServices"  Palvelut
+      li
+        a data-toggle="tab" href="#garageWarranty"  Takuu
+      li
+        a data-toggle="tab" href="#garagePayment"  Maksuvaihtoehdot
+  .panel-body
+    .tab-content
+      = render 'profile_edit_tab', garage: @garage
+      = render 'services_tab', garage: @garage,
+          categories: @categories,
+          vendors: @vendors
+      = render 'payment_options_tab', garage: @garage, payment_options: PaymentOption.all
+      = render 'warranty_tab', garage: @garage, payment_options: PaymentOption.all
+
+

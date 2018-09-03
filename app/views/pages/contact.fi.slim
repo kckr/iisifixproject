@@ -1,0 +1,50 @@
+header#iisifixco-header.iisifixco-cover.iisifixco-cover-sm role="banner" style="background-image:url('#{image_url('img_bg_2.jpg')}');"
+  .overlay
+  .container.margin30top
+    .row
+      .col-md-8.col-md-offset-2.text-center
+        .display-t
+          .display-tc.animate-box data-animate-effect="fadeIn"
+            h1 OTA YHTEYTTÄ
+            h2
+              | Otamme mielellämme vastaan palautetta ja ideoita palvelumme kehittämiseksi!
+              br
+              | Tällä lomakkeella voit jättää viestin asiakaspalveluumme.
+.iisifixco-section
+  .container
+    .row
+      .col-md-6.animate-box
+        h3 Lähetä sähköpostiviesti
+        - if flash[:notice]
+          p.text-success
+            = flash[:notice]
+        - elsif flash[:alert]
+          p.text-danger
+            = flash[:alert]
+        = form_for @contact, url: {controller: 'pages', action: 'create_contact'} do |f|
+          .row.form-group
+            .col-md-6
+              = f.text_field :first_name, class: 'form-control', placeholder: 'Etunimi *', required: true
+            .col-md-6
+              = f.text_field :last_name, class: 'form-control', placeholder: 'Sukunimi *', required: true
+          .row.form-group
+            .col-md-12
+              = f.email_field :email, class: 'form-control', placeholder: 'Sähköpostiosoite *', required: true
+          .row.form-group
+            .col-md-12
+              = f.text_field :subject, class: 'form-control', placeholder: 'aihe'
+          .row.form-group
+            .col-md-12
+              = f.text_area :body, class: 'form-control', placeholder: 'Viesti *', cols: '30', rows: '10', required: true
+          .form-group
+            = f.submit 'Lähetä', class: 'btn btn-primary'
+      .col-md-5.col-md-push-1.animate-box
+        .iisifixco-contact-info
+          h3 Yhteystiedot
+          ul
+            li.address
+              = Config::FullAddress
+            li.phone
+              a href="tel://#{Config::SupportPhone}"  = Config::SupportPhone
+            li.email
+              a href="mailto:#{Config::SupportEmail}"  = Config::SupportEmail

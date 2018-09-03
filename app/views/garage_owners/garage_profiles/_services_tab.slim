@@ -1,0 +1,42 @@
+#garageServices.tab-content
+  = form_for garage, url: garage_owner_garage_profile_path(garage) do |f|
+    .row
+      .col-md-6
+        = render 'service_selection', garage: garage, f: f, categories: categories
+      .col-md-6
+        = render 'vehicle_vendors', garage: garage, vendors: vendors, f: f
+
+    = f.fields_for :created_services do |ff|
+      / Only show fields for built records not already persisted
+      - unless ff.object.persisted?
+        .additional_services
+          h4
+            | Additional Services
+          small
+            | Add up additional services by your workshop here
+          .dropfile.margin20top
+            #additionalServiceDetailContainer
+              .row.additionalServiceDetail.m-n.padder-v
+                .col-md-4
+                  = ff.text_field :name, class: 'service-name form-control', placeholder: 'Service Name'
+                .col-md-4
+                  = ff.text_field :description, class: 'service-description form-control', placeholder: 'Service Description'
+                .col-md-4
+                  = ff.select :category_id,
+                      options_from_collection_for_select(categories, :id, :name),{},
+                      {class: 'form-control service-category_id'}
+            .row.m-n.padder-v
+              .col-md-4
+                a.btn.btn-block.btn-default.margin10top#addService href="#"
+                  | + Add New
+
+    input.btn.btn-default.btn-lg.margin20top type="submit" value="Update Now!"/
+
+  / --------------------------------------------------------------------------------------
+  /hr
+  /.fixed_price_services
+  /  h4
+  /    | Fixed Price Services
+  /  = render 'fixed_price_services'
+  /hr
+  /input.btn.btn-default.btn-lg type="submit" value="Update fixed prices"/

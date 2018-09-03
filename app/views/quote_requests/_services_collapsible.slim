@@ -1,0 +1,17 @@
+#servicesRequested.panel-group.m-b.margin20top
+  - categories.each do |category|
+    .panel.panel-default
+      .panel-heading
+        a.accordion-toggle.collapsed data-toggle="collapse" href="#category_#{category.name.snake_case}"
+          = category.name
+      .panel-collapse.collapse.out id="category_#{category.name.snake_case}"
+        .panel-body
+          .row
+            - category.services.approved.each do |service|
+              .col-sm-6
+                .checkbox.form-group
+                  input.serviceCheckbox type="checkbox" id="quote_request_services_ids_#{service.id}" name="quote_request[services_ids][#{service.id}]"/
+                  label for="quote_request_services_ids_#{service.id}" = service.name
+                  .serviceDescription.soft-hidden.margin5top
+                    textarea.form-control.font90percent [name="quote_request[service_details][#{service.id}]"
+                      placeholder= "Addtional information.."]

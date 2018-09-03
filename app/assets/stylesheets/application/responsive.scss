@@ -1,0 +1,46 @@
+.row-pb-md {
+  padding-bottom: 1em !important;
+}
+.dashboard-content{
+  min-height: 65%;
+}
+.dashboard-footer-container {
+  position: static;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  .garage-searcher.navbar-form{
+    margin-left: 0;
+    margin-right: 0;
+    input.btn.btn-default{
+      width: 100%;
+    }
+  }
+  .range-slider{
+    margin: 0;
+  }
+  .range-slider .slider.slider-horizontal{
+    margin: 0 10px;
+  }
+  .slider.slider-horizontal{
+    width: 180px;
+  }
+  .each-quote-request{
+    .accordion-toggle .pull-right{
+      float: none !important;
+      display: block;
+    }
+  }
+  #iisifixco-footer .iisifixco-social-icons{
+    text-align: center;
+  }
+  .iisifix-footer-about{
+    text-align: center;
+    .iisifixco-contact-info{
+      text-align: left;
+    }
+  }
+}

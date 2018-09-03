@@ -1,0 +1,22 @@
+#garagePayment.tab-pane
+  .row
+    .col-md-8.b-r
+      h4
+        | Maksuvaihtoehdot käytettävissä workshop:
+      = form_for garage, url: garage_owner_garage_profile_path(garage) do |f|
+        - payment_options.each do |option|
+          .checkbox.i-checks
+            label
+              = check_box_tag "garage[payment_options][#{option.id}]", 1, garage.payment_options.include?(option.id.to_s)
+              i
+              .padding5left class="#{option.icon_class}" &nbsp;
+              = option.name
+
+        input.btn.btn-default.btn-lg.margin10top type="submit" value="Päivittää"/
+      i.help-block.m-b-none
+        | * Tämä ei tarkoita online-maksu mekanismi toistaiseksi
+
+    .col-md-4
+      h4
+        | Miksi Maksuvaihtoehdot?
+      = render 'shared/why_payment_options_for_garage_owner'

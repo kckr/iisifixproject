@@ -1,0 +1,45 @@
+/! Titlebar
+#titlebar
+  .row
+    .col-md-12
+      h2 Overview
+.row
+  /! Item
+  .col-lg-3.col-md-6
+    .dashboard-stat.color-1
+      .dashboard-stat-content.move-counter
+        .garage_rating
+          - Config::TotalStarCount.times do |index|
+            i.fa.fa-star.padding5left class="#{star_color_class_for(garage.avg_rating, index)}"
+        span Customer Satisfaction
+      .dashboard-stat-icon
+        i.im.im-icon-Like
+  /! Item
+  .col-lg-3.col-md-6
+    .dashboard-stat.color-2
+      .dashboard-stat-content.move-counter
+        h4
+          = garage.quote_requests.count
+        span Bids Offered
+      .dashboard-stat-icon
+        i.fa.fa-briefcase
+  /! Item
+  .col-lg-3.col-md-6
+    .dashboard-stat.color-3
+      .dashboard-stat-content
+        h4
+          | #{garage.jobs.done.count}
+          span
+            | /
+          | #{garage.jobs.count}
+        span Jobs Received
+      .dashboard-stat-icon
+        i.fa.fa-wrench
+  /! Item
+  .col-lg-3.col-md-6
+    .dashboard-stat.color-4
+      .dashboard-stat-content.move-counter
+        h4 0
+        span Favorites
+      .dashboard-stat-icon
+        i.im.im-icon-Heart

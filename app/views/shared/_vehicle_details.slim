@@ -1,0 +1,27 @@
+p
+  | Description: #{quote_request.description || 'N/A'}
+p
+  | Make: #{quote_request.vehicle_vendor.name || 'N/A'}
+p
+  | Model: #{quote_request.vehicle_model.blank? ? 'N/A' : quote_request.vehicle_model}
+p
+  | Make Year: #{quote_request.vehicle_made_year.blank? ? 'N/A' : quote_request.vehicle_made_year}
+p
+  | Registration Year: #{quote_request.registration_year || 'N/A'}
+p
+  | Engine size: N/A
+p
+  | Fuel type: N/A
+p
+  | Transmission: N/A
+p
+  | Mileage: #{quote_request.mileage.blank? ? 'N/A' : quote_request.mileage}
+p
+  | Has tow bar? : #{quote_request.tow_bar || 'N/A'}
+p
+  | Insurer: #{quote_request.insurer || 'N/A'}
+p
+  | Registration Number: #{quote_request.vehicle_registration_number || 'N/A'}
+p.m-n
+  | Vehicle ID Number: #{quote_request.vin || 'N/A'}
+  

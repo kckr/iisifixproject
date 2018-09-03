@@ -1,0 +1,43 @@
+header#iisifixco-header.iisifixco-cover.iisifixco-cover-sm role="banner" style="background-image:url('#{image_url('img_bg_2.jpg')}');"
+  .overlay
+  .container.margin50top
+    .row
+      .col-md-8.col-md-offset-2.text-center
+        .display-t
+          .display-tc.animate-box data-animate-effect="fadeIn"
+            h1
+              | Korjauta autosi&nbsp;
+              strong
+                | käden käänteessä
+            h2
+              | Ensiksi valitset halutun korjaamon, sen jälkeen ilmoitat auton merkin, mallin ja mahdollisen vian
+.iisifixco-section
+  .container
+    .row
+      .col-md-7.animate-box
+        #requestQuoteForm
+          .panel.panel-default
+            .panel-heading
+              ul.nav.nav-pills.nav-justified.thumbnail
+                li.active
+                  a.workflow-step-1 data-toggle="tab" href="#tab1"
+                    h4.list-group-item-heading Vaihe 1
+                    p.list-group-item-text Auton tiedot
+                li.workflow-step-2
+                  a data-toggle="tab" href="#tab2"
+                    h4.list-group-item-heading Vaihe 2
+                    p.list-group-item-text lista ongelmia
+            = form_for @quote_request do |f|
+              .panel-body
+                .tab-content
+                  = render 'step1', f: f, vehicle_vendors: VehicleVendor.order(name: :asc)
+                  = render 'step2', f: f, categories: Category.all
+                  ul.pager.wizard
+                    li.previous
+                      a.previous-to-step1 href="javascript: void(0);"  Edellinen
+                    li.next
+                      a.next-to-step2 href="javascript: void(0);"  seuraava
+                    li.finish.pull-right
+                      = f.submit 'Pyydä tarjous valituilta autotallit', class: 'btn btn-primary', id: 'submit-quote-request'
+      .col-md-5.animate-box
+        = render 'garage_info', garages: @garages

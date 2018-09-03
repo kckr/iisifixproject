@@ -1,0 +1,18 @@
+= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+  .row.form-group
+    .col-md-12
+      = f.label :email, 'Sähköposti*'
+      = f.text_field :email, placeholder: 'user@example.com', required: false,
+          autofocus: true, class: 'form-control', value: get_email_for(params[:q])
+  .row.form-group
+    .col-md-12
+      = f.label :password, 'Salasana*'
+      = f.password_field :password, required: false, class: 'form-control'
+  .row.form-group
+    .col-md-12.checkbox
+      = f.check_box :remember_me if devise_mapping.rememberable?
+      = f.label :remember_me, 'Muista minut' if devise_mapping.rememberable?
+  .row.form-group
+    .col-md-12
+      = f.hidden_field :form_type, value: Base64.encode64(type.to_s)
+      = f.submit 'Kirjaudu sisään', class: 'btn btn-primary btn-block'

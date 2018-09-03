@@ -1,0 +1,11 @@
+p
+  | Hei #{@job.garage.name}!!!
+p
+  | #{@job.vehicle_owner.full_name} juuri peruuttanut työn. Työn on merkitty &nbsp;
+  strong Peruutettu
+  | .
+  br
+  | Tämä työ on siirretty arkistoon.
+
+= link_to "Tässä on linkki työn #{Config::AppName}.",
+    garage_owner_job_url(id: @job.id, garage_owner_id: @garage_owner_id)

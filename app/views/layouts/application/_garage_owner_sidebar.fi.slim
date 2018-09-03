@@ -1,0 +1,59 @@
+aside#nav.bg-black.aside-md.hidden-print.hidden-xs
+  section.vbox
+    section.w-f.scrollable
+      .slim-scroll data-disable-fade-out="true" data-distance="0" data-height="auto" data-railopacity="0.2" data-size="10px"
+        .clearfix.wrapper.dk.nav-user.hidden-xs
+          /span.thumb.avatar.pull-left.m-r
+          /  = image_tag 'dummy.jpg', class: 'dker'
+          /  i.on.md.b-black
+          span.hidden-nav-xs.clear
+            span.block.m-t-xs
+              strong.font-bold.text-lt
+                = current_user.first_name
+            span.text-muted.text-xs.block
+              | #{current_user.role.titleize}
+
+        /! nav
+        nav.nav-primary.hidden-xs
+          .text-muted.text-sm.hidden-nav-xs.padder.m-t-sm.m-b-sm
+            | navigoida Täällä
+          ul.nav.nav-main data-ride="collapse"
+            li
+              = link_to home_page_path, class: 'auto' do
+                i.fa.fa-home.icon
+                span.font-bold Etusivu
+            li class="#{ active_class(garage_owner_quote_requests_path(current_user), root: true) }"
+              = link_to garage_owner_quote_requests_path(current_user), class: 'auto' do
+                - if current_user.garage.quote_requests.hot_for_go.count > 0
+                  b.badge.bg-danger.pull-right title="Kohteita, jotka tarvitsevat oman toiminnan"
+                    = current_user.garage.quote_requests.hot_for_go.count
+                i.fa.fa-gavel.icon
+                span.font-bold Kilpailuttaminen
+            li class="#{ active_class(garage_owner_jobs_path(current_user)) }"
+              = link_to garage_owner_jobs_path(current_user), class: 'auto' do
+                - if current_user.garage.jobs.hot_for_go.count > 0
+                  b.badge.bg-danger.pull-right title="Kohteita, jotka tarvitsevat oman toiminnan"
+                    = current_user.garage.jobs.hot_for_go.count
+                i.fa.fa-briefcase.icon
+                span.font-bold 	Tehtävät
+            li class="#{ active_class(edit_garage_owner_garage_profile_path(current_user)) }"
+              = link_to edit_garage_owner_garage_profile_path(current_user), class: 'auto' do
+                i.i.i-user2.icon
+                span.font-bold 	Profiili
+            //
+              li class="#{ active_class(edit_garage_owner_path(current_user)) }"
+                = link_to edit_garage_owner_path(current_user), class: 'auto' do
+                  i.i.i-user2.icon
+                  span.font-bold Account
+            li
+              = link_to destroy_user_session_path, method: :delete, class: 'auto' do
+                i.i.i-logout.icon
+                span.font-bold Kirjaudu ulos
+
+    /! / nav
+    footer.footer.hidden-xs.no-padder.text-center-nav-xs
+      = link_to destroy_user_session_path, method: :delete, class: 'btn btn-icon icon-muted btn-inactive pull-right m-l-xs m-r-xs hidden-nav-xs' do
+        i.i.i-logout
+      a.btn.btn-icon.icon-muted.btn-inactive.m-l-xs.m-r-xs data-toggle="class:nav-xs" href="#nav"
+        i.i.i-circleleft.text
+        i.i.i-circleright.text-active

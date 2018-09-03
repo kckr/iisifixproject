@@ -1,0 +1,7 @@
+p
+  | Hei #{@quote_request.garage.name}!!!
+p
+  | #{@quote_request.vehicle_owner.full_name} juuri hyväksynyt noteeraus ja uuden Job on luotu #{Config::AppName} kojelautaan.
+
+= link_to "Tässä on linkki tarjouspyyntö in #{Config::AppName}.",
+    garage_owner_quote_request_url(id: @quote_request.id, garage_owner_id: @garage_owner_id)

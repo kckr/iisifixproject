@@ -1,0 +1,17 @@
+.fullwidth.call-to-action
+  .row
+    .col-md-9.cta-contents
+      h1.cta-title align="center"  Missään suosikki autotallisi?
+    .col-md-3.cta-button align="center"
+      = link_to new_user_registration_path(user: {form_type: Base64.encode64('GarageOwner')}), class: 'button border with-icon add_garage' do
+        | Suosittele autotalli
+        i.sl.sl-icon-plus
+#footer.sticky-footer
+  /! Main
+  .container
+    /! Copyright
+    .row
+      .col-md-12
+        .copyrights &copy; #{DateTime.now.year} #{Config::AppName.upcase}. Kaikki oikeudet pidätetään
+#backtotop
+  a href="#"

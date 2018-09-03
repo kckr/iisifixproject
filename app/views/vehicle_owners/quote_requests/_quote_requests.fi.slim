@@ -1,0 +1,37 @@
+#biddingRequest.panel-group.m-br role="tablist" aria-multiselectable="true"
+  - quote_request_lots.each do |lot|
+    .panel.panel-default.each-quote-request
+      .panel-heading
+        a.accordion-toggle.collapsed data-toggle="collapse" href="#biddingRequest#{lot.id}"
+          | pyydetty #{lot.created_at.to_date}
+          span.pull-right
+            | Request paljon ID: #{lot.id}
+      .panel-collapse.collapse.out id="biddingRequest#{lot.id}"
+        .panel-body
+          p
+            | Auto/Malli:&nbsp;
+            strong
+              | #{lot.vehicle_vendor.name}/#{lot.vehicle_model}
+          .table-responsive
+            table.table.table-striped.b-t.b-light
+              thead
+                tr
+                  th
+                    | lainaus ID
+                  th
+                    | työpaja
+                  th
+                    | Status
+                  th
+                    | Noteeratut Määrä
+                  th
+                    | Takuu
+                  th
+                    | Aloituspäivämäärä
+                  th
+                    | Päättymispäivä
+                  th
+                    | Toimet
+              tbody
+                - lot.quote_requests.decorate.each do |quote_request|
+                  = render 'quote_request', quote_request: quote_request
