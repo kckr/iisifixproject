@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.3.1'
+ruby '2.5.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
@@ -39,7 +39,7 @@ gem 'jbuilder', '~> 2.5'
 # Slim templates
 gem 'slim-rails', '~> 3.1.1'
 
-gem 'devise', '~> 4.2.0'
+gem 'devise', '~> 4.5.0'
 
 # This gem is dependency of draper, since xml serializer has been removed in Rails 5
 gem 'activemodel-serializers-xml', git: 'https://github.com/rails/activemodel-serializers-xml'
@@ -79,7 +79,7 @@ gem 'chartkick'
 gem 'groupdate'
 gem 'responsive_active_admin'
 
-gem 'savon', '~> 2.11.1' # SOAP client
+gem 'savon', '~> 2.12.0' # SOAP client
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

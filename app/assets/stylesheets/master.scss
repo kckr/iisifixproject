@@ -8,15 +8,16 @@
  */
 @import 'common_styles_to_all_layouts';
 @import 'master/style';
-@import 'master/bootstrap-grid.css';            /* Default Reset, Typography, Forms, Responsive Grid etc. */
-@import 'master/wickedcss.min.css';
-@import 'master/animate.css';
-@import 'master/icons.css';                     /* Webfont Icons: FontAwesome, Line, Simple Line */
-@import 'master/revolutionslider.css';  /* Revolution Slider
+@import 'master/bootstrap-grid';            /* Default Reset, Typography, Forms, Responsive Grid etc. */
+@import 'master/wickedcss.min';
+@import 'master/animate';
+@import 'master/icons';                     /* Webfont Icons: FontAwesome, Line, Simple Line */
+@import 'master/revolutionslider';  /* Revolution Slider
 Style Sheets */
 
 @import 'application/app';
 @import 'application/garage_profile';
 
-@import 'master/daterangepicker.css';  /* Revolution Slider Style Sheets */
-@import 'master/custom.css';  /* Revolution Slider Style Sheets */
+@import 'master/daterangepicker';  /* Revolution Slider Style Sheets */
+@import 'master/custom';  /* Revolution Slider Style Sheets */
+@import 'style';

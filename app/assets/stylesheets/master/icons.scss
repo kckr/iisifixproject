@@ -7,12 +7,12 @@
 
  @font-face {
    font-family: 'FontAwesome';
-   src: url('/assets/fontawesome-webfont.eot?v=4.6.3');
-   src: url('/assets/fontawesome-webfont.eot?#iefix&v=4.6.3') format('embedded-opentype'),
-   url('/assets/fontawesome-webfont.woff2?v=4.6.3') format('woff2'),
-   url('/assets/fontawesome-webfont.woff?v=4.6.3') format('woff'),
-   url('/assets/fontawesome-webfont.ttf?v=4.6.3') format('truetype'),
-   url('/assets/fontawesome-webfont.svg?v=4.6.3#fontawesomeregular') format('svg');
+   src: asset-url('fontawesome-webfont.eot?v=4.6.3');
+   src: asset-url('fontawesome-webfont.eot?#iefix&v=4.6.3') format('embedded-opentype'),
+   asset-url('fontawesome-webfont.woff2?v=4.6.3') format('woff2'),
+   asset-url('fontawesome-webfont.woff?v=4.6.3') format('woff'),
+   asset-url('fontawesome-webfont.ttf?v=4.6.3') format('truetype'),
+   asset-url('fontawesome-webfont.svg?v=4.6.3#fontawesomeregular') format('svg');
    font-weight: normal;
    font-style: normal;
  }
@@ -20,11 +20,11 @@
 
 @font-face {
   font-family: 'iisifix';
-  src:  url('/assets/iisifix.eot?c1ax51');
-  src:  url('/assets/iisifix.eot?c1ax51#iefix') format('embedded-opentype'),
-    url('/assets/iisifix.ttf?c1ax51') format('truetype'),
-    url('/assets/iisifix.woff?c1ax51') format('woff'),
-    url('/assets/iisifix.svg?c1ax51#iisifix') format('svg');
+  src:  asset-url('iisifix.eot?c1ax51');
+  src:  asset-url('iisifix.eot?c1ax51#iefix') format('embedded-opentype'),
+    asset-url('iisifix.ttf?c1ax51') format('truetype'),
+    asset-url('iisifix.woff?c1ax51') format('woff'),
+    asset-url('iisifix.svg?c1ax51#iisifix') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -2320,11 +2320,11 @@ i {
 
 @font-face {
     font-family: 'simple-line-icons';
-    src:    url('/assets/simple-line-icons.eot?thkwh4');
-    src:    url('/assets/simple-line-icons.eot?thkwh4#iefix') format('embedded-opentype'),
-        url('/assets/simple-line-icons.ttf?thkwh4') format('truetype'),
-        url('/assets/simple-line-icons.woff?thkwh4') format('woff'),
-        url('/assets/simple-line-icons.svg?thkwh4#simple-line-icons') format('svg');
+    src:    asset-url('simple-line-icons.eot?thkwh4');
+    src:    asset-url('simple-line-icons.eot?thkwh4#iefix') format('embedded-opentype'),
+        asset-url('simple-line-icons.ttf?thkwh4') format('truetype'),
+        asset-url('simple-line-icons.woff?thkwh4') format('woff'),
+        asset-url('simple-line-icons.svg?thkwh4#simple-line-icons') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -2866,11 +2866,11 @@ i {
 
 @font-face {
   font-family: 'iconsmind';
-  src:url('/assets/iconsmind.eot?-rdmvgc');
-  src:url('/assets/iconsmind.eot?#iefix-rdmvgc') format('embedded-opentype'),
-    url('/assets/iconsmind.woff?-rdmvgc') format('woff'),
-    url('/assets/iconsmind.ttf?-rdmvgc') format('truetype'),
-    url('/assets/iconsmind.svg?-rdmvgc#iconsmind') format('svg');
+  src:asset-url('iconsmind.eot?-rdmvgc');
+  src:asset-url('iconsmind.eot?#iefix-rdmvgc') format('embedded-opentype'),
+    asset-url('iconsmind.woff?-rdmvgc') format('woff'),
+    asset-url('iconsmind.ttf?-rdmvgc') format('truetype'),
+    asset-url('iconsmind.svg?-rdmvgc#iconsmind') format('svg');
   font-weight: normal;
   font-style: normal;
 }
