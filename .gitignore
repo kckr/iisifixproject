@@ -21,6 +21,7 @@
 /public/assets/css
 /public/assets/js
 /public/assets/rev-manifest.json
+/public/uploads
 
 *.sublime-project
 *.sublime-workspace
