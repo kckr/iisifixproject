@@ -250,7 +250,7 @@ Devise.setup do |config|
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
   # Note: Could not request work information, because of Cookie Size limit of browser
   config.omniauth :facebook, ENV['FB_APP_ID'], ENV['FB_APP_SECRET'],
-                  scope: 'email,user_birthday,public_profile,user_location,user_website',
+                  scope: 'email,user_birthday,public_profile,user_location',
                   info_fields: 'email,first_name,last_name,gender,birthday,location,website,picture'
   config.omniauth :google_oauth2, ENV['GOOGLE_CLIENT_ID'], ENV['GOOGLE_CLIENT_SECRET']
 

@@ -46,8 +46,8 @@ gem 'activemodel-serializers-xml', git: 'https://github.com/rails/activemodel-se
 # See https://github.com/drapergem/draper/issues/681#issuecomment-199861814
 gem 'draper', github: 'audionerd/draper', branch: 'rails5'
 
-gem 'omniauth-facebook', '~> 4.0.0'
-gem 'omniauth-google-oauth2', '~> 0.4.1'
+gem 'omniauth-facebook', '~> 5.0.0'
+gem 'omniauth-google-oauth2', '~> 0.5.3'
 
 gem 'ransack', '~> 1.8.2'
 gem 'geocoder', '~> 1.4.0'
@@ -61,9 +61,9 @@ gem 'awesome_print'
 gem 'paranoia', '~> 2.2.0.pre' # see https://github.com/rubysherpas/paranoia/pull/351
 gem 'faker', '~> 1.6.6'
 
-gem 'mini_magick', '~> 4.5.1'
-gem 'fog-aws', '~> 0.11.0'
-gem 'carrierwave', '>= 1.0.0.beta', '< 2.0'
+gem 'mini_magick', '~> 4.9.2'
+gem 'fog-aws', '~> 3.3.0'
+gem 'carrierwave', '~> 1.2.3'
 
 # Wrappers for JavaScript alert(), confirm() and other flexible dialogs using Twitter's bootstrap
 gem 'bootbox-rails', '~> 0.4'

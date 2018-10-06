@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   def set_locale
     # not setting :fi as default locale because there might come a situation when you have missing translation in :fi
     #  then :en should be used as fallback
-    I18n.locale = params[:locale] || :fi
+    I18n.locale = params[:locale] || :en
   end
 
   def default_url_options
