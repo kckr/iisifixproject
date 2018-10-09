@@ -13,5 +13,11 @@
 #
 
 class VehicleVendor < ApplicationRecord
-  scope :id_from, -> (make) { where('lower(name) like lower(?)', "%#{make}%").first.id }
+  def self.id_from(make)
+    if vendor = self.where('lower(name) like lower(?)', "%#{make}%").first
+      vendor.id
+    else
+      self.create(name: make).id
+    end
+  end
 end
